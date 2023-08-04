@@ -1,0 +1,136 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage{iccv}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{stfloats}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage{etoolbox}
+
+\usepackage{array}
+\usepackage{tabulary}
+\usepackage[table,dvipsnames]{xcolor} % for rowcolor
+\usepackage{paralist}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tabu} % color table rowfont
+
+% === for table caption
+\usepackage{caption}
+\captionsetup[table]{format=plain,labelformat=simple,labelsep=period}%
+% \usepackage{float}  % table follow text by [H]
+% === for figure subcaption
+\usepackage{subcaption}
+\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks,bookmarks=false,citecolor=blue,linkcolor=red]{hyperref}
+% \usepackage[pagebackref,breaklinks,colorlinks,bookmarks,bookmarksopen]{hyperref}
+% \hypersetup{colorlinks, citecolor=ForestGreen, linkcolor=red}%teal
+\usepackage{icomma} % for comma
+\usepackage{arydshln}
+% \usepackage{tabulary}
+% \usepackage[table]{xcolor}
+\newcommand\ver[1]{\rotatebox[origin=c]{90}{#1}}
+\newcommand{\fl}[1]{\multicolumn{1}{c}{#1}}
+\definecolor{gray}{rgb}{0.3,0.3,0.3}
+\definecolor{blue}{rgb}{0,0.5,1}
+\definecolor{mask_red}{rgb}{1,0,0.8}
+\definecolor{green}{rgb}{0.2,1,0.2}
+\definecolor{rblue}{rgb}{0,0,1}
+\definecolor{lightblue}{HTML}{6495ed}
+\definecolor{lightred}{HTML}{F19C99}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\green}[1]{\textcolor[RGB]{96,177,87}{#1}}
+\newcommand{\lightblue}[1]{\textcolor{lightblue}{#1}}
+\newcommand{\fn}[1]{\footnotesize{#1}}
+\newcommand{\gbf}[1]{\green{\bf{\fn{(#1)}}}}
+\newcommand{\bbf}[1]{\lightblue{\bf{\fn{(#1)}}}}
+\newcommand{\rbf}[1]{\gray{\bf{\fn{(#1)}}}}
+\newcommand{\obf}[1]{\textcolor{orange}{\bf{\fn{(#1)}}}}
+\definecolor{graytablerow}{gray}{0.6}
+\newcommand{\grow}[1]{\textcolor{graytablerow}{#1}}
+\newcommand{\ZJM}[1]{\textcolor{orange}{\bf{\fn{(#1)}}}}
+%\newcommand{\YKL}[1]{\textcolor{red}{\bf{\fn{(#1)}}}}
+\newcommand{\YKL}[1]{\textcolor{red}{#1}}
+\newcommand{\WZ}[1]{\textcolor{red}{#1}}
+
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+\node[shape=circle,fill=gray,inner sep=0.5pt] (char) {\textcolor{white}{\footnotesize \textbf{#1}}};}}
+
+\iccvfinalcopy % *** Uncomment this line for the final submission
+
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+\ificcvfinal\pagestyle{empty}\fi
+
+\begin{document}
+
+%%%%%%%%% TITLE
+%
+\title{Tightly-Coupled LiDAR-Visual SLAM Based on Geometric Features\\for Mobile Agents}
+
+\author{
+Ke Cao$^1$,
+~~Ruiping Liu$^1$,
+~~Ze Wang$^3$,
+~~Kunyu Peng$^1$,
+~~Jiaming Zhang$^1$,
+~~Junwei Zheng$^1$,\\
+~~Zhifeng Teng$^1$,
+~~Kailun Yang$^{2,}$\thanks{Corresponding author (e-mail: {\tt kailun.yang@hnu.edu.cn}).},
+~~Rainer Stiefelhagen$^1$\\
+\normalsize
+$^1$Karlsruhe Institute of Technology,
+\normalsize
+~~$^2$Hunan University,
+\normalsize
+~~$^3$Zhejiang University
+}
+
+\maketitle
+%
+\ificcvfinal\thispagestyle{empty}\fi
+
+
+%%%%%%%%% ABSTRACT
+\input{TexContents/abstract}
+
+%%%%%%%%% BODY TEXT
+
+
+\section{Introduction}
+\label{sec:intro}
+\input{TexContents/introduction}
+
+\section{Related Work}
+\label{sec:related_work}
+\input{TexContents/related_work}
+
+\section{Methodology}
+\label{sec:methodology}
+\input{TexContents/methodology}
+
+\section{Experiments}
+\label{sec:experiments}
+\input{TexContents/experiments}
+
+\section{Conclusion}
+\label{sec:conclusion}
+\input{TexContents/conclusion}
+
+\clearpage
+{\small
+% \bibliographystyle{unsrt}
+\bibliographystyle{ieee_fullname}
+\bibliography{egbib}
+}
+
+\end{document}

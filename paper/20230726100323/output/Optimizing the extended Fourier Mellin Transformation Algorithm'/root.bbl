@@ -1,0 +1,196 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{xie2019novel}
+X.~Xie, Y.~Zhang, X.~Ling, and X.~Wang, ``A novel extended phase correlation
+  algorithm based on log-gabor filtering for multimodal remote sensing image
+  registration,'' \emph{International Journal of Remote Sensing}, vol.~40,
+  no.~14, pp. 5429--5453, 2019.
+
+\bibitem{pfingsthorn2013large}
+M.~Pfingsthorn, H.~B{\"u}low, A.~Birk, F.~Ferreira, G.~Veruggio, M.~Caccia, and
+  G.~Bruzzone, ``Large-scale mosaicking with spectral registration based
+  simultaneous localization and mapping (ifmi-slam) in the ligurian sea,'' in
+  \emph{2013 MTS/IEEE OCEANS-Bergen}.\hskip 1em plus 0.5em minus 0.4em\relax
+  IEEE, 2013, pp. 1--6.
+
+\bibitem{turski2000projective}
+J.~Turski, ``Projective fourier analysis for patterns,'' \emph{Pattern
+  Recognition}, vol.~33, no.~12, pp. 2033--2043, 2000.
+
+\bibitem{1562722}
+X.~Guo, Z.~Xu, Y.~Lu, and Y.~Pang, ``An application of fourier-mellin transform
+  in image registration,'' in \emph{The Fifth International Conference on
+  Computer and Information Technology (CIT'05)}, 2005, pp. 619--623.
+
+\bibitem{reddy1996fft}
+B.~S. Reddy and B.~N. Chatterji, ``An fft-based technique for translation,
+  rotation, and scale-invariant image registration,'' \emph{{IEEE} Trans. Image
+  Process.}, vol.~5, no.~8, pp. 1266--1271, 1996.
+
+\bibitem{bulow2009fast}
+H.~B{\"u}low and A.~Birk, ``Fast and robust photomapping with an unmanned
+  aerial vehicle (uav),'' in \emph{2009 IEEE/RSJ International Conference on
+  Intelligent Robots and Systems}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  2009, pp. 3368--3373.
+
+\bibitem{bulow2009online}
+H.~B\"ulow, A.~Birk, and V.~Unnithan, ``Online generation of an underwater
+  photo map with improved fourier mellin based registration,'' in \emph{OCEANS
+  2009-EUROPE}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2009, pp. 1--6.
+
+\bibitem{DERRODE200157}
+S.~Derrode and F.~Ghorbel, ``Robust and efficient fourier–mellin transform
+  approximations for gray-level image reconstruction and complete invariant
+  description,'' \emph{Computer Vision and Image Understanding}, vol.~83,
+  no.~1, pp. 57--78, 2001.
+
+\bibitem{8844710}
+X.~Tong, Z.~Ye, Y.~Xu, S.~Gao, H.~Xie, Q.~Du, S.~Liu, X.~Xu, S.~Liu, K.~Luan,
+  and U.~Stilla, ``Image registration with fourier-based image correlation: A
+  comprehensive review of developments and applications,'' \emph{IEEE Journal
+  of Selected Topics in Applied Earth Observations and Remote Sensing},
+  vol.~12, no.~10, pp. 4062--4081, 2019.
+
+\bibitem{chen1994symmetric}
+Q.-s. Chen, M.~Defrise, and F.~Deconinck, ``Symmetric phase-only matched
+  filtering of fourier-mellin transforms for image registration and
+  recognition,'' \emph{{IEEE} Trans. Pattern Anal. Mach. Intell.}, vol.~16,
+  no.~12, pp. 1156--1168, 1994.
+
+\bibitem{ORBSLAM3_2020}
+C.~Campos, R.~Elvira, J.~J. G\'omez, J.~M.~M. Montiel, and J.~D. Tard\'os,
+  ``{ORB-SLAM3}: An accurate open-source library for visual, visual-inertial
+  and multi-map {SLAM},'' \emph{arXiv preprint arXiv:2007.11898}, 2020.
+
+\bibitem{Engel-et-al-pami2018}
+J.~Engel, V.~Koltun, and D.~Cremers, ``Direct sparse odometry,'' \emph{IEEE
+  Transactions on Pattern Analysis and Machine Intelligence}, mar 2018.
+
+\bibitem{xu2019improved}
+Q.~Xu, A.~G. Chavez, H.~B{\"u}low, A.~Birk, and S.~Schwertfeger, ``Improved
+  fourier mellin invariant for robust rotation estimation with omni-cameras,''
+  in \emph{2019 IEEE International Conference on Image Processing
+  (ICIP)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2019, pp. 320--324.
+
+\bibitem{387491}
+Q.-S. Chen, M.~Defrise, and F.~Deconinck, ``Symmetric phase-only matched
+  filtering of fourier-mellin transforms for image registration and
+  recognition,'' \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, vol.~16, no.~12, pp. 1156--1168, 1994.
+
+\bibitem{4290156}
+R.~Goecke, A.~Asthana, N.~Pettersson, and L.~Petersson, ``Visual vehicle
+  egomotion estimation using the fourier-mellin transform,'' in \emph{2007 IEEE
+  Intelligent Vehicles Symposium}, 2007, pp. 450--455.
+
+\bibitem{4584311}
+M.~Gueham, A.~Bouridane, D.~Crookes, and O.~Nibouche, ``Automatic recognition
+  of shoeprints using fourier-mellin transform,'' in \emph{2008 NASA/ESA
+  Conference on Adaptive Hardware and Systems}, 2008, pp. 487--491.
+
+\bibitem{10.1007/978-3-642-13408-1_14}
+P.~Checchin, F.~G{\'e}rossier, C.~Blanc, R.~Chapuis, and L.~Trassoudaine,
+  ``Radar scan matching slam using the fourier-mellin transform,'' in
+  \emph{Field and Service Robotics}, A.~Howard, K.~Iagnemma, and A.~Kelly,
+  Eds.\hskip 1em plus 0.5em minus 0.4em\relax Berlin, Heidelberg: Springer
+  Berlin Heidelberg, 2010, pp. 151--161.
+
+\bibitem{le2011image}
+J.~Le~Moigne, N.~S. Netanyahu, and R.~D. Eastman, \emph{Image registration for
+  remote sensing}.\hskip 1em plus 0.5em minus 0.4em\relax Cambridge University
+  Press, 2011.
+
+\bibitem{grabe2015nonlinear}
+V.~Grabe, H.~H. B{\"u}lthoff, D.~Scaramuzza, and P.~R. Giordano, ``Nonlinear
+  ego-motion estimation from optical flow for online control of a quadrotor
+  uav,'' \emph{The International Journal of Robotics Research}, vol.~34, no.~8,
+  pp. 1114--1135, 2015.
+
+\bibitem{sa2018weedmap}
+I.~Sa, M.~Popovi{\'c}, R.~Khanna, Z.~Chen, P.~Lottes, F.~Liebisch, J.~Nieto,
+  C.~Stachniss, A.~Walter, and R.~Siegwart, ``Weedmap: A large-scale semantic
+  weed mapping framework using aerial multispectral imaging and deep neural
+  network for precision farming,'' \emph{Remote Sensing}, vol.~10, no.~9, p.
+  1423, 2018.
+
+\bibitem{kuang2019pose}
+H.~Kuang, Q.~Xu, X.~Long, and S.~Schwertfeger, ``Pose estimation for
+  omni-directional cameras using sinusoid fitting,'' in \emph{2019 IEEE/RSJ
+  International Conference on Intelligent Robots and Systems (IROS)}.\hskip 1em
+  plus 0.5em minus 0.4em\relax IEEE, 2019, pp. 900--906.
+
+\bibitem{4587553}
+H.~T. Ho and R.~Goecke, ``Optical flow estimation using fourier mellin
+  transform,'' in \emph{2008 IEEE Conference on Computer Vision and Pattern
+  Recognition}, 2008, pp. 1--8.
+
+\bibitem{xu2021rethinking}
+Q.~Xu, H.~Kuang, L.~Kneip, and S.~Schwertfeger, ``Rethinking the fourier-mellin
+  transform: Multiple depths in the camera’s view,'' \emph{Remote Sensing},
+  vol.~13, no.~5, p. 1000, 2021.
+
+\bibitem{forster2016svo}
+C.~Forster, Z.~Zhang, M.~Gassner, M.~Werlberger, and D.~Scaramuzza, ``Svo:
+  Semidirect visual odometry for monocular and multicamera systems,''
+  \emph{IEEE Transactions on Robotics}, vol.~33, no.~2, pp. 249--265, 2016.
+
+\bibitem{scaramuzza2011visual}
+D.~Scaramuzza and F.~Fraundorfer, ``Visual odometry [tutorial],'' \emph{IEEE
+  robotics \& automation magazine}, vol.~18, no.~4, pp. 80--92, 2011.
+
+\bibitem{Mur_Artal_2015}
+R.~Mur-Artal, J.~M.~M. Montiel, and J.~D. Tardos, ``{ORB}-{SLAM}: A versatile
+  and accurate monocular {SLAM} system,'' \emph{{IEEE} Transactions on
+  Robotics}, vol.~31, no.~5, pp. 1147--1163, oct 2015.
+
+\bibitem{Rosten_2010}
+E.~Rosten, R.~Porter, and T.~Drummond, ``Faster and better: A machine learning
+  approach to corner detection,'' \emph{{IEEE} Transactions on Pattern Analysis
+  and Machine Intelligence}, vol.~32, no.~1, pp. 105--119, jan 2010.
+
+\bibitem{790410}
+D.~Lowe, ``Object recognition from local scale-invariant features,'' in
+  \emph{Proceedings of the Seventh IEEE International Conference on Computer
+  Vision}, vol.~2, 1999, pp. 1150--1157 vol.2.
+
+\bibitem{chavez2019adaptive}
+A.~G. Chavez, Q.~Xu, C.~A. Mueller, S.~Schwertfeger, and A.~Birk, ``Adaptive
+  navigation scheme for optimal deep-sea localization using multimodal
+  perception cues,'' in \emph{2019 IEEE/RSJ International Conference on
+  Intelligent Robots and Systems (IROS)}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2019, pp. 7211--7218.
+
+\bibitem{davison2007monoslam}
+A.~J. Davison, I.~D. Reid, N.~D. Molton, and O.~Stasse, ``Monoslam: Real-time
+  single camera slam,'' \emph{IEEE transactions on pattern analysis and machine
+  intelligence}, vol.~29, no.~6, pp. 1052--1067, 2007.
+
+\bibitem{engel2014lsd}
+J.~Engel, T.~Sch{\"o}ps, and D.~Cremers, ``Lsd-slam: Large-scale direct
+  monocular slam,'' in \emph{European conference on computer vision}.\hskip 1em
+  plus 0.5em minus 0.4em\relax Springer, 2014, pp. 834--849.
+
+\bibitem{yang2023slamhive}
+Y.~Yang, B.~Xu, Y.~Li, and S.~Schwertfeger, ``The slam hive benchmarking
+  suite,'' in \emph{Robotics and Automation (ICRA), 2023 IEEE International
+  Conference on}, 2023.
+
+\end{thebibliography}

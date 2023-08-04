@@ -1,0 +1,521 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+%In case you encounter the following error:
+%Error 1010 The PDF file may be corrupt (unable to open PDF file) OR
+%Error 1000 An error occurred while parsing a contents stream. Unable to analyze the PDF file.
+%This is a known problem with pdfLaTeX conversion filter. The file cannot be opened with acrobat reader
+%Please use one of the alternatives below to circumvent this error by uncommenting one or the other
+%\pdfobjcompresslevel=0
+%\pdfminorversion=4
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+
+% The following packages can be found on http:\\www.ctan.org
+\usepackage{graphics} % for pdf, bitmapped graphics files
+\usepackage{epsfig} % for postscript graphics files
+% \usepackage{mathptmx} % assumes new font selection scheme installed
+\usepackage{times} % assumes new font selection scheme installed
+\usepackage{amsmath} % assumes amsmath package installed
+\usepackage{amssymb}  % assumes amsmath package installed
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{url}
+\usepackage{subfigure}
+\usepackage{booktabs}
+\usepackage{caption}
+% \usepackage{algorithm}
+% \usepackage{algpseudocode}
+% \usepackage{diagbox}
+% \usepackage{multirow}
+% \usepackage{adjustbox}
+% \usepackage{subcaption}
+% \captionsetup{compatibility=false}
+% \usepackage[colorlinks,linkcolor=blue]{hyperref}
+
+\title{\LARGE \bf
+Optimizing the 
+extended Fourier Mellin Transformation Algorithm
+}
+
+
+\author{Wenqing Jiang$^{1*}$, Chengqian Li$^{1*}$, Jinyue Cao$^{1}$ and S\"{o}ren Schwertfeger$^{1}$% <-this % stops a space
+% \thanks{*This work was not supported by any organization}% <-this % stops a space
+% \thanks{*This work was not supported by any organization}% <-this % stops a space
+% \thanks{$^{1}$Albert Author is with Faculty of Electrical Engineering, Mathematics and Computer Science,
+%         University of Twente, 7500 AE Enschede, The Netherlands
+%         {\tt\small albert.author@papercept.net}}%
+% \thanks{$^{2}$Bernard D. Researcheris with the Department of Electrical Engineering, Wright State University,
+%         Dayton, OH 45435, USA
+%         {\tt\small b.d.researcher@ieee.org}}%
+\thanks{$^{*}$ indicates equal contribution.}%
+\thanks{$^{1}$Wenqing Jiang, Chengqian Li, Jinyue Cao, and S\"{o}ren Schwertfeger are with the School of Information Science and Technology, ShanghaiTech University, Shanghai, China
+        {\tt\small \{jiangwq, lichq, caojy, soerensch\}@shanghaitech.edu.cn}}%
+}
+
+
+\begin{document}
+
+
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+
+    With the increasing application of robots, stable and efficient Visual Odometry (VO) algorithms are becoming more and more important. Based on the Fourier Mellin Transformation (FMT) algorithm, the extended Fourier Mellin Transformation (eFMT) is an image registration approach that can be applied to downward-looking cameras, for example on aerial and underwater vehicles. eFMT extends FMT to multi-depth scenes and thus more application scenarios. It is a visual odometry method which estimates the pose transformation between three overlapping images. On this basis, we develop an optimized eFMT algorithm that improves certain aspects of the method and combines it with back-end optimization for the small loop of three consecutive frames. For this we investigate the extraction of uncertainty information from the eFMT registration, the related objective function and the graph-based optimization. Finally, we design a series of experiments to investigate the properties of this approach and compare it with other VO and SLAM (Simultaneous Localization and Mapping) algorithms. The results show the superior accuracy and speed of our o-eFMT approach, which is published as open source.
+
+\end{abstract}
+
+
+% === I. INTRODUCTION =============================================================
+% =================================================================================
+\section{Introduction}
+
+The Fourier-Mellin-Transform (FMT) algorithm, first introduced in the 1990s, is a traditional image registration algorithm for images captured with pinhole cameras. It is a popular algorithm in many fields of studies such as remote sensing~\cite{xie2019novel}, robotics~\cite{pfingsthorn2013large} and image analysis~\cite{turski2000projective, 1562722}, to name a few. The classic Fourier-Mellin transform was first presented by Reddy and Chatterji~\cite{reddy1996fft}, and over the past few decades, improved massively on its computational efficiency and robustness~\cite{bulow2009fast,bulow2009online, DERRODE200157}. A detailed review of Fourier-based image correlation is provided in \cite{8844710}.
+%{\color{red} maybe (delete this part?) Using this approach, one can estimate the motion of a camera just based on the images it captured - this is also called Visual Odometry (VO).} 
+%FMT is used in the areas of remote sensing \cite{ordonez2017fourier,xie2019novel}, robotics \cite{bulow2009fast,pfingsthorn2013large} and image analysis \cite{turski2000projective,gauthier1991motions}. 
+
+FMT is based on Fourier transform analysis and uses a phase-only matched filter~\cite{chen1994symmetric} to estimate the rotation and translation between two images. This is in contrast to currently more popular VO algorithms, which often use either feature extraction and matching for image registration such as ORB-SLAM3~\cite{ORBSLAM3_2020}, or rely on direct methods such as DSO~\cite{Engel-et-al-pami2018}. The mainstream methods work just fine until feature-deprived or highly repetitive environments occur, and that is where FMT shows superior performance~\cite{xu2019improved, 387491, 4290156, 4584311, 10.1007/978-3-642-13408-1_14}. Yet, this algorithm has its weak spot. One specific aspect of FMT is, that it can only estimate camera motions with 4 Degrees of Freedom (DOF): given that the image lies in the $XY$ plane, the camera can translate in the $x$-, $y$-, $z$-axis and rotate around the $z$-axis, but rotation around the $x$- or $y$-axis (roll and pitch, respectively) are not allowed. This limitation restricts the application scenarios of FMT to systems that utilize down-looking cameras without roll or pitch. Examples for those are down-looking cameras on satellites \cite{le2011image}, aerial vehicles \cite{grabe2015nonlinear,sa2018weedmap} or underwater vehicles \cite{pfingsthorn2013large}, which are still exciting areas for FMT to shine. Additionally, FMT can be used as part of a more complex VO system, e.g. with omni-directional cameras \cite{kuang2019pose,xu2019improved, 4587553}.
+
+Another major shortcoming of FMT is the fact that it requires the depicted scene to be flat and parallel to the camera, which means that the environment needs to be planar and parallel to the imaging plane. In other words, only single depth is allowed. Our recent work~\cite{xu2021rethinking} eFMT overcomes this problem and is able to remove the constraints of equidistance and planar environment. eFMT, short for extended Fourier-Mellin-Transform, extends the algorithm application to general multi-depth environments. This is major breakthrough, as for the first time, it allows this spectral-based method to be applied to any environment, no strings attached. eFMT points out that if the depths of objects are different, the pixels' motion will also be different even if the camera's motion is the same. This is due to perspective projection. Since FMT can only estimate the image motion in the dominant depth, the camera's speed could not be correctly inferred when the dominant depth changes. eFMT first represents the translation in a one-dimensional translation energy vector obtained from the phase shift diagram instead of just picking the maximum peak, as does the classical FMT. It then puts the zoom and translation in the same reference frame based on pattern matching, and finally, assigns a magnitude (change of camera speed) to the second of the two found unit translation vectors of three consecutive frames.
+Their work shows the excellent performance of eFMT in comparison to FMT and also traditional methods like ORB-SLAM3, SVO \cite{forster2016svo} and DSO.
+
+In this paper, we propose an optimized eFMT (o-eFMT), which modifies the eFMT method and adds a back-end optimization to it. First of all, our method shows superior performance to theirs. As for back-end optimization, eFMT is still a VO algorithm, and like all VO algorithms, it only considers the correlation between adjacent timestamps, while errors can be accumulated over time and lead to unreliable results. Our method, o-eFMT, like eFMT, considers three consecutive frames, but not only the transformations between the first two frames and the last two frames, we also consider the transformation between the first and last frame and add a constraint to these three transformations, additionally estimate their uncertainty and use all this to optimize the original results. 
+
+%ToDo from Soeren: You don't mention the uncertainty estimation - that should be mentioned separately above and as contribution?
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{./images/pipeline.pdf}
+    \caption{The pipeline of o-eFMT. The orange blocks are where we modified and 
+ complemented eFMT.}
+    \label{fig:pipeline}
+\end{figure*}
+
+The contributions of this paper are summarized as follows:
+\begin{enumerate}
+    % \item We re-implement of the eFMT algorithm and add a few improvements to it;
+    % \item We propose eFMT-SLAM, which adds a back-end optimization based on eFMT, and compensate the error accumulation problem of both energy vector extraction and pattern matching;
+    % \item We provide our implementation as open source to the community.
+    % 我们采用了更为简单的方式生成zoom能量向量，并用于计算相机的translation，从而节省了大量的傅里叶变换计算。并且统一了translation energy vector和zoom energy vector的生成方法。
+    \item In phase shift diagram processing, we extract the zoom energy vector in a simpler way to bypass the multi-zoom calculation. This drastically reduces the computational complexity of multiple Fourier transforms in the presence of motion on the $z$-axis in a multi-depth environment. We further unify the extraction method of both translation energy vector and zoom energy vector.
+    % 在PM过程中，我们过滤了一些不太可能的factor，并对所有可能的因子的误差序列进行了Laplace变换从而过滤了一些错误的匹配结果。
+    \item In pattern matching, we reduce the computation cost by using tighter bounds of possible scalings and perform Gaussian filtering on the energy vectors and Laplace transform on the error sequence of all probable factors to reduce the influence of noise and for improved matching accuracy. 
+    \item We add uncertainty estimation of the rotation and translation directions for the fusion step of energy vector extraction and additional uncertainty estimations for the factors estimated by pattern matching. 
+    % 在新的VO结果基础上，我们增加了一个局部优化器。进一步提高的算法的稳定性和准确性。
+    \item For robustness enhancements, we add a local optimizer to the VO structure, which further improves the accuracy and stability.
+    \item We provide the source-code of o-eFMT as well as the new datasets\footnote{\url{https://github.com/STAR-Center/o-eFMT}}.
+\end{enumerate}
+
+
+% === II. Harmonically-Terminated Power Rectifier Analysis ========================
+% =================================================================================
+\section{Related work}
+% 基于视觉的定位方法通常根据其描述环境的方式分为三类：基于特征、基于外观和混合方法。基于特征的VO通常需要从图像中提取不同的重复区域并建立相应的描述符。基于外观的方法不需要提取特征。它们依赖于全部或部分图像。混合方法考虑像素一致性和姿态估计的特征。从相对姿态计算的角度来看，流行的VO/VSLAM框架分为基于滤波的[21]、基于关键帧的[22]和直接方法[23]。另一种定位方法称为半直接法，如SVO[24]。它在图像配准中使用直接法，但在姿态估计和束调整中保持了重投影误差最小化。现有的基于特征的方法在一些具有挑战性的场景中，如特征缺失环境、运动模糊或水下混浊场景中，无法正确地进行特征匹配。尽管直接方法在缺乏特征的情况下比基于特征的方法表现得更好，但在环境中纹理很少的情况下，它们无法很好地工作。此外，直接方法需要精确的摄像机校准，这在低成本摄像机中往往得不到很好的支持。
+Vision-based positioning methods are usually divided into three categories according to how they describe the environment: feature-based, appearance-based and hybrid methods~\cite{scaramuzza2011visual}. Feature-based VO needs to extract different descriptive regions from the image and establish corresponding descriptors \cite{Mur_Artal_2015,Rosten_2010,790410} and has various other applications, e.g. \cite{chavez2019adaptive}. The appearance-based methods do not need to extract features. They depend on whole or part of the image. The hybrid methods consider the characteristics of pixel consistency and pose estimation.
+
+% 其中，FMT是andre等人在1990年代提出的一种传统的对于小孔相机图像的分析算法。他被广泛用在远程感知，机器人学和图像分析等领域。基于傅里叶变换和相位相关法，FMT算法可以用来估计两张图像的平移和旋转变换。由此可以拓展为VO算法。在此基础上，Soren等改进了FMT算法，提出了eFMT-VO算法。
+Among them, FMT~\cite{chen1994symmetric} is a traditional analysis algorithm for pin-hole camera images, originally proposed by Qin-Sheng Chen et al. in the 1990s. Based on the Fourier Transform and the phase correlation method, the FMT algorithm can be used to estimate the translation and rotation transform between images. Thus, it can be used as an alternative for VO algorithm. 
+%In 2018, Dr. Qingwen Xu from the group of Prof. S\"oren Schwertfeger at ShanghaiTech University
+% went for a 5-month research visit to 
+%collaborated with the group of Prof. Andreas Birk at Jacobs University, Bremen 
+% on a DAAD student stipend to do research on image registration using the Fourier Mellin Transform (FMT), 
+%which lead to the publication of 3 papers 
+%We have utilized FMT in
+%\cite{xu2019improved, chavez2019adaptive, chavez2019towards}. 
+In 2021 Xu and Schwertfeger developed the extended FMT VO algorithm (eFMT) ~\cite{xu2021rethinking}, which is the basis of this paper. 
+% The goal of this project is to re-implement this state-of-the-art algorithm and further
+% collaborate with Prof. Birk again, this time to  embed eFMT in a SLAM algorithm. 
+From the perspective of relative pose calculation, popular VO/VSLAM frameworks are divided into filtering-based~\cite{davison2007monoslam}, key-frame-based~\cite{ORBSLAM3_2020} and direct methods~\cite{engel2014lsd}. Another positioning method is called the semi-direct method, such as SVO~\cite{forster2016svo}. It uses the direct method in image registration, but keeps the reprojection error to a minimum in pose estimation and beam adjustment. Existing feature-based methods cannot perform feature matching correctly in some challenging scenes, such as environments with fewer features, blurred motion or underwater turbid scenes. Although direct methods perform better than feature-based methods in feature deprived scenarios, they do not work well when there are fewer textures in the environment. FMT and eFMT have been shown to have a considerably better performance in such environments~\cite{xu2019improved}. 
+
+
+% % === III. Overview of extended Fourier-Mellin Transformation ==============================
+% % =================================================================================
+\section{Overview of eFMT}
+The \textbf{extended Fourier-Mellin Transformation (eFMT)}, is an alternative visual odometry (VO) approach aiming at extending FMT to multi-depth environments while maintaining the advantages of FMT in feature-deprived scenarios. Its pipeline is similar to that of FMT \cite{reddy1996fft} with smarter ways of processing the \textbf{\textit{phase shift diagram (PSD)}}. eFMT deals with three consecutive frames of images to extract camera motion. Image registration is firstly done on the first two frames $I_0,I_1$ and the last two frames $I_1,I_2$ to obtain the 4DOF pose: zoom, rotation, translation. Then through pattern matching, the scale consistency is maintained between both poses. In detail, given two input images $I_0$ and $I_1$, eFMT first calculates the rotation and zoom. After converting the images onto the frequency domain and using Fourier transform to obtain their spectra, applying an inverse Fourier transformation on the cross power spectrum of the spectra (phase correlation method) presents the rotation and zoom PSD based on $I_0$ and $I_1$. eFMT extracts the \textbf{\textit{zoom energy vector ($\mathbb{V}_z$)}} to obtain rotation and multi-zoom. Then, it uses the rotation and each zoom to re-rotate and re-zoom $I_0$ to $I'_0$, to then perform the phase correlation method on $I'_0$ and $I_1$, the \textbf{\textit{translation energy vector ($\mathbb{V}_t$)}} is extracted from the translation PSD based on $I'_0$ and $I_1$. The magnitude of this first translation estimate is 1, the unit translation, because this monocular VO approach is anyways up to an unknown scale factor. All translation energy vectors corresponding to each zoom are fused into one. Two registrations give two zoom energy vectors $\mathbb{V}_z^{01}, \mathbb{V}_z^{12}$ and two translation energy vectors $\mathbb{V}_t^{01}, \mathbb{V}_t^{12}$. Pattern matching is performed on both $\mathbb{V}_z$ and on both $\mathbb{V}_t$ respectively, a scale consistency factor and a translation consistency factor are acquired. Those scale the translation relative to the speed of the first (unit) translation.  
+
+% =============================== IV. EFMT ========================================
+% =================================================================================
+% \section{eFMT \uppercase{\romannumeral2}}
+\section{o-eFMT}
+In this section, we explain in detail how and why we modify the eFMT\cite{xu2021rethinking} algorithm. We first made changes regarding the energy vector extraction method and regarding filtering less possible cases both before and after pattern matching. Furthermore we improve the pattern matching by applying a Laplace transform. Additionally, we perform uncertainty estimation for each step. All information along with the uncertainty estimation result is put into a back-end optimizer for local optimization of the VO structure which eventually present to us a more accurate and robust result.
+
+In section~\ref{sec:EV}, we first explain how energy extraction is performed in eFMT, and then present our Gaussian modeled zoom energy vector extraction method that allows us to focus on one dominant zoom instead of all zooms which lowers the computational complexity. In section~\ref{sec:PM}, we explain how we embed the filtering method before the original pattern matching and the Laplace transform that smoothes the noisy data afterwards. In section~\ref{sec:Opti} we present how the uncertainty estimation of the last two section is combined into a back-end optimization of this entire structure. To clarify matters, we keep the terminology consistent with that of the original eFMT paper~\cite{xu2021rethinking}.
+
+\begin{figure}[t]
+    \centering
+    % \includegraphics[width=0.99\linewidth]{images/translation_energy_vector_principle.png}
+    \includegraphics[width=0.99\linewidth]{images/eFMT-PSD.pdf}
+    \caption{Transformation of the translation PSD from the polar coordinates to the Cartesian coordinates.}
+    \label{fig:energy_vector}
+\end{figure}
+
+\subsection{Energy Vector}\label{sec:EV}
+% 具体地，在rot-scale PSD中生成的成为$\mathcal{S}$, 在translation PSD中的称为$\mathcal{T}$.
+% To clarify matters, the energy vector generated from the rot-scale PSD is called the \textbf{\textit{zoom energy vector}} $\mathcal{S}$, the one generated from the translation PSD is called the \textbf{\textit{translation energy vector}} $\mathcal{T}$. 
+% 在恢复rot-scale 变换时，不同深度的像素所反映的scale不同，但都具有同样的旋转变换，因此在多深度场景中，rot-scale PSD中会出现一行peaks。而在计算translation的过程中，所有像素的运动方向是一致的，但运动幅度不同。因此在translation PSD中会出现一条从中心射出的peak line。考虑到恢复运动信息离不开在PSD上提取peak的操作，因此将图1中的translation PSD映射到极坐标中，即图2中的样子。于是可以采用同样的方式从PSD中生成nergy vector。
+% Given two input images $I_1$ and $I_2$, rotation and zoom transformation is firstly obtained from the \textbf{\textit{rot-scale PSD}} generated by $I_1$ and $I_2$. After re-rotating and re-zooming $I_1$ to $I'_1$, \textbf{\textit{translation PSD}} is generated by $I'_1$ and $I_2$ where translation transformation can be obtained. Each time a PSD is generated, Fourier transform is applied. This is computationally expensive. The energy vector generated from the rot-scale PSD is called the \textbf{\textit{zoom energy vector}} $\mathcal{S}$, the one generated from the translation PSD is called the \textbf{\textit{translation energy vector}} $\mathcal{T}$. 
+
+% rotation and scale
+
+When recovering the rotation and zoom transformations, pixels in different depths reflect the same rotation yet with different zooms. As such, in multi-depth scenarios, the rot-scale PSD presents a row of high values. eFMT first locates this row with maximum sum energy and uniformly samples a set of multi-zoom values between the maximum zoom and the minimum zoom estimated from this row. Then, for each zoom, eFMT re-rotates and re-zooms one of the images and generates one corresponding translation PSD to recover translation information. This is repeated for each zoom factor, potentially many times. This is computationally expensive. We propose a method to bypass this multiple generation.
+
+Due to noise and imperfect intrinsic camera calibration, the high values in the translation PSD may not locate accurately in one strict line, they could be distributed on several neighbouring rows.  Therefore, instead of sampling from the row $k$ with maximum sum energy, we set $2r$ neighbouring rows of $k$ as a block.
+
+To be more specific, we assume that sum energy of row $[k-r, k+r]$ in the block satisfy Gaussian distribution $G(\mu, \sigma)$. Here $r=2$ is set as default. The average $\mu$ is obviously closer to the correct row corresponding to the rotation $\theta$, and $\sigma$ gives an uncertainty probability for each row in the block. Therefore, the \textit{zoom energy vector} $\mathcal{S}$ will be weighted fused according to the probability given by the Gaussian distribution as in equation \ref{eq:fusion_vector}:
+\begin{equation}
+    \mathcal{S} = \frac{1}{2r + 1}\sum\limits_{i=k-r}^{k+r}{\frac{1}{e^{-\frac{1}{2}{(\frac{i - \mu}{\sigma})}^2 }}}\cdot \text{row}(i) ,
+    \label{eq:fusion_vector}
+\end{equation}
+where $\text{row}(i)$ means the $i$-th row in the \text{PSD}. This newly formed fused row is what we define as the zoom energy vector $\mathcal{S}$ and we can extract one dominant zoom from it for the next step.
+
+% translation
+While recovering the translation transformation, pixels in different depths reflect the same moving direction, yet with different lengths in movement. As such, in multi-depth scenarios, the translation PSD presents a ray of high energy starting from the center. For each zoom sampled earlier, eFMT searches for a sector in each corresponding PSD that sums up the most energy. Then eFMT samples a translation vector from this sector. The sector direction stands for the translation direction. All these translation energy vectors are finally fused into one according to the weight of the zoom energy.
+
+% For each zoom that eFMT sampled earlier, a corresponding translation energy vector is generated. All these translation energy vectors are finally fused into one according to the weight of the zoom energy.
+
+We, however, process the translation PSD differently. As the high energies are located in a ray shooting from the center, we model this PSD as a polar coordinate system and translate the PSD into Cartesian coordinates as shown in Fig.~\ref{fig:energy_vector}. This leads to a new translation PSD $\mathcal{T}$ in the same format as the rot-scale PSD. We apply the same Gaussian approximation method to extract the translation energy vector as we do for the zoom energy vector. This way, we unify the energy vector extraction method. During this entire process, we only extract one $\mathcal{S}$ and one $\mathcal{T}$, while eFMT does this process multiple times, in order to reduce the computation time significantly.
+
+This simplification leads to inaccurate motion length estimates in the rare cases where there is both: there is zooming present (camera is moving up or down) and the dominant plane changes. But our experiments show that our improved pattern matching and the optimization step more than make up for this loss in accuracy. In our future work we will address this problem in a more systematic way.
+
+% As an improvement over the original eFMT we project the current translation PSD of $d2$ in Fig.~\ref{fig:pipeline} from polar coordinates to Cartesian coordinates and obtain the desired translation PSD in Fig.~\ref{fig:energy_vector}. We only address this projected translation PSD in the rest of the paper. This way we can pick the energy vector of the translation PSD in the same way as the rot-scale PSD.
+
+% T: In order to get the peak line toward one direction from the center, eFMT divides it into multiple sectors and sum up each one, then the max one is the goal. 
+
+% Without loss of generality, take the translation PSD for example, from what we display in figure \ref{fig:trans2_a}, the orange and blue parts in the original images have relatively large difference in depth, the PSD they generated would show a peak line, such is the red line in figure \ref{fig:trans2_b}. 
+
+
+
+% 因此，不同于FMT，eFMT并不会直接计算两帧图像$I_1, I_2$之间的translation length和scale，其估计的位姿为$T = (\mathcal{S}, \theta, \mathcal{T}, \varphi)$. 其中$\theta$为图像绕中心旋转的角度，$\varphi$为re-scale and re-rotate $I_1$ 后与$I_2$之间的位移方向。当然，仅有两张图像时，也可以采用EV中的最高peaks来计算放缩和位移距离，此时，eFMT退化为FMT的水平。
+% Therefore, unlike FMT, eFMT does not calculate the translation, length and scale directly from two consecutive images $I_1, I_2$, the pose it estimates is $T = (\mathcal{S}, s, \theta, \mathcal{T}, \rho, \varphi)$, where $\theta$ is the rotation around the center, $\varphi$ is the translation direction between $I_2$ and $I_1$ after re-rotation and re-scale.
+
+% 考虑到实际场景中的噪声，PSD中的peaks并不会非常精确地落在某一行，更有可能是在邻近几行里分布。因此，将PSD中的能量按行求和，我们可以认为，值最大的那一行$r$及其邻近行就是蕴含着运动信息的peak line。因此，将r附近k行作为一个block。假设the sum of each row服从高斯分布并估计真正的peak line所在的行的id，并将the sum作为每一行的权重将整个block融合成一行，称为energy vector。 $\mathcal{T}=\frac{1}{2r+1} w_i \text{row}(i)$
+% Additionally, in the real dataset, the depth of pixels are usually consecutive, and with a larger range of distribution. These issues show themselves in PSD, which would lead to a strip distribution of the energy peak lines, and on those peak lines, energy distribution does not possess fine properties. 
+
+
+% 如图所示，上面的三种图像仅具有平移变换，下面两张分别是两次配置过程中的translation PSD。在原图中，蓝色块中的像素相比于橙色块中的像素具有更小的深度，因此当相机运动时，蓝色块中像素的运动幅度会更大，体现在translation PSD中，他们的运动与最右边的peak相对应（如红线所指示）。橙色块以及地面上的像素相对而言位移更小，与PSD中的左边的peaks相对应。当图像中各个深度的像素数量分布变化时，PSD中的peak的能量大小也会随之变化。
+% As shown in Fig. ~\ref{fig:energy_vector}, only translation transformation exist amongst the three images above, the two translation PSDs from two registrations are shown below. In the images, the pixels in the blue block/ roof are closer to the camera than those in the orange block/ roof. Therefore, when the camera moves, the pixels in the blue block get larger movement lengths. This is expressed on the PSD, their movements correspond to the rightmost peak (indicated by the right line). The pixels in the orange block have relatively smaller movement lengths and thus their peaks are shown as the ones to the left. When the depth distribution of pixels in an image changes, the distribution of its corresponding energy vector alters simultaneously.
+
+
+% jankin
+% As Fig.~\ref{fig:PSD} shows, in order to get the peak line toward one direction from the center, we could divide it into multiple sectors and sum up each one, then the max one is the goal. Further, converting the \textit{PSD} in polar coordinates, then like Fig.~\ref{fig:PSD} right part, the peak line would be the row whose sum is the maximum.  The \textit{translation energy vector} $\mathcal{T}$ is generated in the same way with $\mathcal{S}$. All these two are noted as \textit{energy vector}. 
+
+\begin{figure*}[t]
+    \centering
+    \subfigure[Image 0]{
+        \includegraphics[width=0.22\linewidth]{images/000118.jpg}
+        \label{fig:img0}
+    }
+    \subfigure[Image 1]{
+        \includegraphics[width=0.22\linewidth]{images/000119.jpg}
+        \label{fig:img1}
+    }    % \includegraphics{images/trans_energy_vector0_1.png}
+    \subfigure[Image 2]{
+        \includegraphics[width=0.22\linewidth]{images/000120.jpg}
+        \label{fig:img2}
+    }
+
+    \subfigure[$\mathcal{T}_0^1$]{
+        \includegraphics[width=0.22\linewidth]{images/trans_energy_vector0_1.png}
+        \label{fig:transEV01}
+    }
+    \subfigure[$\mathcal{T}_0^2$]{
+        \includegraphics[width=0.22\linewidth]{images/trans_energy_vector0_2.png}
+        \label{fig:transEV02}
+    }    % \includegraphics{images/trans_energy_vector0_1.png}
+    \subfigure[${\lambda_{\mathcal{T}}}_{01}^{02}$]{
+        \includegraphics[width=0.22\linewidth]{images/PMT01_02_2.png}
+        \label{fig:PM01_12}
+    }
+    \caption{Three input images (constant speed), the translation energy vectors $\mathcal{T}_0^1$ and $\mathcal{T}_0^2$ as well as the pattern matching between those. 
+    The three peaks from $\mathcal{T}_0^1$ ($\triangleq$ three prominent depths in the images) can be found found at double their x-value in $\mathcal{T}_0^2$. This is a particularly difficult example. The pattern matching shows an minimum at the correct factor 2, which will be detected via the Laplace transform.}
+    \label{fig:PatternMatching}
+\end{figure*}
+
+\subsection{Pattern matching}\label{sec:PM}
+% Pattern Matching 部分，eFMT的做法是遍历一个非常大的范围内所有的值，并计算该因子的匹配损失（error），并选择匹配损失最小的因子作为匹配结果。
+% 我们的计算匹配误差的方法与eFMT相同。但是我们并没有尝试该范围内所有的值，而且根据输入的energy vector特征缩小到了可能正确匹配的范围，从而减小了在无效范围内的因子的误差计算。并且，在得到误差后，
+
+
+% 对于连续多帧图像，由于像素深度分布不断变化，因此energy vector也随之改变。但在非常小的一段范围里，可以认为像素深度分布变化不大。
+For multiple consecutive frames of images, the pixel depth distribution varies over time and the energy vectors change accordingly. But assuming a small camera motion, the depth distribution can be seen as fixed.
+At three consecutive frames, we assume that the distribution of pixel depth is constant during two registrations. Therefore, both energy vectors should have similar structures, with only difference in scale or translation (Fig.~\ref{fig:transEV01} and~\ref{fig:transEV02}). For this reason, we use pattern matching to determine the scaling and shifting factor between energy vectors, to guarantee the scale consistency of the camera motion recovery from the image transformation process. Fig. \ref{fig:PM01_12} shows the pattern matching errors for the different scales.
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=.8\linewidth]{}
+%     \caption{Visualization of a pattern matching error sequence.}
+%     \label{fig:PM_error}
+% \end{figure}
+
+For the error sequence that corresponds to the factor sequence after pattern matching, there may to be multiple minimums (see Fig.~\ref{fig:PM01_12}). But the factors that give the minimal errors are not always the correct ones. Through observation we notice that around the true factor, the errors generated by the factors in its neighbourhood change rapidly. For this reason, we apply a Laplace transform over this sequence. We find the true error that is not only minimal but also has the highest first-order derivative. Notice that we already applied a Gaussian filter over the energy vectors during their creation to smooth the data, thus the Laplace transform is not disturbed by noise too much. 
+
+In three consecutive frames $i-2, i-1, i$, we do two registrations and for each time we get two energy vectors: the \textbf{\textit{translation energy vector}} $\mathcal{T}$ and the \textbf{\textit{scale energy vector}} $\mathcal{S}$. Define $*_{i-1}^{i}$ as the energy vector from frame $i-1$ to frame $i$, pattern matching gives us these following matching indexes:
+\begin{equation}
+    \begin{aligned}
+        {\lambda_{\mathcal{T}}}_{i-2,i-1}^{i-1,i} &= \text{PMT}(\mathcal{T}_{i-2}^{i-1}, \mathcal{T}_{i-1}^{i})\\
+        {\lambda_{\mathcal{S}}}_{i-2,i-1}^{i-1,i} &= \text{PMS}(\mathcal{S}_{i-2}^{i-1}, \mathcal{S}_{i-1}^{i})\\
+        % \lambda_{\mathcal{ST}} &= \text{PMTS}(\mathcal{T}_{i-1}^{i}, \mathcal{T}_{i-1}^{i})\\
+    \end{aligned}
+\end{equation}
+
+% 根据匹配系数，我们可以按照公式2更新第$i$-th registration的缩放系数$s$和位移长度$l$
+PMT refers to "Pattern Matching Translation" and PMS stands for "Pattern Matching Scaling".
+
+With these matching indexes, we can update the scale factor $s$ and translation length $\rho$ of the $i$-th registration:
+\begin{equation}
+    \begin{aligned}
+        \rho_{i-1}^{i} &= {\lambda_{\mathcal{T}}}_{i-2,i-1}^{i-1,i} \cdot \rho_{i-2}^{i-1} \\
+        s_{i-1}^{i} &= \frac{s_{i-2}^{i-1}}{ \epsilon^{{\lambda_{\mathcal{S}}}_{i-2,i-1}^{i-1,i}}  } \\
+    \end{aligned}
+    \label{eq:update_after_PM}
+\end{equation}
+where $\epsilon$ is a parameter related to the conversation of log-polar coordinate system.
+% 另一方面，显然，scale energy vector 和 translation energy vector都与深度相关，因此对二者进行pattern matching可以进一步关联在 $z$-axis 的移动距离和$XOY$平面上的移动距离。
+
+Additionally, both scale energy vector and translation energy vector are related to depth, therefore, 
+applying pattern matching on these two vectors can further relate the translation length on the $z$-axis to the translation length on the $XY$ plane.
+We notice that only the parts that overlapped have an accurate contribution to the registration accuracy, the non-overlapping parts, however, form noise. For this reason, we add multiple strategies to boost the robustness of our algorithm.
+Based on the above steps, our improved o-eFMT algorithm provides valid results in most circumstances. For further improvement in the accuracy of pose estimation, we propose to add a back-end optimization module. 
+% 如图所示，两个translation energy vector的最高峰不在相同的位置，但他们都具有明显的三个峰。通过PM，他们一一对应时具有最小的误差，此时\lambda ~= 1, 从而说明了相机两次运动的幅度几乎一致。
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/poses.png}
+    \caption{Visualization of the local optimization.}
+    \label{fig:pose}
+\end{figure}
+
+%Shown in Fig. ~\ref{fig:PatternMatching}, the highest value of the two translation energy vectors are at different positions, but both of them contain three groups of obvious peaks. Through pattern matching, they should have minimal differences in one-to-one correspondence. At this time $\lambda \approx 2$, the amplitude of the camera movements between 0,1 is almost half of that of 0,2.
+
+\begin{figure*}[t]
+    \centering
+   \includegraphics[width=1\linewidth]{./images_exp/image1.png}
+    \caption{The scenario follows the right-hand coordinate system. It has three depth planes and each plane is made of multiple blocks. Each plane has a unique texture, shown on the right. There are two simulated camera tracks above the scenario, shown on the left. The camera follows the chosen track to generate the dataset. The yellow box shows the imaging plane obtained from the camera's perspective. According to the set camera intrinsics and the resolution of the output image, shown as the blue box, we obtain the desired dataset.}
+    \label{fig:scenario}
+\end{figure*}
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1\linewidth]{./images/optimization}
+    \caption{Translation constrain.}
+    \label{fig:trans_constrain}
+\end{figure}
+
+% ======================== V. Optimization ========================================
+% =================================================================================
+\subsection{Optimization}\label{sec:Opti}
+For this optimization, for three consecutive frames, after the front-end VO algorithm estimates the transforms between the first two frames and the last two frames, another transform between the first and third frame is considered, thus forming a constraint which allows adjusting the transform between two consecutive frames.
+As a matter of fact, among all transformations, we can only determine the rotation $\theta$ and translation direction $\varphi$, but not the exact zoom and translation length between two frames. Instead, we can get the zoom energy vector and the translation energy vector. For every three consecutive frames $I_0, I_1$ and $I_2$, we do three image registrations: $I_0, I_1$, $I_1, I_2$ and $I_0, I_2$.
+We set the transformation between the first and second frame as the \textbf{\textit{unit zoom}} $s_0^1$, \textbf{\textit{unit translation length}} $\rho_0^1$. Then we can denote all zooms and translation lengths between other frames by a scale factor. Additionally, we build a loop between three frames as shown in the upper part of Fig.~\ref{fig:pose}. The loop serves as a  transformation constraint that should satisfy Fig.~\ref{fig:trans_constrain}. To explain in detail,
+% Each transformation consists of four parameters $(s, \theta, \mu, \nu)$, indicating the zoom, rotation and translation.
+% For convenience, denote the translation as $(\rho, \varphi)$, where $\mu = \rho \cos\varphi, \nu=\rho\sin\varphi$.
+take the translation for example, the translation between $I_0, I_1, I_2$ should satisfy equation \ref{eq:translation_constrain}:
+\begin{equation}
+    \centering
+    \begin{aligned}
+        &{\lambda_{\mathcal{T}}}_{01}^{02}  \rho_0^1 \cos(\theta_0^2 + \varphi_0^2) = \\
+        &\rho_0^1 \cos(\theta_0^1 + \varphi_0^1) + {\lambda_{\mathcal{T}}}_{01}^{12}  \rho_0^1 \cos(\theta_0^1 + \theta_1^2 + \varphi_1^2) \\ \\
+        &{\lambda_{\mathcal{T}}}_{01}^{02}  \rho_0^1 \sin(\theta_0^2 + \varphi_0^2) =  \\
+        &\rho_0^1 \sin(\theta_0^1 + \varphi_0^1) + {\lambda_{\mathcal{T}}}_{01}^{12}  \rho_0^1 \sin(\theta_0^1 + \theta_1^2 + \varphi_1^2) \\ 
+    \end{aligned}
+    \label{eq:translation_constrain}
+\end{equation}
+% 同样的，放缩和旋转也满足相应的关系。针对由此三帧构成的一个loop, 优化方程为
+Similarly, scale and rotation also satisfy corresponding relations. For a loop composed of these three frames, the optimization function is:
+\begin{equation}
+    \centering
+    \begin{aligned}
+        err_{\mu} &= \| \rho_0^1 \cos(\theta_0^1 + \varphi_0^1) + {\lambda_{\mathcal{T}}}_{01}^{12}  \rho_0^1 \cos(\theta_0^1 + \theta_1^2 + \varphi_1^2) \\
+        & - {\lambda_{\mathcal{T}}}_{01}^{02}  \rho_0^1 \cos(\theta_0^2 + \varphi_0^2) \| \\
+        err_{\nu} &= \| \rho_0^1 \sin(\theta_0^1 + \varphi_0^1) + {\lambda_{\mathcal{T}}}_{01}^{12}  \rho_0^1 \sin(\theta_0^1 + \theta_1^2 + \varphi_1^2) \\
+        & - {\lambda_{\mathcal{T}}}_{01}^{02}  \rho_0^1 \sin(\theta_0^2 + \varphi_0^2) \| \\
+        err_{s} &= \| s_0^1 \cdot \frac{s_0^1}{{\lambda_{\mathcal{S}}}_{01}^{12}} \cdot \frac{{\lambda_{\mathcal{S}}}_{01}^{02}}{s_0^1} - 1 \| \\ 
+    \end{aligned}
+\end{equation}
+% 在我们的整个SLAM系统中，从第二帧开始在每一步都进行上述局部优化。相比于eFMT，位姿估计更加稳定准确。
+The above local optimization is performed each step starting from the second frame. 
+
+
+\begin{figure*}[t]
+\centering    
+    \subfigure[Real dataset trajectories] {
+         \label{fig:real_dataset}     
+        % \includegraphics[width=0.6\columnwidth]{./images_exp/newreal.png} 
+        \includegraphics[width=0.63\columnwidth]{./images_exp/trajectory2D_real.pdf}  
+    } 
+    \subfigure[Circle simulated dataset trajectories] {
+         \label{fig:circle_dataset}     
+        \includegraphics[width=0.63\columnwidth]{./images_exp/trajectory2D_c.pdf}  
+    }     
+    \subfigure[Analemma simulated dataset trajectories] { 
+        \label{fig:analemma_dataset}     
+        \includegraphics[width=0.63\columnwidth]{./images_exp/trajectory2D_8.pdf}     
+    }    
+    \caption{Overall trajectories of different methods}     
+    \label{fig:err_fig}     
+\end{figure*}
+% === VI. Experiments ========================================
+% =================================================================================
+\section{Experiments}
+Our experiments are conducted on the same computer with i7-7700 CPU @ 3.60GHz × 8. We timed each registration for both o-eFMT and eFMT, which takes 0.1432s and 0.4069s on average, respectively. Our algorithm is significantly faster than eFMT. In the rest of this section, we present 
+our experiments and results.
+
+\subsection{Experiments on the Real Dataset}
+The real dataset is the large real-world dataset ShanghaiTech Campus\footnote{
+\url{https://robotics.shanghaitech.edu.cn/static/datasets/eFMT/ShanghaiTech_Campus.zip}}\cite{xu2021rethinking}. This dataset was collected with an Unmanned Aerial Vehicle (UAV) equipped with a down-looking camera and a DJI Matrice-300 RTK. The real scenario contains multi-depth planes such as building rooftops, ground, bridges and some other objects. The image capture frequency is 0.5 Hz and the RTK provides the groundtruth of the camera pose. Since it is a high-resolution dataset, we crop and resize it to 512 $\times$ 512 before experiments. 
+
+For the experiments, we assume that the distances between adjacent poses are similar. For the same pose number results (o-eFMT, eFMT, FMT, ORB-SLAM3 and groundtruth), we align the initial pose of all the trajectories. Afterwards, upon obtaining the geometric lengths of different trajectories, we scale them based on the ratio between the trajectory length and the groundtruth trajectory length. If the pose number is smaller than the groundtruth (as in DSO), the scale is still based on the radio mentioned before, but afterwards, it is scaled again by multiplying the radio between the number of its poses and groundtruth. Then we translate the entire trajectory to minimize the error. %For example, the trajectory of DSO has one hundred poses and groundtruth has two hundred, then the first pose of the DSO trajectory will register with the 101$^{st}$ pose of the groundtruth.
+
+After optimal scaling and registration, the absolute error of one trajectory is calculated by 
+\begin{equation}
+    \begin{aligned}
+        err = \frac{1}{n} \sum_1^{n}{\|p_i - gt_i\|} \\
+    \end{aligned}
+\end{equation}
+where n is the number of frames in this trajectory, \textit{p$_i$} is one trajectory pose and \textit{gt$_i$} is its corresponding groundtruth pose. The overall trajectories and the absolute trajectory errors are shown on Fig. \ref{fig:err_fig} and Table. \ref{tab:realError_tab}. 
+
+Since DSO fails to track the camera pose, we do not show its trajectory in the figure. It shows that ORB-SLAM3 can estimate the pose in the beginning but with the error accumulation, the trajectory gradually deviates from the groundtruth. With the dominant depth plane changing, FMT will lose the real camera pose translation since the scale consistency is not accurate. We can see that our o-eFMT performs better than eFMT on this real dataset.
+
+\subsection{Experiments on the Simulated Datasets}
+
+\begin{table}[t]
+    \centering
+    \caption{Absolute trajectory error comparison on the real aerial dataset.}
+    \label{tab:realError_tab}
+    \begin{tabular}{lcccr}
+    \toprule
+        \textbf{VO methods} & \textbf{Max(m)} & \textbf{Mean(m)}& \textbf{Median(m)}\\ \midrule
+        o-eFMT & \textbf{27.3} & \textbf{15.7} & \textbf{18.8} \\
+        % our\_eFMT & 133.5 & 77.5 & 75.3 \\
+        eFMT& 41.3 & 27.5 & 32.5  \\ 
+        FMT & 163.2 & 79.8 & 86.3 \\
+        ORB-SLAM3 & 339.8 & 165.3 & 159.7 \\
+        DSO & $\backslash$ & $\backslash$ & $\backslash$ \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[t]
+    \centering
+    \caption{Absolute trajectory error comparison on the simulated datasets.}
+    \label{tab:simError_tab}
+    \begin{tabular}{lccccr}
+    \toprule
+        & \textbf{VO methods} & \textbf{Max(m)} & \textbf{Mean(m)}& \textbf{Median(m)}\\ \midrule
+       & o-eFMT & \textbf{1.01} & \textbf{0.58} & \textbf{0.58} \\
+       % & our\_eFMT & 1.27 & 0.55 & 0.58 \\
+      & eFMT & 55.7 & 34.2 & 44.3  \\ 
+       Circle & FMT & 112.9 & 64.3 & 85.4 \\
+       & ORB-SLAM3 & $\backslash$ & $\backslash$ & $\backslash$ \\
+       & DSO & 42.2 & 25.6 & 26.7 \\
+    \midrule
+       & o-eFMT & \textbf{8.7} & \textbf{5.2} & \textbf{5.4} \\
+       % & our\_eFMT & 40.6 & 13.1 & 10.1 \\
+     & eFMT& 98.0 & 51.4 & 54.6  \\ 
+     Analemma    & FMT & 161.2 & 98.7 & 113.6 \\
+       & ORB-SLAM3 & $\backslash$ & $\backslash$ & $\backslash$ \\
+       & DSO & 41.4 & 27.8 & 25.3 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[t]
+    \centering
+   \includegraphics[width=1\linewidth]{./images_exp/fragment.png}
+    \caption{The blocks show the non-consecutive parts of FMT and eFMT trajectories. The solid frames and dotted frames correspond to two depth-change situations, respectively.}
+    \label{fig:fragment}
+\end{figure}
+
+
+In this case, we use Blender to generate a simulation scenario, shown in Fig. \ref{fig:scenario}. This scenario mainly has three different depth planes, each of which are made up of multiple blocks. Based on their distance from the camera, we call them background, far plane and near plane. These three planes have different textures. Background and far plane are parallel to the $XY$ plane and the whole near plane has a 6 degrees inclination. This scenario has different depth planes and inclined planes, so we can use it to present experiments, and compare our o-eFMT with FMT and some other VO methods. The camera and different shapes of camera tracks are also simulated. The tracks are all in the plane which is parallel to the background. Meanwhile, the camera will run along the specified track and record pictures as the dataset.
+
+After setting the frame number, the camera will move at a constant speed and record until it arrives at the end point of the track. At the same time, during the recording process, the real pose of the camera in the world coordinate system will also be recorded and exported. As Fig. \ref{fig:scenario} shows, there is a circled camera track above the whole scenario. The camera runs along the track and records multiple pictures with the set resolution as the blue frame shows. The camera is a pinhole camera, which has fixed intrinsics. The whole lengths of the circle track is 491 meters and of the Analemma track is 880 meters. The circle track dataset is 200 frames and the analemma one is 300 frames.
+
+Since the camera only moves in the $XY$ plane, we can ignore the position in the $z$-axis. Fig. \ref{fig:err_fig} compares the localization results with different methods, including groundtruth (red), o-eFMT (cyan), eFMT (green), FMT (blue) and DSO (purple). ORB-SLAM3 fails to estimate the camera pose since the features in this scenario are highly similar, which means that the feature descriptor cannot distinguish the feature points and the feature matching will fail. The absolute error is shown in Table \ref{tab:simError_tab}.
+
+It can be concluded that DSO always fails to generate a trajectory in the beginning. This is because DSO depends too much on the first few images. If the images show different planes, DSO always chooses to reset the initial map until it gets some consecutive frames that have similar planar textures. In the circle track, o-eFMT, eFMT and FMT all represent the overall trajectories. o-eFMT is very close to the groundtruth. We mainly focus on the eFMT and FMT trajectories fragments shown in Fig. \ref{fig:fragment}. We discover that in the blocks that we marked out, the trajectories of FMT and eFMT are non-consecutive, especially FMT. This is because the depths of the corresponding images change. Scale consistency cannot be guaranteed since FMT always finds the maximum value in the PSD. As Fig. \ref{fig:PatternMatching} shows, the peak value changes a lot, however, the camera pose translation does not change too much. Compared with FMT and eFMT, o-eFMT improves the accuracy in this multi-depth scenario significantly. We believe that eFMT is affected by noise during energy vector extraction and pattern matching.
+
+The analemma track is a more challenging and complex scenario. There is less overlap between two adjacent frames, which is the main reason for all VO methods being less robust than before. We can see that o-eFMT makes some errors, but its trajectory is still similar to the groundtruth. eFMT has larger errors since encountering the first mis-registration. All other methods have failed to track the the camera pose.
+
+
+
+% \begin{figure}
+%     \centering
+%    \includegraphics[width=8cm]{./images_exp/newrealbox.png}
+%     \caption{The box plot of the absolute trajectory error in the real dataset }
+%     \label{fig:boxerr}
+% \end{figure}
+
+
+\section{Conclusions}
+This paper proposed the optimized eFMT algorithm. We introduced new ways to extract both scale and rotation energy vectors from the PSD, and used improved pattern matching on the energy vectors to determine transformations amongst three consecutive frames. To improve the accuracy we added a back-end optimization to our version of eFMT, which adds local constraints, which not only improves accuracy but also boosts the robustness of the entire framework. Our approach is significantly faster than eFMT, at the cost of some accuracy. But this is offset by the other improvements to the algorithm presented here. Our experiments show the superior accuracy of o-eFMT over eFMT, FMT and the traditional methods ORB-SLAM3 and DSO.
+
+For future work we aim to further improve the algorithm by adding loop-closure detection to provide more efficient data for the back-end optimization and thus turn it into a real SLAM algorithm. This will lead to a global consistent camera pose estimation and further robustness improvements. In the upcoming journal paper we will also do a more thorough investigation of the depth-filtering effect of the scale, which we think can lead to an even improved algorithmic approach. We also plan to integrate our algorithm into the SLAM Hive benchmarking suite \cite{yang2023slamhive} for a more thorough evaluation. 
+
+\section*{ACKNOWLEDGMENTS}
+
+This work has been partially funded by the Shanghai Frontiers Science Center of Human-centered Artificial Intelligence and it was supported by Science and Technology Commission of Shanghai Municipality (STCSM), project 22JC1410700 "Evaluation of real-time localization and mapping algorithms for intelligent robots".
+
+% In summary, this paper addresses high-efficiency power rectifiers designed with harmonic terminations at the RF input, in analogy to high-efficiency power amplifier design with harmonic terminations at the output. The applications of such power rectifiers include wireless power beaming \cite{xu2021rethinking}, recycling power in high-power circuits \cite{xu2021rethinking} and ultra-fast switching integrated DC-DC converters with no magnetics \cite{xu2021rethinking}.
+
+
+
+
+
+
+
+
+
+%\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
+                                  % on the last page of the document manually. It shortens
+                                  % the textheight of the last page by a suitable amount.
+                                  % This command does not take effect until the next page
+                                  % so it should come on the page before the last. Make
+                                  % sure that you do not shorten the textheight too much.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section*{APPENDIX}
+
+% Appendixes should appear before the acknowledgment.
+
+% \section*{ACKNOWLEDGMENT}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
+
+\IEEEtriggeratref{15}
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,Bibliography}
+
+
+
+\end{document}

@@ -1,0 +1,46 @@
+\documentclass{INTERSPEECH2023}
+
+\usepackage{multirow}
+\usepackage{cite}
+\usepackage{float}
+\floatstyle{plaintop}
+\restylefloat{table}
+\usepackage[inkscapearea=page]{svg}
+\newcommand{\mytextapprox}{\raisebox{0.5ex}{\texttildelow}}
+\newcommand{\comment}[1]{}
+
+
+\interspeechcameraready 
+
+
+
+\title{Multilingual context-based pronunciation learning for Text-to-Speech}
+\name{Giulia Comini, Manuel Sam Ribeiro, Fan Yang, Heereen Shim, Jaime Lorenzo-Trueba}
+\address{Amazon Alexa, TTS Research}
+\email{
+    \{gcomini, manuerib, fffyang, shimreen, truebaj\}@amazon.com}
+
+
+
+
+\begin{document}
+
+\maketitle
+ 
+\begin{abstract}
+Phonetic information and linguistic knowledge are an essential component of a Text-to-speech (TTS) front-end. Given a language, a lexicon can be collected offline and Grapheme-to-Phoneme (G2P) relationships are usually modeled in order to predict the pronunciation for out-of-vocabulary (OOV) words. Additionally, post-lexical phonology, often defined in the form of rule-based systems, is used to correct pronunciation within or between words. 
+In this work we showcase a multilingual unified front-end system that addresses any pronunciation related task, typically handled by separate modules. We evaluate the proposed model on G2P conversion and other language-specific challenges, such as homograph and polyphones disambiguation, post-lexical rules and implicit diacritization. We find that the multilingual model is competitive across languages and tasks, however, some trade-offs exists when compared to equivalent monolingual solutions.
+
+\end{abstract}
+\noindent\textbf{Index Terms}: neural front-end, 
+grapheme-to-phoneme, homograph disambiguation, post-lexical rules, multilingual models, text-to-speech.
+
+
+\input{./content/body.tex}
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{mybib}
+
+
+\end{document}

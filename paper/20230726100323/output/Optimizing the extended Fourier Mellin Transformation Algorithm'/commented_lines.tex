@@ -1,0 +1,33 @@
+% % === II. Related work ==============================
+% % =================================================================================
+% 基于视觉的定位方法通常根据其描述环境的方式分为三类：基于特征、基于外观和混合方法[20]。基于特征的VO通常需要从图像中提取不同的重复区域并建立相应的描述符。基于外观的方法不需要提取特征。它们依赖于全部或部分图像。混合方法考虑像素一致性和姿态估计的特征。从相对姿态计算的角度来看，流行的VO/VSLAM框架分为基于滤波的[21]、基于关键帧的[22]和直接方法[23]。另一种定位方法称为半直接法，如SVO[24]。它在图像配准中使用直接法，但在姿态估计和束调整中保持了重投影误差最小化
+
+% 按照是否需要提取特征点，VO的实现方法可以分为特征点法和直接法两类。其中特征点法需要提取特征点，根据匹配的特征点对计算两帧之间的相对位姿。长期以来这类方法应用广发，运行稳定，对光照和动态物体不敏感。但是当场景中没有明显的纹理信息时，算法无法提取足够的特征点来计算相机运动。综合来看，ORB-SLAM是目前基于ORB特征点效果最好的的算法。除此之外，还有FAST，BRIEF等特征点。当两帧图像的深度均已知时，即3D-3D匹配，通常使用ICP算法，当仅有其中一组深度已知时，使用PnP算法。对于普通的二维图像，以对极几何为原理的算法更适用。
+% According to whether it is necessary to extract feature points, VO implementation methods can be divided into feature point method and direct method. Among them, the feature point method needs to extract feature points, and calculate the relative pose between two frames according to the matched feature point pairs. This type of method has been widely used for a long time, runs stably, and is not sensitive to light and dynamic objects. But when there is no obvious texture information in the scene, the algorithm cannot extract enough feature points to calculate the camera movement. On the whole, ORB-SLAM is currently the best algorithm based on ORB feature points. In addition, there are feature points such as FAST and BRIEF. When the depths of the two images are known, that is, 3D-3D matching, the ICP algorithm is usually used, and when only one of the depths is known, the PnP algorithm is used. For ordinary two-dimensional images, the algorithm based on the principle of epipolar geometry is more suitable.
+
+% % === III. Overview of Fourier-Mellin Transformation ==============================
+% % =================================================================================
+% \section{Overview of Fourier-Mellin Transformation}
+% % 傅里叶-梅林变换是一种可以用于分析和处理图像的技术。对于仅具有平移变换的二维图像信号，可对其转换到频域的光谱图应用相位相关法来提取二者之间的位移。具体而言，将图像信号转换到频域后得到光谱图后，计算二者之间的交叉功率谱并对其应用傅里叶逆变换可得到PSD。则PSD中peak的位置与中心点的位移即是原图像信号之间的translation。若原图像信号之间还存在着旋转和缩放变换，则需要先将频谱图映射到对数极坐标下，在再应用相位相关法，则peak与中心点的位移蕴含着原图像信号的放缩和旋转变换。总的来说，FMT可以通过两次确定PSD中的peak位置，从而恢复图像信号之间的4DOF变换T =（s, \theta, \mu, \nu）。如图所示，Given two images a1 a2，应用梅林变换和相位相关法得到rot-scale-PSD, whose peak's location implies the rotation and scale information. 在图b1中，star标注的位置即peak所在。提取到$s, \theta$后，对原图1做逆变换得到图c1，此时c1和c2（c2也就是a2）之间只存在平移变换了。进一步应用傅里叶变换和相位相关法，从而在translation-PSD上提取到translation $\mu,\nu$。
+% % 值得注意的是，图1中的两张用于registration的图像像素大部分分布在同一深度平面，因而过滤噪声后PSD中仅存在唯一的peak。但是当图像中存在多种深度的像素时，他们的运动范围随深度有所不同，从而导致PSD上会出现多个peak，此时通过选取peak来恢复相机位姿的方法不再适用。
+% Fourier-Mellin Transformation (FMT) is a technique that can be used to analyze and process image.
+% For two images with only translation transformation between them, we first convert them
+% % , we can first convert them to the frequency domain to get their spectra, and then apply phase-related method on the spectra to obtain the translation.  To be more specific, 
+% % when the two images are transformed 
+% onto the frequency domain using Fourier transform to obtain their spectra, then calculate the cross power spectrum of the spectra. Applying an inverse Fourier transformation to the cross power spectrum would give us the \textbf{\textit{phase shift diagram (PSD)}}. Given the single-depth of FMT, there will be a peak in the PSD, and the displacement of the peak from the center is the translation between the two original images.
+% If the two images have rotation and scale transformations between them, before applying the phase-related method, we would need to map the spectra to the logarithmic polar coordinates first, then we can get a new PSD whose displacement of the peak from the center contains the rotation and scale transformation between the two original images.
+% In general, for two images with all three transformations, FMT can recover this 4DOF transformation $\mathcal{T}=(s, \theta, \mu, \nu)$ by locating the peaks in two PSD. 
+% As is illustrated by the upper red lines in Fig. \ref{fig:demo}, given two input images $a1$ and $a2$, where $a2$ is $a1$ after rotation, scale and transformation, using FMT and phase-related method, we can get a \textbf{\textit{rot-scale-PSD}} $b1$ first. the position of its peak tagged by the bright star contains the rotation $\theta$ and scale $s$ information between the two original images. Using this information and do an inverse transformation on $a1$ to obtain $c1$, there is only translation transformation left between $c1$ and $c2$ (the same as $a2$). Further apply Fourier transform and phase-related method on these two, the \textbf{\textit{translation-PSD}} $d1$ is generated and the position of its peak tagged also by a bright star contains the translation information $\mu, \nu$ between the two original images. By now, the registration between images is complete.
+
+% The pixels of the two images illustrated in Fig.~\ref{fig:demo} are mostly distributed in the same depth plane, therefore there is only a peak in the PSD after filtering noise. When there are multiple depth pixels in an image, the difference in depth makes their motion different and thus leads to multiple high values in the PSD. Under this circumstance FMT, which is finding the peak in the PSD, no longer works, but the methods introduced in our eFMT paper have to be applied \cite{xu2021rethinking}.
+
+% % === IV. eFMT-2 ==============================
+% % =================================================================================
+
+% 考虑到FMT的问题，eFMT应运而生。如图所示，蓝线所指示的就是eFMT的工作流程。能量向量被提取出来用于计算图像之间的transformation而不再是单个的peak。
+% The eFMT algorithm is illustrated as the blue lines in Fig.~\ref{fig:demo}, extends FMT to work in multiple depths. Over the previous paper we improve the eFMT algorithm (project translation PSD to cartesian coordinates; improved pattern matching), extract uncertainties from it, implement a back-end optimization and provide it as open source. Our eFMT-SLAM thus improves the accuracy and robustness of eFMT. 
+
+% As illustrated in figure~\ref{fig:demo}, the lower blue lines show the working process of eFMT. 
+% The difference is in PSD, an energy vector (see \ref{sec:Ev}) is extracted to calculate the transformation between images as an alternative of a single peak.
+% 进一步地，通过匹配EV，相机位姿将会被更稳定地估计出来，并传入优化器进一步优化。
+% Furthermore, through matching energy vectors, the camera motion will be estimated more robustly, and we put it into an optimizer for further optimization.

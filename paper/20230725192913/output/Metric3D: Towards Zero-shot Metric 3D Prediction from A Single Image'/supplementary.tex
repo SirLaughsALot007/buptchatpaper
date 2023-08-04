@@ -1,0 +1,176 @@
+
+
+\documentclass[10pt,onecolumn,letterpaper]{article}
+
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+
+\usepackage{threeparttable}
+\usepackage[vlined, ruled, linesnumbered]{algorithm2e}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{bbm}
+\usepackage{pifont}
+\usepackage{enumitem}
+
+
+\usepackage{eucal,nicefrac}
+\usepackage{subcaption}
+\newcommand{\hao}[1]{\textcolor{red}{hao:#1}}
+
+\usepackage[dvipsnames,table,xcdraw]{xcolor}
+\usepackage[pagebackref=false,breaklinks,colorlinks,citecolor=RoyalBlue,bookmarks=false]{hyperref}
+
+
+
+
+\usepackage[capitalize]{cleveref}
+\crefname{section}{Sec.}{Secs.}
+\Crefname{section}{Section}{Sections}
+\Crefname{table}{Table}{Tables}
+\crefname{table}{Table}{Tables}
+
+
+\def\cvprPaperID{6144} %
+\def\confName{CVPR}
+\def\confYear{2023}
+
+
+\begin{document}
+
+\title{Supplementary Materials: Towards Transferable Learning of Single Image Metric 3D in the Wild
+} 
+
+
+\author{First Author\\
+Institution1\\
+Institution1 address\\
+{\tt\small firstauthor@i1.org}
+\and
+Second Author\\
+Institution2\\
+First line of institution2 address\\
+{\tt\small secondauthor@i2.org}
+}
+
+\maketitle
+
+\section{Details for Models}
+In our work, our encoder employs the convnext-base network, whose pretrained weight is from the official released ImageNet-22k pretraining. The decoder follows the adabins~\cite{bhat2021adabins}. We set the depth bins number to 200, and the depth range is $[0.3m, 120m]$. We establish 4 flip connections from different levels of encoder blocks to the decoder to merge more low-level features. For each flip connection, we concatenate the camera model with the encoder feature. Here, we assume the camera intrinsic parameters are $[f_x, f_y, u0, v0]$. Normally, the calibrated $f_x = f_y = f$. The image size is $H \times W$. We encode the camera model as follows. 
+\begin{equation}
+\mathbf{u}=\begin{bmatrix}
+\frac{0-u_0}{W} &... &\frac{u-u_0}{W} & ... &\frac{W-u_0}{W} \\ 
+... &...  &...&...  &... \\ 
+\frac{0-u_0}{W} &...  &\frac{v-v_0}{W} & ... &\frac{W-u_0}{W}  \\ 
+\end{bmatrix} \in \mathbf{R}^{H \times W}
+\end{equation}
+\begin{equation}
+    \mathbf{v}=\begin{bmatrix}
+\frac{0-v_0}{H} &...  &\frac{0-v_0}{H} \\ 
+... &...  &... \\ 
+\frac{v-v_0}{H} &...  &\frac{v-v_0}{H} \\ 
+... &...  &... \\ 
+\frac{H-v_0}{H} &...  &\frac{H-v_0}{H} 
+\end{bmatrix} \in \mathbf{R}^{H \times W}
+\end{equation}
+\begin{equation}
+    \mathbf{f}_y =  \begin{bmatrix}
+arctan(\frac{0-v_0}{f}) &...  &arctan(\frac{0-v_0}{f}) \\ 
+... &...  &... \\ 
+arctan(\frac{v-v_0}{f}) &...  &arctan(\frac{v-v_0}{f}) \\ 
+... &...  &... \\ 
+arctan(\frac{H-v_0}{f}) &...  &arctan(\frac{H-v_0}{f})
+\end{bmatrix} \in \mathbf{R}^{H \times W}
+\end{equation}
+\begin{equation}
+\mathbf{f}_{x}=\begin{bmatrix}
+arctan(\frac{0-u_0}{f}) &...  &arctan(\frac{W-u_0}{f}) \\ 
+... &...  &... \\ 
+arctan(\frac{0-u_0}{f}) &...    &arctan(\frac{W-u_0}{f}) 
+\end{bmatrix} \in \mathbf{R}^{H \times W}
+\end{equation}
+
+\section{Details for Datasets and Training}
+We collect over $8M$ data from 11 public datasets for training. Datasets list is shown in ~\ref{table: datasets}. The autonomous driving datasets, including DDAD, Lyft, DrivingStereo, Argoverse2, DSEC, and Pandaset, have provided LiDar and camera intrinsic and extrinsic parameters. We project the LiDar to camera image planes to obtain ground-truth depths. In contrast, Cityscapes, DIML, and UASOL do not have ground truth depth, but are with calibrated stereo images. We use draftstereo~\cite{lipson2021raft} to achieve pseudo ground truth. Mapillary PSD dataset provides paired RGB-D, but the depth maps are achieved from a structure-from-motion method. The camera intrinsic parameters are estimated from the SfM. We believe that such achieved metric information is very noisy, so we do not enforce learning-metric-depth loss on this data, i.e. $L_{silog}$, to reduce the effect from noises. For the Taskonomy dataset, we follow LeReS~\cite{yin2022towards} to obtain the instance planes, which is employed in the pair-wise normal regression loss. During training, we employ the training strategy from ~\cite{yin2020diversedepth_old} to balance all datasets in each training batch. 
+
+
+
+\begin{table}[]
+\caption{Training and testing datasets used in experiments.}
+\vspace{-1 em}
+\centering
+\begin{threeparttable}
+\scalebox{0.8}{
+\begin{tabular}{ r llll}
+ \toprule[1pt]
+\multicolumn{1}{l|}{Datasets}                       & \multicolumn{1}{l|}{Scenes}         & \multicolumn{1}{l|}{%
+Label}              & \multicolumn{1}{l|}{Size}        & \# Cam.  \\ \hline
+\multicolumn{5}{c}{Training Data}                                                                                                                                                          \\ \hline
+\multicolumn{1}{l|}{DDAD~\cite{packnet}}                           & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{LiDar}                 & \multicolumn{1}{l|}{$\sim$80K}   & 36+            \\
+\multicolumn{1}{l|}{Lyft~\cite{lyftl5preception}}                           & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{LiDar}                 & \multicolumn{1}{l|}{$\sim$50K}   & 6+             \\
+\multicolumn{1}{l|}{Driving Stereo (DS)~\cite{yang2019drivingstereo}}                 & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{Stereo\tnote{\dag}}       & \multicolumn{1}{l|}{$\sim$181K}  & 1              \\
+\multicolumn{1}{l|}{DIML~\cite{cho2021diml}}                           & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{Stereo\tnote{\dag}}       & \multicolumn{1}{l|}{$\sim$122K}  & 10             \\
+\multicolumn{1}{l|}{Arogoverse2~\cite{Argoverse2}}                    & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{LiDar}                 & \multicolumn{1}{l|}{$\sim$3515K} & 6+             \\
+\multicolumn{1}{l|}{Cityscapes~\cite{Cordts2016Cityscapes}}                     & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{Stereo\tnote{\dag}}       & \multicolumn{1}{l|}{$\sim$170K}  & 1              \\
+\multicolumn{1}{l|}{DSEC~\cite{Gehrig21ral}}                           & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{LiDar}                 & \multicolumn{1}{l|}{$\sim$26K}   & 1              \\
+\multicolumn{1}{l|}{Mapillary PSD~\cite{MapillaryPSD}} & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{SfM\tnote{\ddag}} & \multicolumn{1}{l|}{750K}        & 1000+          \\
+\multicolumn{1}{l|}{Pandaset~\cite{itsc21pandaset}}                       & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{LiDar}                 & \multicolumn{1}{l|}{$\sim$48K}         & 6              \\
+\multicolumn{1}{l|}{UASOL~\cite{bauer2019uasol}}                          & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{Stereo\tnote{\dag}}       & \multicolumn{1}{l|}{$\sim$137K}        & 1              \\
+\multicolumn{1}{l|}{Taskonomy~\cite{zamir2018taskonomy}}                      & \multicolumn{1}{l|}{Indoor}         & \multicolumn{1}{l|}{LiDar}                 & \multicolumn{1}{l|}{$\sim$4M}       & $\sim$1M            \\ \hline
+\multicolumn{5}{c}{Testing Data}                                                                                                                                                           \\ \hline
+\multicolumn{1}{l|}{NYU~\cite{silberman2012indoor}}                            & \multicolumn{1}{l|}{Indoor}         & \multicolumn{1}{l|}{Kinect}                & \multicolumn{1}{l|}{654}         & 1              \\
+\multicolumn{1}{l|}{KITTI~\cite{Geiger2013IJRR}}                          & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{LiDar}                 & \multicolumn{1}{l|}{652}           & 4         \\
+\multicolumn{1}{l|}{ScanNet~\cite{dai2017scannet}}                        & \multicolumn{1}{l|}{Indoor}         & \multicolumn{1}{l|}{Kinect}                & \multicolumn{1}{l|}{700}         & 1              \\
+\multicolumn{1}{l|}{NuScenes (NS)~\cite{caesar2020nuscenes}}                       & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{LiDar}                 & \multicolumn{1}{l|}{10K}           & 6              \\
+\multicolumn{1}{l|}{ETH3D~\cite{schops2017multi}}                          & \multicolumn{1}{l|}{Outdoor}        & \multicolumn{1}{l|}{LiDar}                 & \multicolumn{1}{l|}{431}           & -\tnote{$\ast$}              \\
+\multicolumn{1}{l|}{DIODE~\cite{vasiljevic2019diode}}                          & \multicolumn{1}{l|}{In/Out} & \multicolumn{1}{l|}{LiDar}                 & \multicolumn{1}{l|}{771}           & -\tnote{$\ast$}           \\
+\multicolumn{1}{l|}{7Scenes~\cite{shotton2013scene}}                        & \multicolumn{1}{l|}{Indoor}         & \multicolumn{1}{l|}{Kinect}                & \multicolumn{1}{l|}{17k}           & 1              \\\toprule[1pt]
+\end{tabular}}
+\begin{tablenotes}
+\footnotesize
+\item[\dag]`Stereo': we use RaftStereo~\cite{lipson2021raft} to retrieve the pseudo ground truth.
+\item[\ddag]`SfM': pseudo ground truth is retrieved by structure from motion.
+\item[$\ast$] `-': camera intrinsic parameters are unavailable.
+\end{tablenotes}
+\end{threeparttable}
+\label{table: datasets}
+\end{table}
+
+\section{Details for Some Experiments}
+\noindent\textbf{Evaluation of zero-shot 3D scene reconstruction.} In this experiment, we use all methods' released models to  predict each frame's depth and use the ground truth pose to merge all frames together. When evaluating the reconstructed point cloud, we employ the iterative closest point (ICP)~\cite{besl1992method} algorithm to match the predicted point clouds with ground truth by a pose transformation matrix. Finally, we evaluate the Chamfer l1 distance and F-score on the point cloud.
+
+\noindent\textbf{Reconstruction of in-the-wild scenes.} We collect several photos from Flickr. From their associated camera metadata, we can obtain the focal length $\hat{f}$ and the pixel size $\delta$. With $\nicefrac{\hat{f}}{\delta}$, we can obtain the pixel-represented focal length for reconstruction and achieve the metric information. We use meshlab to measure some structures' size on point clouds. 
+
+\noindent\textbf{Generalization of metric depth estimation.} In these comparisons, we use the official provided focal length to predict the metric depths. All benchmarks use the same depth model for evaluation. We don't perform any scale alignment and do the zero-shot testing on them. 
+
+\noindent\textbf{Generalization over diverse scenes.} We follow existing affine-invariant depth estimation  methods to evaluate on 5 zero-shot datasets. Before evaluation, we employ a least square fitting to align the scale and shift with ground truth~\cite{leres}. Previous methods' performance are cited from their papers. 
+
+
+\section{More Visual Results}
+We show more visual results in the supplementary materials. We sampled some scenes from the testing data of DDAD. With our depth model, we can obtain the metric depths for 6 ring cameras. With the provided camera intrinsic and extrinsic parameters, we unproject the depths to the 3D point cloud and merge all views together. See enclosed videos for details. Note that 6 ring cameras have different camera intrinsic parameters. 
+
+
+
+\maketitle
+
+\def\PWN{{\rm PWN}}
+\def\VNL{{\rm VNL}}
+\def\RPNL{{\rm RPNL}}
+
+
+
+
+
+
+
+
+
+{\small
+\bibliographystyle{ieee_fullname}
+\bibliography{draft}
+}
+
+\end{document}

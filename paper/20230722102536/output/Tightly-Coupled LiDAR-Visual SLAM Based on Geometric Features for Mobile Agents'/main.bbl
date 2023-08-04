@@ -1,0 +1,347 @@
+\begin{thebibliography}{10}\itemsep=-1pt
+
+\bibitem{abbenseth2017cloud}
+Jannik Abbenseth, Felipe~Garcia Lopez, Christian Henkel, and Stefan D{\"o}rr.
+\newblock Cloud-based cooperative navigation for mobile service robots in
+  dynamic industrial environments.
+\newblock In {\em SAC}, 2017.
+
+\bibitem{bartoli2005structure}
+Adrien Bartoli and Peter Sturm.
+\newblock Structure-from-motion using lines: Representation, triangulation, and
+  bundle adjustment.
+\newblock {\em CVIU}, 2005.
+
+\bibitem{besl1992method}
+Paul~J. Besl and Neil~D. McKay.
+\newblock Method for registration of {3-D} shapes.
+\newblock {\em TPAMI}, 1992.
+
+\bibitem{campos2021orb}
+Carlos Campos, Richard Elvira, Juan J.~G{\'{o}}mez Rodr{\'{\i}}guez, Jos{\'{e}}
+  M.~M. Montiel, and Juan~D. Tard{\'{o}}s.
+\newblock {ORB-SLAM3:} an accurate open-source library for visual,
+  visual-inertial, and multimap {SLAM}.
+\newblock {\em TRO}, 2021.
+
+\bibitem{chen2018review}
+Chang Chen, Hua Zhu, Menggang Li, and Shaoze You.
+\newblock A review of visual-inertial simultaneous localization and mapping
+  from filtering-based and optimization-based perspectives.
+\newblock {\em Robotics}, 2018.
+
+\bibitem{chou2021efficient}
+Chih-Chung Chou and Cheng-Fu Chou.
+\newblock Efficient and accurate tightly-coupled visual-lidar {SLAM}.
+\newblock {\em T-ITS}, 2022.
+
+\bibitem{cortes2007assistive}
+Ulises Cort{\'{e}}s, Cristina Urdiales, Roberta Annicchiarico, Cristian
+  Barru{\'{e}}, Antonio~B. Mart{\'{\i}}nez, and Carlo Caltagirone.
+\newblock Assistive wheelchair navigation: A cognitive view.
+\newblock {\em Advanced Computational Intelligence Paradigms in Healthcare--1},
+  2007.
+
+\bibitem{deschaud2018imls}
+Jean-Emmanuel Deschaud.
+\newblock {IMLS-SLAM:} {Scan-to-model} matching based on {3D} data.
+\newblock In {\em ICRA}, 2018.
+
+\bibitem{engel2014lsd}
+Jakob Engel, Thomas Sch{\"o}ps, and Daniel Cremers.
+\newblock {LSD-SLAM:} {Large-scale} direct monocular {SLAM}.
+\newblock In {\em ECCV}, 2014.
+
+\bibitem{fang2020visual}
+Baofu Fang and Zhiqiang Zhan.
+\newblock A visual {SLAM} method based on point-line fusion in weak-matching
+  scene.
+\newblock {\em IJARS}, 2020.
+
+\bibitem{forster2014svo}
+Christian Forster, Matia Pizzoli, and Davide Scaramuzza.
+\newblock {SVO:} {Fast} semi-direct monocular visual odometry.
+\newblock In {\em ICRA}, 2014.
+
+\bibitem{gee2006real}
+Andrew~P. Gee and Walterio~W. Mayol{-}Cuevas.
+\newblock Real-time model-based {SLAM} using line segments.
+\newblock In {\em ISVC}, 2006.
+
+\bibitem{geneva2020openvins}
+Patrick Geneva, Kevin Eckenhoff, Woosik Lee, Yulin Yang, and Guoquan Huang.
+\newblock {OpenVINS:} {A} research platform for visual-inertial estimation.
+\newblock In {\em ICRA}, 2020.
+
+\bibitem{georgis2022vp}
+Andreas Georgis, Panagiotis Mermigkas, and Petros Maragos.
+\newblock {VP-SLAM:} {A} monocular real-time visual {SLAM} with points, lines
+  and vanishing points.
+\newblock {\em arXiv preprint arXiv:2210.12756}, 2022.
+
+\bibitem{gomez2019pl}
+Ruben Gomez-Ojeda, Francisco-Angel Moreno, David Zuniga-No{\"e}l, Davide
+  Scaramuzza, and Javier Gonzalez-Jimenez.
+\newblock {PL-SLAM:} {A} stereo {SLAM} system through the combination of points
+  and line segments.
+\newblock {\em TRO}, 2019.
+
+\bibitem{graeter2018limo}
+Johannes Graeter, Alexander Wilczynski, and Martin Lauer.
+\newblock {LIMO:} {Lidar-monocular} visual odometry.
+\newblock In {\em IROS}, 2018.
+
+\bibitem{hackel2016fast}
+Timo Hackel, Jan~D. Wegner, and Konrad Schindler.
+\newblock Fast semantic segmentation of {3D} point clouds with strongly varying
+  density.
+\newblock {\em ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial
+  Information Sciences}, 2016.
+
+\bibitem{huang2020LiDAR}
+Shi-Sheng Huang, Ze-Yu Ma, Tai-Jiang Mu, Hongbo Fu, and Shi-Min Hu.
+\newblock Lidar-monocular visual odometry using point and line features.
+\newblock In {\em ICRA}, 2020.
+
+\bibitem{lee2021plf}
+Junesuk Lee and Soon-Yong Park.
+\newblock {PLF-VINS:} {Real-time} monocular visual-inertial {SLAM} with
+  point-line fusion and parallel-line fusion.
+\newblock {\em RA-L}, 2021.
+
+\bibitem{lee2019elaborate}
+Sang~Jun Lee and Sung~Soo Hwang.
+\newblock Elaborate monocular point and line {SLAM} with robust initialization.
+\newblock In {\em ICCV}, 2019.
+
+\bibitem{leutenegger2015keyframe}
+Stefan Leutenegger, Simon Lynen, Michael Bosse, Roland Siegwart, and Paul
+  Furgale.
+\newblock Keyframe-based visual-inertial odometry using nonlinear optimization.
+\newblock {\em IJRR}, 2015.
+
+\bibitem{liang2016visual}
+Xiao Liang, Haoyao Chen, Yanjie Li, and Yunhui Liu.
+\newblock Visual {laser-SLAM} in large-scale indoor environments.
+\newblock In {\em ROBIO}, 2016.
+
+\bibitem{lim2022uv}
+Hyunjun Lim, Jinwoo Jeon, and Hyun Myung.
+\newblock {UV-SLAM:} {Unconstrained} line-based {SLAM} using vanishing points
+  for structural mapping.
+\newblock {\em RA-L}, 2022.
+
+\bibitem{lim2021avoiding}
+Hyunjun Lim, Yeeun Kim, Kwangik Jung, Sumin Hu, and Hyun Myung.
+\newblock Avoiding degeneracy for monocular visual {SLAM} with point and line
+  features.
+\newblock In {\em ICRA}, 2021.
+
+\bibitem{lin2022r}
+Jiarong Lin and Fu Zhang.
+\newblock {R$^{2}$LIVE:} {A} robust, real-time, {RGB-colored,}
+  {LiDAR-inertial-visual} tightly-coupled state estimation and mapping package.
+\newblock In {\em ICRA}, 2022.
+
+\bibitem{lin2021r}
+Jiarong Lin, Chunran Zheng, Wei Xu, and Fu Zhang.
+\newblock {R$^{2}$LIVE:} {A} robust, real-time, {LiDAR-inertial-visual}
+  tightly-coupled state estimator and mapping.
+\newblock {\em RA-L}, 2021.
+
+\bibitem{lopez2017predictive}
+Felipe~Garcia Lopez, Jannik Abbenseth, Christian Henkel, and Stefan D{\"o}rr.
+\newblock A predictive online path planning and optimization approach for
+  cooperative mobile service robot navigation in industrial applications.
+\newblock In {\em ECMR}, 2017.
+
+\bibitem{mark2008computational}
+de~Berg Mark, Cheong Otfried, van~Kreveld Marc, and Overmars Mark.
+\newblock {\em Computational geometry algorithms and applications}.
+\newblock Spinger, 2008.
+
+\bibitem{mourikis2007multi}
+Anastasios~I. Mourikis and Stergios~I. Roumeliotis.
+\newblock A multi-state constraint kalman filter for vision-aided inertial
+  navigation.
+\newblock In {\em ICRA}, 2007.
+
+\bibitem{mur2015orb}
+Raul Mur{-}Artal, J.~M.~M. Montiel, and Juan~D. Tard{\'{o}}s.
+\newblock {ORB-SLAM:} {A} versatile and accurate monocular slam system.
+\newblock {\em TRO}, 2015.
+
+\bibitem{mur2017orb}
+Raul Mur{-}Artal and Juan~D. Tard{\'{o}}s.
+\newblock {ORB-SLAM2:} {An} open-source {SLAM} system for monocular, stereo,
+  and {RGB-D} cameras.
+\newblock {\em TRO}, 2017.
+
+\bibitem{mur2017visual}
+Raul Mur{-}Artal and Juan~D. Tard{\'{o}}s.
+\newblock Visual-inertial monocular {SLAM} with map reuse.
+\newblock {\em RA-L}, 2017.
+
+\bibitem{orciuoli2015agent}
+Francesco Orciuoli and Mimmo Parente.
+\newblock An agent-based framework for indoor navigation in blended shopping.
+\newblock In {\em SSCI}, 2015.
+
+\bibitem{pan2021mulls}
+Yue Pan, Pengchuan Xiao, Yujie He, Zhenlei Shao, and Zesong Li.
+\newblock {MULLS:} {Versatile} {LiDAR} {SLAM} via multi-metric linear least
+  square.
+\newblock In {\em ICRA}, 2021.
+
+\bibitem{pandey2017mobile}
+Anish Pandey, Shalini Pandey, and D.~R. Parhi.
+\newblock Mobile robot navigation and obstacle avoidance techniques: A review.
+\newblock {\em IRAJ}, 2017.
+
+\bibitem{patle2019review}
+B.~K. Patle, Anish Pandey, D.~R.~K. Parhi, and A.~J. D.~T. Jagadeesh.
+\newblock A review: On path planning strategies for navigation of mobile robot.
+\newblock {\em Defence Technology}, 2019.
+
+\bibitem{pumarola2017pl}
+Albert Pumarola, Alexander Vakhitov, Antonio Agudo, Alberto Sanfeliu, and
+  Francese Moreno-Noguer.
+\newblock {PL-SLAM:} {Real-time} monocular visual {SLAM} with points and lines.
+\newblock In {\em ICRA}, 2017.
+
+\bibitem{qu2021outline}
+Yuanhao Qu, Minghao Yang, Jiaqing Zhang, Wu Xie, Baohua Qiang, and Jinlong
+  Chen.
+\newblock An outline of multi-sensor fusion methods for mobile agents indoor
+  navigation.
+\newblock {\em Sensors}, 2021.
+
+\bibitem{ram2021rp}
+Karnik Ram, Chaitanya Kharyal, Sudarshan~S. Harithas, and K.~Madhava Krishna.
+\newblock {RP-VIO:} {Robust} plane-based visual-inertial odometry for dynamic
+  environments.
+\newblock In {\em IROS}, 2021.
+
+\bibitem{rublee2011orb}
+Ethan Rublee, Vincent Rabaud, Kurt Konolige, and Gary Bradski.
+\newblock {ORB:} {An} efficient alternative to {SIFT} or {SURF}.
+\newblock In {\em ICCV}, 2011.
+
+\bibitem{sasaki2009human}
+Takeshi Sasaki, Drazen Brscic, and Hideki Hashimoto.
+\newblock Human-observation-based extraction of path patterns for mobile robot
+  navigation.
+\newblock {\em TIE}, 2010.
+
+\bibitem{seo2019tight}
+Youngwoo Seo and Chih-Chung Chou.
+\newblock A tight coupling of vision-lidar measurements for an effective
+  odometry.
+\newblock In {\em IV}, 2019.
+
+\bibitem{shan2018lego}
+Tixiao Shan and Brendan Englot.
+\newblock {LeGO-LOAM:} {Lightweight} and ground-optimized lidar odometry and
+  mapping on variable terrain.
+\newblock In {\em IROS}, 2018.
+
+\bibitem{shan2021lvi}
+Tixiao Shan, Brendan Englot, Carlo Ratti, and Daniela Rus.
+\newblock {LVI-SAM:} {Tightly-coupled} lidar-visual-inertial odometry via
+  smoothing and mapping.
+\newblock In {\em ICRA}, 2021.
+
+\bibitem{shin2020dvl}
+Young-Sik Shin, Yeong~Sang Park, and Ayoung Kim.
+\newblock Dvl-slam: Sparse depth enhanced direct visual-lidar slam.
+\newblock {\em Autonomous Robots}, 2020.
+
+\bibitem{shu2022structure}
+Fangwen Shu, Jiaxuan Wang, Alain Pagani, and Didier Stricker.
+\newblock Structure {PLP-SLAM}: {Efficient} sparse mapping and localization
+  using point, line and plane for monocular, {RGB-D} and stereo cameras.
+\newblock {\em arXiv preprint arXiv:2207.06058}, 2022.
+
+\bibitem{smith2006real}
+Paul Smith, Ian Reid, and Andrew~J. Davison.
+\newblock Real-time monocular {SLAM} with straight lines.
+\newblock In {\em BMVC}, 2006.
+
+\bibitem{wang2021vanishing}
+Peng Wang, Zheng Fang, Shibo Zhao, Yongnan Chen, Ming Zhou, and Shan An.
+\newblock Vanishing point aided {LiDAR-visual-inertial} estimator.
+\newblock In {\em ICRA}, 2021.
+
+\bibitem{weinmann2013feature}
+Martin Weinmann, Boris Jutzi, and Cl{\'e}ment Mallet.
+\newblock Feature relevance assessment for the semantic interpretation of {3D}
+  point cloud data.
+\newblock {\em ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial
+  Information Sciences}, 2013.
+
+\bibitem{yang2019visual}
+Yulin Yang, Patrick Geneva, Kevin Eckenhoff, and Guoquan Huang.
+\newblock Visual-inertial odometry with point and line features.
+\newblock In {\em IROS}, 2019.
+
+\bibitem{yin2021m2dgr}
+Jie Yin, Ang Li, Tao Li, Wenxian Yu, and Danping Zou.
+\newblock {M2DGR:} {A} multi-sensor and multi-scenario {SLAM} dataset for
+  ground robots.
+\newblock {\em RA-L}, 2022.
+
+\bibitem{zhang2015building}
+Guoxuan Zhang, Jin~Han Lee, Jongwoo Lim, and Il~Hong Suh.
+\newblock Building a {3-D} line-based map using stereo {SLAM}.
+\newblock {\em TRO}, 2015.
+
+\bibitem{zhang2020plane}
+He Zhang and Cang Ye.
+\newblock Plane-aided visual-inertial odometry for {6-DOF} pose estimation of a
+  robotic navigation aid.
+\newblock {\em IEEE Access}, 2020.
+
+\bibitem{zhang2014real}
+Ji Zhang, Michael Kaess, and Sanjiv Singh.
+\newblock Real-time depth enhanced monocular odometry.
+\newblock In {\em IROS}, 2014.
+
+\bibitem{zhang2017real}
+Ji Zhang, Michael Kaess, and Sanjiv Singh.
+\newblock A real-time method for depth enhanced visual odometry.
+\newblock {\em Autonomous Robots}, 2017.
+
+\bibitem{zhang2014loam}
+Ji Zhang and Sanjiv Singh.
+\newblock {LOAM:} {Lidar} odometry and mapping in real-time.
+\newblock In {\em RSS}, 2014.
+
+\bibitem{zhang2015visual}
+Ji Zhang and Sanjiv Singh.
+\newblock Visual-lidar odometry and mapping: Low-drift, robust, and fast.
+\newblock In {\em ICRA}, 2015.
+
+\bibitem{zhu2021deep}
+Kai Zhu and Tao Zhang.
+\newblock Deep reinforcement learning based mobile robot navigation: A review.
+\newblock {\em Tsinghua Science and Technology}, 2021.
+
+\bibitem{zhu2021camvox}
+Yuewen Zhu, Chunran Zheng, Chongjian Yuan, Xu Huang, and Xiaoping Hong.
+\newblock {CamVox:} {A} low-cost and accurate lidar-assisted visual {SLAM}
+  system.
+\newblock In {\em ICRA}, 2021.
+
+\bibitem{zuo2019lic}
+Xingxing Zuo, Patrick Geneva, Woosik Lee, Yong Liu, and Guoquan Huang.
+\newblock {LIC-Fusion:} {LiDAR-inertial-xamera} odometry.
+\newblock In {\em IROS}, 2019.
+
+\bibitem{zuo2020lic}
+Xingxing Zuo, Yulin Yang, Patrick Geneva, Jiajun Lv, Yong Liu, Guoquan Huang,
+  and Marc Pollefeys.
+\newblock {LIC-Fusion 2.0:} {LiDAR-inertial-camera} odometry with
+  sliding-window plane-feature tracking.
+\newblock In {\em IROS}, 2020.
+
+\end{thebibliography}

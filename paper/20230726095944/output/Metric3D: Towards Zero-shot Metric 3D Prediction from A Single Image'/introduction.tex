@@ -1,0 +1,51 @@
+
+
+
+3D reconstruction from images is the core of many computer vision applications, such as autonomous driving and robotics. Main-stream methods leverage multi-view %
+geometry~\cite{hartley2003multiple} to confidently recover 3D structures. However, these methods cannot be applied to a single image, making 3D reconstruction hard without a prior. 
+State-of-the-art transferable methods, such as MiDaS~\cite{Ranftl2020}, LeReS~\cite{leres}, and HDN~\cite{zhang2022hierarchical}, learn such a prior from a large dataset, but they can only output \emph{affine-invariant} depths, i.e., which are accurate only up to an unknown offset and scale. Though monocular metric depth estimation methods~\cite{yuan2022new, bhat2021adabins} work on a single dataset with a single camera model, they cannot generalize to unseen cameras or scenes. 
+This work aims to address the above problems by learning a \emph{zero-shot, single view, metric} depth model. 
+
+ 
+
+
+According to the predicted depth, 
+existing methods are categorized into learning metric depth \cite{yuan2022new, yin2021virtual, bhat2021adabins, yang2021transformers}, learning relative depth \cite{xian2018monocular, xian2020structure, chen2020oasis, chen2016single}, and learning affine-invariant depth~\cite{leres, yin2022towards, Ranftl2020, ranftl2021vision, zhang2022hierarchical}. Although the metric depth methods~\cite{yuan2022new, yin2021virtual, Yin2019enforcing, bhat2021adabins, yang2021transformers} have achieved impressive accuracy on various benchmarks, they must train and test on the dataset with the same camera intrinsics. %
+Therefore, the training datasets of metric depth methods are often small, as it is hard to collect a large dataset covering diverse scenes using one identical camera. The consequence is that 
+all these models are not transferable -- they generalize poorly to images in the wild, not to mention the camera parameters of test images can vary too.
+A compromise is to learn the relative depth
+\cite{chen2020oasis, xian2018monocular}, which only represents
+one point being further or closer to another one. %
+The application of relative depth is very limited.
+Learning affine-invariant depth 
+finds a trade-off between the above two categories of methods. 
+With large-scale data, they decouple the metric information during training and achieve impressive robustness and generalization ability. The recent state-of-the-art LeReS~\cite{leres} can recover 3D scenes in the wild, 
+but only up to an unknown scale and shift. 
+
+This work focuses on learning a zero-shot transferable model to recover \textit{metric} 3D from a single image.
+First, we  analyze the metric ambiguity issues in monocular depth estimation and study different camera parameters in depth, including the pixel size, focal length, and sensor size. We observe that 
+the focal length is the critical factor for accurate metric recovery. %
+By design, LeReS~\cite{leres} 
+does not take the focal length information into account during training. As shown in Sec.~\ref{sec:ambiguity}, only from the image appearance, various focal lengths may cause metric ambiguity, thus they decouple the depth scale in training.
+To solve the problem of varying focal lengths, CamConv~\cite{facil2019cam}  encodes the camera model in the network, which enforces the network to implicitly understand camera models from
+the image appearance and then bridges the imaging size to
+the real-world size. However, training data contains limited images and types of cameras, %
+which challenges data diversity and network capacity.
+In contrast, we propose a canonical camera transformation method in training. It is inspired by the human body reconstruction methods. To improve reconstructed shape quality on countless poses, they map all samples to a canonical pose space~\cite{peng2022animatable} to reduce pose variance. Similarly, 
+we transform all training data to a canonical camera space where the processed images are coarsely regarded as captured by the same camera.
+To achieve such transformation, we propose two different methods. The first one tries to adjust the image appearance to simulate the canonical camera, while the other one transforms the ground-truth labels for supervision. Camera models are not encoded in the network, making our method easily applicable to existing architectures. During inference, a de-canonical transformation is employed to recover metric information. 
+To further boost the depth accuracy, we propose a random proposal normalization loss. It is inspired by the scale-shift invariant loss~\cite{leres, Ranftl2020,zhang2022hierarchical}, which decouples the depth scale to emphasize the single image's distribution. However, they perform on the whole image, which inevitably squeezes the fine-grained depth difference. We propose to randomly crop several patches from images and enforce the scale-shift invariant loss~\cite{leres, Ranftl2020} on them. Our loss emphasizes the local geometry and distribution of the single image. 
+
+With the proposed method, we can easily scale up model training to \emph{8 million} images from 11 datasets of diverse scene types (indoor and outdoor) and camera models (tens of thousands of different cameras), leading to zero-shot transferability and a significantly improved accuracy. %
+Our model can accurately reconstruct metric 3D from randomly collected Internet images, enabling plausible single-image metrology. 
+Different from affine-invariant depth models, our model can also directly improve various downstream tasks.
+As an example (Fig.~\ref{Fig: first page fig.}), with the predicted metric depths from our model, we can significantly reduce the scale drift of monocular SLAM~\cite{teed2021droid, sun_2022_TRO} systems, achieving much better mapping quality with \emph{real-world metric recovery}. Our model also enables large-scale 3D reconstruction~\cite{im2019dpsnet}. \textbf{ The model achieves the championship in the 2nd Monocular Depth Estimation Challenge}~\cite{Spencer_2023_CVPR}.
+To summarize, our main contributions are:
+\begin{itemize}
+\itemsep -0.1cm 
+    \item We propose a canonical and de-canonical camera transformation method to solve the metric depth ambiguity problems from various cameras setting. It enables the learning of strong zero-shot monocular metric depth models from large-scale datasets. %
+    \item We propose a random proposal normalization loss to effectively boost the depth accuracy;
+    \item Our model achieves state-of-the-art performance on $7$ zero-shot benchmarks. It can perform high-quality 3D metric structure recovery in the wild and benefit several downstream tasks, such as mono-SLAM~\cite{teed2021droid, mur2017orb}, 3D scene reconstruction~\cite{im2019dpsnet}, and metrology~\cite{zhu2020single}.  
+\end{itemize}
+
+

@@ -1,0 +1,207 @@
+\begin{thebibliography}{25}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Anaby-Tavor et~al.(2020)Anaby-Tavor, Carmeli, Goldbraich, Kantor,
+  Kour, Shlomov, Tepper, and Zwerdling}]{Anaby-Tavor_etal_2020}
+Ateret Anaby-Tavor, Boaz Carmeli, Esther Goldbraich, Amir Kantor, George Kour,
+  Segev Shlomov, Naama Tepper, and Naama Zwerdling. 2020.
+\newblock \href {https://doi.org/10.1609/aaai.v34i05.6233} {Do not have enough
+  data? deep learning to the rescue!}
+\newblock \emph{Proceedings of the AAAI Conference on Artificial Intelligence},
+  34(05):7383--7390.
+
+\bibitem[{Bhaskar et~al.(2023)Bhaskar, Fabbri, and
+  Durrett}]{bhaskar2023prompted}
+Adithya Bhaskar, Alexander~R. Fabbri, and Greg Durrett. 2023.
+\newblock \href {http://arxiv.org/abs/2211.15914} {Prompted opinion
+  summarization with gpt-3.5}.
+
+\bibitem[{Brown et~al.(2020)Brown, Mann, Ryder, Subbiah, Kaplan, Dhariwal,
+  Neelakantan, Shyam, Sastry, Askell et~al.}]{brown2020language}
+Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared~D Kaplan, Prafulla
+  Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell,
+  et~al. 2020.
+\newblock Language models are few-shot learners.
+\newblock \emph{Advances in neural information processing systems},
+  33:1877--1901.
+
+\bibitem[{Choshen et~al.(2022)Choshen, Venezian, Don-Yehia, Slonim, and
+  Katz}]{choshen2022start}
+Leshem Choshen, Elad Venezian, Shachar Don-Yehia, Noam Slonim, and Yoav Katz.
+  2022.
+\newblock Where to start? analyzing the potential value of intermediate models.
+\newblock \emph{arXiv preprint arXiv:2211.00107}.
+
+\bibitem[{Chung et~al.(2022)Chung, Hou, Longpre, Zoph, Tay, Fedus, Li, Wang,
+  Dehghani, Brahma et~al.}]{chung2022scaling}
+Hyung~Won Chung, Le~Hou, Shayne Longpre, Barret Zoph, Yi~Tay, William Fedus,
+  Eric Li, Xuezhi Wang, Mostafa Dehghani, Siddhartha Brahma, et~al. 2022.
+\newblock Scaling instruction-finetuned language models.
+\newblock \emph{arXiv preprint arXiv:2210.11416}.
+
+\bibitem[{Eric et~al.(2020)Eric, Goel, Paul, Sethi, Agarwal, Gao, Kumar, Goyal,
+  Ku, and Hakkani-Tur}]{eric-etal-2020-multiwoz}
+Mihail Eric, Rahul Goel, Shachi Paul, Abhishek Sethi, Sanchit Agarwal, Shuyang
+  Gao, Adarsh Kumar, Anuj Goyal, Peter Ku, and Dilek Hakkani-Tur. 2020.
+\newblock \href {https://aclanthology.org/2020.lrec-1.53} {{M}ulti{WOZ} 2.1: A
+  consolidated multi-domain dialogue dataset with state corrections and state
+  tracking baselines}.
+\newblock In \emph{Proceedings of the Twelfth Language Resources and Evaluation
+  Conference}, pages 422--428, Marseille, France. European Language Resources
+  Association.
+
+\bibitem[{Gliwa et~al.(2019)Gliwa, Mochol, Biesek, and Wawer}]{gliwa2019samsum}
+Bogdan Gliwa, Iwona Mochol, Maciej Biesek, and Aleksander Wawer. 2019.
+\newblock \href {https://doi.org/10.18653/v1/D19-5409} {{SAMS}um corpus: A
+  human-annotated dialogue dataset for abstractive summarization}.
+\newblock In \emph{Proceedings of the 2nd Workshop on New Frontiers in
+  Summarization}, pages 70--79, Hong Kong, China. Association for Computational
+  Linguistics.
+
+\bibitem[{Kim et~al.(2020)Kim, Eric, Gopalakrishnan, Hedayatnia, Liu, and
+  Hakkani-Tur}]{kim-etal-2020-beyond}
+Seokhwan Kim, Mihail Eric, Karthik Gopalakrishnan, Behnam Hedayatnia, Yang Liu,
+  and Dilek Hakkani-Tur. 2020.
+\newblock \href {https://aclanthology.org/2020.sigdial-1.35} {Beyond domain
+  {API}s: Task-oriented conversational modeling with unstructured knowledge
+  access}.
+\newblock In \emph{Proceedings of the 21th Annual Meeting of the Special
+  Interest Group on Discourse and Dialogue}, pages 278--289, 1st virtual
+  meeting. Association for Computational Linguistics.
+
+\bibitem[{Kim et~al.(2022)Kim, Liu, Jin, Papangelis, Hedayatnia,
+  Gopalakrishnan, and Hakkani-T{\"u}r}]{kim2022knowledge}
+Seokhwan Kim, Yang Liu, Di~Jin, Alexandros Papangelis, Behnam Hedayatnia,
+  Karthik Gopalakrishnan, and Dilek Hakkani-T{\"u}r. 2022.
+\newblock Knowledge-grounded task-oriented dialogue modeling on spoken
+  conversations track at dstc10.
+
+\bibitem[{Kumar et~al.(2020)Kumar, Choudhary, and Cho}]{kumar-etal-2020-data}
+Varun Kumar, Ashutosh Choudhary, and Eunah Cho. 2020.
+\newblock \href {https://aclanthology.org/2020.lifelongnlp-1.3} {Data
+  augmentation using pre-trained transformer models}.
+\newblock In \emph{Proceedings of the 2nd Workshop on Life-long Learning for
+  Spoken Language Systems}, pages 18--26, Suzhou, China. Association for
+  Computational Linguistics.
+
+\bibitem[{Lee et~al.(2021)Lee, Guu, He, Dozat, and Chung}]{lee2021neural}
+Kenton Lee, Kelvin Guu, Luheng He, Tim Dozat, and Hyung~Won Chung. 2021.
+\newblock Neural data augmentation via example extrapolation.
+\newblock \emph{arXiv preprint arXiv:2102.01335}.
+
+\bibitem[{Lewis et~al.(2020)Lewis, Liu, Goyal, Ghazvininejad, Mohamed, Levy,
+  Stoyanov, and Zettlemoyer}]{lewis-etal-2020-bart}
+Mike Lewis, Yinhan Liu, Naman Goyal, Marjan Ghazvininejad, Abdelrahman Mohamed,
+  Omer Levy, Veselin Stoyanov, and Luke Zettlemoyer. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.acl-main.703} {{BART}:
+  Denoising sequence-to-sequence pre-training for natural language generation,
+  translation, and comprehension}.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association
+  for Computational Linguistics}, pages 7871--7880, Online. Association for
+  Computational Linguistics.
+
+\bibitem[{Pitis et~al.(2023)Pitis, Zhang, Wang, and Ba}]{pitis2023boosted}
+Silviu Pitis, Michael~R Zhang, Andrew Wang, and Jimmy Ba. 2023.
+\newblock Boosted prompt ensembles for large language models.
+\newblock \emph{arXiv preprint arXiv:2304.05970}.
+
+\bibitem[{Sennrich et~al.(2016)Sennrich, Haddow, and
+  Birch}]{sennrich-etal-2016-improving}
+Rico Sennrich, Barry Haddow, and Alexandra Birch. 2016.
+\newblock \href {https://doi.org/10.18653/v1/P16-1009} {Improving neural
+  machine translation models with monolingual data}.
+\newblock In \emph{Proceedings of the 54th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 86--96, Berlin,
+  Germany. Association for Computational Linguistics.
+
+\bibitem[{Singhal et~al.(2023)Singhal, Tu, Gottweis, Sayres, Wulczyn, Hou,
+  Clark, Pfohl, Cole-Lewis, Neal, Schaekermann, Wang, Amin, Lachgar, Mansfield,
+  Prakash, Green, Dominowska, y~Arcas, Tomasev, Liu, Wong, Semturs, Mahdavi,
+  Barral, Webster, Corrado, Matias, Azizi, Karthikesalingam, and
+  Natarajan}]{singhal2023expertlevel}
+Karan Singhal, Tao Tu, Juraj Gottweis, Rory Sayres, Ellery Wulczyn, Le~Hou,
+  Kevin Clark, Stephen Pfohl, Heather Cole-Lewis, Darlene Neal, Mike
+  Schaekermann, Amy Wang, Mohamed Amin, Sami Lachgar, Philip Mansfield, Sushant
+  Prakash, Bradley Green, Ewa Dominowska, Blaise~Aguera y~Arcas, Nenad Tomasev,
+  Yun Liu, Renee Wong, Christopher Semturs, S.~Sara Mahdavi, Joelle Barral,
+  Dale Webster, Greg~S. Corrado, Yossi Matias, Shekoofeh Azizi, Alan
+  Karthikesalingam, and Vivek Natarajan. 2023.
+\newblock \href {http://arxiv.org/abs/2305.09617} {Towards expert-level medical
+  question answering with large language models}.
+
+\bibitem[{Sun et~al.(2023)Sun, Wang, Tay, Yang, and
+  Zhou}]{sun2023recitationaugmented}
+Zhiqing Sun, Xuezhi Wang, Yi~Tay, Yiming Yang, and Denny Zhou. 2023.
+\newblock \href {http://arxiv.org/abs/2210.01296} {Recitation-augmented
+  language models}.
+
+\bibitem[{Thulke et~al.(2022)Thulke, Daheim, Dugast, and Ney}]{thulkeDSTC2021}
+David Thulke, Nico Daheim, Christian Dugast, and Hermann Ney. 2022.
+\newblock {{Adapting Document-Grounded Dialog Systems}} to {{Spoken
+  Conversations}} using {{Data Augmentation}} and a {{Noisy Channel Model}}.
+\newblock In \emph{{{Workshop}} on {{DSTC10}}, {{AAAI}}}.
+
+\bibitem[{Tian et~al.(2021)Tian, Huang, He, Lin, Bao, He, Huang, Ju, Zhang,
+  Xie, Sun, Wang, Wu, and Wang}]{tian2021tod-da}
+Xin Tian, Xinxian Huang, Dongfeng He, Yingzhan Lin, Siqi Bao, Huang He, Liankai
+  Huang, Qiang Ju, Xiyuan Zhang, Jian Xie, Shuqi Sun, Fan Wang, Hua Wu, and
+  Haifeng Wang. 2021.
+\newblock Tod-da: Towards boosting the robustness of task-oriented dialogue
+  modeling on spoken conversations.
+\newblock \emph{arXiv preprint arXiv:2112.12441}.
+
+\bibitem[{Wang et~al.(2023)Wang, Wei, Schuurmans, Le, Chi, Narang, Chowdhery,
+  and Zhou}]{wang2023selfconsistency}
+Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed~Chi, Sharan Narang,
+  Aakanksha Chowdhery, and Denny Zhou. 2023.
+\newblock \href {http://arxiv.org/abs/2203.11171} {Self-consistency improves
+  chain of thought reasoning in language models}.
+
+\bibitem[{Wang et~al.(2022)Wang, Wei, Schuurmans, Le, Chi, and
+  Zhou}]{wang2022rationale}
+Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed~Chi, and Denny Zhou. 2022.
+\newblock Rationale-augmented ensembles in language models.
+\newblock \emph{arXiv preprint arXiv:2207.00747}.
+
+\bibitem[{Wei et~al.(2022)Wei, Wang, Schuurmans, Bosma, Chi, Le, and
+  Zhou}]{wei2022chain}
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Ed~Chi, Quoc Le, and
+  Denny Zhou. 2022.
+\newblock Chain of thought prompting elicits reasoning in large language
+  models.
+\newblock \emph{arXiv preprint arXiv:2201.11903}.
+
+\bibitem[{Wei and Zou(2019)}]{wei-zou-2019-eda}
+Jason Wei and Kai Zou. 2019.
+\newblock \href {https://doi.org/10.18653/v1/D19-1670} {{EDA}: Easy data
+  augmentation techniques for boosting performance on text classification
+  tasks}.
+\newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing and the 9th International Joint Conference on
+  Natural Language Processing (EMNLP-IJCNLP)}, pages 6382--6388, Hong Kong,
+  China. Association for Computational Linguistics.
+
+\bibitem[{Xia et~al.(2020)Xia, Xiong, Yu, and Socher}]{xia-etal-2020-composed}
+Congying Xia, Caiming Xiong, Philip Yu, and Richard Socher. 2020.
+\newblock \href {https://doi.org/10.18653/v1/2020.findings-emnlp.303} {Composed
+  variational natural language generation for few-shot intents}.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  EMNLP 2020}, pages 3379--3388, Online. Association for Computational
+  Linguistics.
+
+\bibitem[{Yu and Yu(2019)}]{midas-2019}
+Dian Yu and Zhou Yu. 2019.
+\newblock \href {http://arxiv.org/abs/1908.10023} {{MIDAS:} {A} dialog act
+  annotation scheme for open domain human machine spoken conversations}.
+\newblock \emph{CoRR}, abs/1908.10023.
+
+\bibitem[{Zhao et~al.(2023)Zhao, Gella, Kim, Jin, Hazarika, Papangelis,
+  Hedayatnia, Namazifar, Liu, and Hakkani-Tur}]{zhao2023others}
+Chao Zhao, Spandana Gella, Seokhwan Kim, Di~Jin, Devamanyu Hazarika, Alexandros
+  Papangelis, Behnam Hedayatnia, Mahdi Namazifar, Yang Liu, and Dilek
+  Hakkani-Tur. 2023.
+\newblock " what do others think?": Task-oriented conversational modeling with
+  subjective knowledge.
+\newblock \emph{arXiv preprint arXiv:2305.12091}.
+
+\end{thebibliography}

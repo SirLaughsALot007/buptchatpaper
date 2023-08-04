@@ -1,0 +1,398 @@
+\begin{thebibliography}{10}
+
+\bibitem{azureasr}
+Microsoft Azure.
+\newblock Azure speech-to-text.
+\newblock
+  \url{https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/},
+  2021.
+
+\bibitem{googleasr}
+Google Speech.
+\newblock Google cloud speech-to-text.
+\newblock \url{https://cloud.google.com/speech-to-text/}, 2021.
+
+\bibitem{schonherr2018adversarial}
+Lea Sch{\"o}nherr, Katharina Kohls, Steffen Zeiler, Thorsten Holz, and Dorothea
+  Kolossa.
+\newblock Adversarial attacks against automatic speech recognition systems via
+  psychoacoustic hiding.
+\newblock {\em arXiv preprint arXiv:1808.05665}, 2018.
+
+\bibitem{qin2019imperceptible}
+Yao Qin, Nicholas Carlini, Garrison Cottrell, Ian Goodfellow, and Colin Raffel.
+\newblock Imperceptible, robust, and targeted adversarial examples for
+  automatic speech recognition.
+\newblock In {\em Proceedings of the 36th International Conference on Machine
+  Learning}, volume~97, pages 5231--5240, 2019.
+
+\bibitem{zhang2017dolphinattack}
+Guoming Zhang, Chen Yan, Xiaoyu Ji, Tianchen Zhang, Taimin Zhang, and Wenyuan
+  Xu.
+\newblock Dolphinattack: Inaudible voice commands.
+\newblock In {\em Proceedings of the 2017 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 103--117, 2017.
+
+\bibitem{sugawara2020light}
+Takeshi Sugawara, Benjamin Cyr, Sara Rampazzi, Daniel Genkin, and Kevin Fu.
+\newblock Light commands: laser-based audio injection attacks on
+  voice-controllable systems.
+\newblock In {\em Proceedings of the 29th USENIX Security Symposium (USENIX
+  Security 20)}, pages 2631--2648, 2020.
+
+\bibitem{carlini2018audio}
+Nicholas Carlini and David Wagner.
+\newblock Audio adversarial examples: Targeted attacks on speech-to-text.
+\newblock In {\em 2018 IEEE security and privacy workshops (SPW)}, pages 1--7.
+  IEEE, 2018.
+
+\bibitem{guo2022specpatch}
+Hanqing Guo, Yuanda Wang, Nikolay Ivanov, Li~Xiao, and Qiben Yan.
+\newblock Specpatch: Human-in-the-loop adversarial audio spectrogram patch
+  attack on speech recognition.
+\newblock In {\em Proceedings of the 2022 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 1353--1366, 2022.
+
+\bibitem{li2020advpulse}
+Zhuohang Li, Yi~Wu, Jian Liu, Yingying Chen, and Bo~Yuan.
+\newblock Advpulse: Universal, synchronization-free, and targeted audio
+  adversarial attacks via subsecond perturbations.
+\newblock In {\em Proceedings of the 2020 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 1121--1134, 2020.
+
+\bibitem{carlini2016hidden}
+Nicholas Carlini, Pratyush Mishra, Tavish Vaidya, Yuankai Zhang, Micah Sherr,
+  Clay Shields, David Wagner, and Wenchao Zhou.
+\newblock Hidden voice commands.
+\newblock In {\em 25th USENIX security symposium (USENIX security 16)}, pages
+  513--530, 2016.
+
+\bibitem{abdullah2019ndss}
+Hadi Abdullah, Washington Garcia, Christian Peeters, Patrick Traynor, Kevin
+  R.~B. Butler, and Joseph Wilson.
+\newblock Practical hidden voice attacks against speech and speaker recognition
+  systems.
+\newblock In {\em 26th Annual Network and Distributed System Security
+  Symposium, {NDSS} 2019}, 2019.
+
+\bibitem{yuan2018commandersong}
+Xuejing Yuan, Yuxuan Chen, Yue Zhao, Yunhui Long, Xiaokang Liu, Kai Chen,
+  Shengzhi Zhang, Heqing Huang, Xiaofeng Wang, and Carl~A. Gunter.
+\newblock Commandersong: {A} systematic approach for practical adversarial
+  voice recognition.
+\newblock In {\em 27th {USENIX} Security Symposium, {USENIX} Security}, pages
+  49--64, 2018.
+
+\bibitem{chen2020metamorph}
+Tao Chen, Longfei Shangguan, Zhenjiang Li, and Kyle Jamieson.
+\newblock Metamorph: Injecting inaudible commands into over-the-air voice
+  controlled systems.
+\newblock In {\em Network and Distributed Systems Security (NDSS) Symposium},
+  2020.
+
+\bibitem{chen2021fakebob}
+Guangke Chen, Sen Chen, Lingling Fan, Xiaoning Du, Zhe Zhao, Fu~Song, and Yang
+  Liu.
+\newblock Who is real bob? adversarial attacks on speaker recognition systems.
+\newblock In {\em 42nd {IEEE} Symposium on Security and Privacy, {SP} 2021},
+  pages 694--711. {IEEE}, 2021.
+
+\bibitem{li2023learning}
+Xinfeng Li, Xiaoyu Ji, Chen Yan, Chaohao Li, Yichen Li, Zhenning Zhang, and
+  Wenyuan Xu.
+\newblock Learning normality is enough: A software-based mitigation against the
+  inaudible voice attacks.
+\newblock In {\em Proceedings of the 32nd USENIX Security Symposium}, 2023.
+
+\bibitem{schonherr2020imperio}
+Lea Sch{\"o}nherr, Thorsten Eisenhofer, Steffen Zeiler, Thorsten Holz, and
+  Dorothea Kolossa.
+\newblock Imperio: Robust over-the-air adversarial examples for automatic
+  speech recognition systems.
+\newblock In {\em Annual Computer Security Applications Conference}, pages
+  843--855, 2020.
+
+\bibitem{baum1966statistical}
+Leonard~E Baum and Ted Petrie.
+\newblock Statistical inference for probabilistic functions of finite state
+  markov chains.
+\newblock {\em The annals of mathematical statistics}, 37(6):1554--1563, 1966.
+
+\bibitem{berndt1994using}
+Donald~J Berndt and James Clifford.
+\newblock Using dynamic time warping to find patterns in time series.
+\newblock In {\em KDD workshop}, volume~10, pages 359--370. Seattle, WA, USA:,
+  1994.
+
+\bibitem{graves2012sequence}
+Alex Graves.
+\newblock Sequence transduction with recurrent neural networks.
+\newblock {\em arXiv preprint arXiv:1211.3711}, 2012.
+
+\bibitem{amodei2016deep}
+Dario Amodei, Sundaram Ananthanarayanan, Rishita Anubhai, Jingliang Bai, Eric
+  Battenberg, Carl Case, Jared Casper, Bryan Catanzaro, Qiang Cheng, Guoliang
+  Chen, et~al.
+\newblock Deep speech 2: End-to-end speech recognition in english and mandarin.
+\newblock In {\em International conference on machine learning}, pages
+  173--182. PMLR, 2016.
+
+\bibitem{roy2018inaudible}
+Nirupam Roy, Sheng Shen, Haitham Hassanieh, and Romit~Roy Choudhury.
+\newblock Inaudible voice commands: The long-range attack and defense.
+\newblock In {\em Proceedings of the 15th USENIX Symposium on Networked Systems
+  Design and Implementation (NSDI 18)}, pages 547--560, 2018.
+
+\bibitem{yan2020surfingattack}
+Qiben Yan, Kehai Liu, Qin Zhou, Hanqing Guo, and Ning Zhang.
+\newblock Surfingattack: Interactive hidden attack on voice assistants using
+  ultrasonic guided waves.
+\newblock In {\em Proceedings of the Network and Distributed Systems Security
+  (NDSS) Symposium}, 2020.
+
+\bibitem{zhang2021capspeaker}
+Xiaoyu Ji, Juchuan Zhang, Shui Jiang, Jishen Li, and Wenyuan Xu.
+\newblock Capspeaker: Injecting voices to microphones via capacitors.
+\newblock In {\em {CCS} '21: 2021 {ACM} {SIGSAC} Conference on Computer and
+  Communications Security, Virtual Event, Republic of Korea}, pages 1915--1929,
+  2021.
+
+\bibitem{wang2022ghosttalk}
+Yuanda Wang, Hanqing Guo, and Qiben Yan.
+\newblock Ghosttalk: Interactive attack on smartphone voice system through
+  power line.
+\newblock In {\em Network and Distributed Systems Security (NDSS) Symposium},
+  2022.
+
+\bibitem{roy2017backdoor}
+Nirupam Roy, Haitham Hassanieh, and Roy Choudhury.
+\newblock Backdoor: Making microphones hear inaudible sounds.
+\newblock In {\em Proceedings of the 15th Annual International Conference on
+  Mobile Systems, Applications, and Services}, pages 2--14, 2017.
+
+\bibitem{li2023tuner}
+Xinfeng Li, Junning Ze, Chen Yan, Yushi Cheng, Xiaoyu Ji, and Wenyuan Xu.
+\newblock Enrollment-stage backdoor attacks on speaker recognition systems via
+  adversarial ultrasound.
+\newblock {\em arXiv preprint arXiv:2306.16022}, 2023.
+
+\bibitem{vifa}
+Avisoft Bioacoustics.
+\newblock Ultrasonic dynamic speaker vifa.
+\newblock \url{http://www.avisoft.com/usg/vifa.htm}, 2017.
+
+\bibitem{25kHz_ultra_transducer}
+Tmall.
+\newblock Tct25-16t 25 khz ultrasonic transducer.
+\newblock
+  \url{https://item.taobao.com/item.htm?spm=a230r.1.14.1.3e5969e6Wy38Kn&id=539957350166&ns=1&abbucket=12#detail},
+  2023.
+
+\bibitem{fluent2020commands}
+fluent.ai.
+\newblock Fluent speech commands.
+\newblock Website, 2020.
+\newblock \url{https://www.kaggle.com/tommyngx/fluent-speech-corpus}.
+
+\bibitem{jan2019connecting}
+Steve~TK Jan, Joseph Messou, Yen-Chen Lin, Jia-Bin Huang, and Gang Wang.
+\newblock Connecting the digital and physical world: Improving the robustness
+  of adversarial attacks.
+\newblock In {\em Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~33, pages 962--969, 2019.
+
+\bibitem{deng2022fencesitter}
+Jiangyi Deng, Yanjiao Chen, and Wenyuan Xu.
+\newblock Fencesitter: Black-box, content-agnostic, and synchronization-free
+  enrollment-phase attacks on speaker recognition systems.
+\newblock In {\em Proceedings of the 2022 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 755--767, 2022.
+
+\bibitem{rirIJCAI}
+Hiromu Yakura and Jun Sakuma.
+\newblock Robust audio adversarial example for a physical attack.
+\newblock In {\em Proceedings of the Twenty-Eighth International Joint
+  Conference on Artificial Intelligence, {IJCAI} 2019, 2019}, pages 5334--5341,
+  2019.
+
+\bibitem{jeub2009binaural}
+Marco Jeub, Magnus Schafer, and Peter Vary.
+\newblock A binaural room impulse response database for the evaluation of
+  dereverberation algorithms.
+\newblock In {\em 2009 16th International Conference on Digital Signal
+  Processing}, pages 1--5. IEEE, 2009.
+
+\bibitem{nakamura2000acoustical}
+Satoshi Nakamura, Kazuo Hiyane, Futoshi Asano, Takanobu Nishiura, and Takeshi
+  Yamada.
+\newblock Acoustical sound database in real environments for sound scene
+  understanding and hands-free speech recognition.
+\newblock In {\em Proceedings of the Second International Conference on
+  Language Resources and Evaluation ({LREC}{'}00)}, 2000.
+
+\bibitem{hu2020dccrn}
+Yanxin Hu, Yun Liu, Shubo Lv, Mengtao Xing, Shimin Zhang, Yihui Fu, Jian Wu,
+  Bihong Zhang, and Lei Xie.
+\newblock Dccrn: Deep complex convolution recurrent network for phase-aware
+  speech enhancement.
+\newblock {\em arXiv preprint arXiv:2008.00264}, 2020.
+
+\bibitem{farina2007advancements}
+Angelo Farina.
+\newblock Advancements in impulse response measurements by sine sweeps.
+\newblock In {\em Audio engineering society convention 122}. Audio Engineering
+  Society, 2007.
+
+\bibitem{holm2019waves}
+Sverre Holm.
+\newblock {\em Waves with power-law attenuation}.
+\newblock Springer, 2019.
+
+\bibitem{ziemer2006principles}
+Rodger Ziemer and William~H Tranter.
+\newblock {\em Principles of communications: system modulation and noise}.
+\newblock John Wiley \& Sons, 2006.
+
+\bibitem{pytorch}
+Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory
+  Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, Alban
+  Desmaison, Andreas Kopf, Edward Yang, Zachary DeVito, Martin Raison, Alykhan
+  Tejani, Sasank Chilamkurthy, Benoit Steiner, Lu~Fang, Junjie Bai, and Soumith
+  Chintala.
+\newblock Pytorch: An imperative style, high-performance deep learning library.
+\newblock In {\em Advances in Neural Information Processing Systems 32}, pages
+  8024--8035. Curran Associates, Inc., 2019.
+
+\bibitem{kingma2014adam}
+Diederik~P Kingma and Jimmy Ba.
+\newblock Adam: A method for stochastic optimization.
+\newblock {\em arXiv preprint arXiv:1412.6980}, 1, 2014.
+
+\bibitem{siglent}
+Siglent.
+\newblock Sdg6032x-e.
+\newblock Website, 2019.
+\newblock \url{https://siglentna.com/product/sdg6032x/}.
+
+\bibitem{amplifierHSA4015}
+Micronix.
+\newblock Nf hsa4015.
+\newblock Website, 2013.
+\newblock
+  \url{https://eshop.micronix.eu/measurement-equipment/electrical-quantities/nf-corporation-instruments/high-speed-bipolar-amplifiers/hsa-4051.html}.
+
+\bibitem{respeaker}
+Seeed Studio.
+\newblock Respeaker mic array v2.0.
+\newblock \url{https://wiki.seeedstudio.com/ReSpeaker_Mic_Array_v2.0/}, 2021.
+
+\bibitem{petracca2015audroid}
+Giuseppe Petracca, Yuqiong Sun, Trent Jaeger, and Ahmad Atamli.
+\newblock Audroid: Preventing attacks on audio channels in mobile devices.
+\newblock In {\em Proceedings of the 31st Annual Computer Security Applications
+  Conference}, pages 181--190, 2015.
+
+\bibitem{freesound}
+freesound.
+\newblock freesound.org.
+\newblock \url{https://freesound.org/}, 2022.
+
+\bibitem{hivi}
+Hivi.
+\newblock Swan m-50wmkiii.
+\newblock Website.
+\newblock \url{https://www.swanspeakers.com/product/view?id=162}.
+
+\bibitem{hussain2021waveguard}
+Shehzeen Hussain, Paarth Neekhara, Shlomo Dubnov, Julian McAuley, and Farinaz
+  Koushanfar.
+\newblock Waveguard: Understanding and mitigating audio adversarial examples.
+\newblock {\em arXiv preprint arXiv:2103.03344}, 2021.
+
+\bibitem{torch_codec}
+Facebook.
+\newblock Torchaudio functional.
+\newblock
+  \url{https://pytorch.org/audio/master/functional.html#torchaudio.functional.apply_codec},
+  2022.
+
+\bibitem{zhang2021eararray}
+Guoming Zhang, Xiaoyu Ji, Xinfeng Li, Gang Qu, and Wenyuan Xu.
+\newblock Eararray: Defending against dolphinattack via acoustic attenuation.
+\newblock In {\em Proceedings of the 15th Annual International Conference on
+  Mobile Systems, Applications, and Services}, 2021.
+
+\bibitem{he2019canceling}
+Yitao He, Junyu Bian, Xinyu Tong, Zihui Qian, Wei Zhu, Xiaohua Tian, and
+  Xinbing Wang.
+\newblock Canceling inaudible voice commands against voice control systems.
+\newblock In {\em Proceedings of the 25th Annual International Conference on
+  Mobile Computing and Networking}, pages 1--15, 2019.
+
+\bibitem{li2021robust}
+Zhuohang Li, Cong Shi, Tianfang Zhang, Yi~Xie, Jian Liu, Bo~Yuan, and Yingying
+  Chen.
+\newblock Robust detection of machine-induced audio attacks in intelligent
+  audio systems with microphone array.
+\newblock In {\em Proceedings of the 2021 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 1884--1899, 2021.
+
+\bibitem{iijima2018audio}
+Ryo Iijima, Shota Minami, Zhou Yunao, Tatsuya Takehisa, Takeshi Takahashi,
+  Yasuhiro Oikawa, and Tatsuya Mori.
+\newblock Audio hotspot attack: An attack on voice assistance systems using
+  directional sound beams.
+\newblock In {\em Proceedings of the 2018 ACM SIGSAC Conference on Computer and
+  Communications Security}, pages 2222--2224, 2018.
+
+\bibitem{vadillo2019universal}
+Jon Vadillo and Roberto Santana.
+\newblock Universal adversarial examples in speech command classification.
+\newblock {\em arXiv preprint arXiv:1911.10182}, 2019.
+
+\bibitem{neekhara2019universal}
+Paarth Neekhara, Shehzeen Hussain, Prakhar Pandey, Shlomo Dubnov, Julian
+  McAuley, and Farinaz Koushanfar.
+\newblock Universal adversarial perturbations for speech recognition systems.
+\newblock {\em arXiv preprint arXiv:1905.03828}, 2019.
+
+\bibitem{2020ecapatdnn}
+Brecht Desplanques, Jenthe Thienpondt, and Kris Demuynck.
+\newblock {ECAPA-TDNN:} emphasized channel attention, propagation and
+  aggregation in {TDNN} based speaker verification.
+\newblock In {\em Interspeech 2020, 21st Annual Conference of the International
+  Speech Communication Association}, pages 3830--3834, 2020.
+
+\bibitem{vaidya2015cocaine}
+Tavish Vaidya, Yuankai Zhang, Micah Sherr, and Clay Shields.
+\newblock Cocaine noodles: exploiting the gap between human and machine speech
+  recognition.
+\newblock In {\em 9th USENIX Workshop on Offensive Technologies (WOOT 15)},
+  2015.
+
+\bibitem{ji2022capspeaker}
+Xiaoyu Ji, Juchuan Zhang, Shui Jiang, Jishen Li, and Wenyuan Xu.
+\newblock Capspeaker: Injecting voices to microphones via capacitors.
+\newblock In {\em Proceedings of the 2021 ACM SIGSAC Conference on Computer and
+  Communications Security}, 2021.
+
+\bibitem{taori2019targeted}
+Rohan Taori, Amog Kamsetty, Brenton Chu, and Nikita Vemuri.
+\newblock Targeted adversarial examples for black box audio systems.
+\newblock In {\em 2019 IEEE security and privacy workshops (SPW)}, pages
+  15--20. IEEE, 2019.
+
+\bibitem{moosavi2017universal}
+Seyed-Mohsen Moosavi-Dezfooli, Alhussein Fawzi, Omar Fawzi, and Pascal
+  Frossard.
+\newblock Universal adversarial perturbations.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 1765--1773, 2017.
+
+\bibitem{brown2017adversarial}
+Tom~B Brown, Dandelion Man{\'e}, Aurko Roy, Mart{\'\i}n Abadi, and Justin
+  Gilmer.
+\newblock Adversarial patch.
+\newblock {\em arXiv preprint arXiv:1712.09665}, 2017.
+
+\end{thebibliography}

@@ -1,0 +1,482 @@
+\begin{thebibliography}{10}\itemsep=-1pt
+
+\bibitem{barron2014shape}
+Jonathan~T Barron and Jitendra Malik.
+\newblock Shape, illumination, and reflectance from shading.
+\newblock {\em {IEEE} Trans. Pattern Anal. Mach. Intell.}, 37(8):1670--1687,
+  2014.
+
+\bibitem{bauer2019uasol}
+Zuria Bauer, Francisco Gomez-Donoso, Edmanuel Cruz, Sergio Orts-Escolano, and
+  Miguel Cazorla.
+\newblock Uasol, a large-scale high-resolution outdoor stereo dataset.
+\newblock {\em Scientific data}, 6(1):1--14, 2019.
+
+\bibitem{besl1992method}
+Paul Besl and Neil McKay.
+\newblock Method for registration of 3-d shapes.
+\newblock In {\em Sensor fusion IV: Control Paradigms and Data Structures},
+  volume 1611, pages 586--606. Spie, 1992.
+
+\bibitem{bhat2021adabins}
+Shariq~Farooq Bhat, Ibraheem Alhashim, and Peter Wonka.
+\newblock Adabins: Depth estimation using adaptive bins.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 4009--4018,
+  2021.
+
+\bibitem{bian2021tpami}
+Jia-Wang Bian, Huangying Zhan, Naiyan Wang, Tat-Jin Chin, Chunhua Shen, and Ian
+  Reid.
+\newblock Auto-rectify network for unsupervised indoor depth estimation.
+\newblock {\em {IEEE} Trans. Pattern Anal. Mach. Intell.}, 2021.
+
+\bibitem{caesar2020nuscenes}
+Holger Caesar, Varun Bankiti, Alex~H Lang, Sourabh Vora, Venice~Erin Liong,
+  Qiang Xu, Anush Krishnan, Yu Pan, Giancarlo Baldan, and Oscar Beijbom.
+\newblock nuscenes: A multimodal dataset for autonomous driving.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages
+  11621--11631, 2020.
+
+\bibitem{chen2016single}
+Weifeng Chen, Zhao Fu, Dawei Yang, and Jia Deng.
+\newblock Single-image depth perception in the wild.
+\newblock In {\em Proc. Advances in Neural Inf. Process. Syst.}, pages
+  730--738, 2016.
+
+\bibitem{chen2020oasis}
+Weifeng Chen, Shengyi Qian, David Fan, Noriyuki Kojima, Max Hamilton, and Jia
+  Deng.
+\newblock Oasis: A large-scale dataset for single image 3d in the wild.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 679--688,
+  2020.
+
+\bibitem{cho2021diml}
+Jaehoon Cho, Dongbo Min, Youngjung Kim, and Kwanghoon Sohn.
+\newblock {DIML/CVL} {RGB-D} dataset: 2m {RGB-D} images of natural indoor and
+  outdoor scenes.
+\newblock {\em arXiv: Comp. Res. Repository}, 2021.
+
+\bibitem{Cordts2016Cityscapes}
+Marius Cordts, Mohamed Omran, Sebastian Ramos, Timo Rehfeld, Markus Enzweiler,
+  Rodrigo Benenson, Uwe Franke, Stefan Roth, and Bernt Schiele.
+\newblock The cityscapes dataset for semantic urban scene understanding.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, 2016.
+
+\bibitem{dai2017scannet}
+Angela Dai, Angel~X Chang, Manolis Savva, Maciej Halber, Thomas Funkhouser, and
+  Matthias Nie{\ss}ner.
+\newblock Scannet: Richly-annotated 3d reconstructions of indoor scenes.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 5828--5839,
+  2017.
+
+\bibitem{dosovitskiy2020an}
+Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn,
+  Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg
+  Heigold, Sylvain Gelly, Jakob Uszkoreit, and Neil Houlsby.
+\newblock An image is worth 16x16 words: Transformers for image recognition at
+  scale.
+\newblock {\em Proc. Int. Conf. Learn. Representations}, 2021.
+
+\bibitem{eftekhar2021omnidata}
+Ainaz Eftekhar, Alexander Sax, Jitendra Malik, and Amir Zamir.
+\newblock Omnidata: A scalable pipeline for making multi-task mid-level vision
+  datasets from 3d scans.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages
+  10786--10796, 2021.
+
+\bibitem{eigen2014depth}
+David Eigen, Christian Puhrsch, and Rob Fergus.
+\newblock Depth map prediction from a single image using a multi-scale deep
+  network.
+\newblock In {\em Proc. Advances in Neural Inf. Process. Syst.}, pages
+  2366--2374, 2014.
+
+\bibitem{facil2019cam}
+Jose Facil, Benjamin Ummenhofer, Huizhong Zhou, Luis Montesano, Thomas Brox,
+  and Javier Civera.
+\newblock {CAM-Convs}: camera-aware multi-scale convolutions for single-view
+  depth.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages
+  11826--11835, 2019.
+
+\bibitem{Gehrig21ral}
+Mathias Gehrig, Willem Aarents, Daniel Gehrig, and Davide Scaramuzza.
+\newblock Dsec: A stereo event camera dataset for driving scenarios.
+\newblock {\em IEEE Robotics and Automation Letters}, 2021.
+
+\bibitem{Geiger2013IJRR}
+Andreas Geiger, Philip Lenz, Christoph Stiller, and Raquel Urtasun.
+\newblock Vision meets robotics: The kitti dataset.
+\newblock {\em Int. J. Robot. Res.}, 2013.
+
+\bibitem{geiger2012we}
+Andreas Geiger, Philip Lenz, and Raquel Urtasun.
+\newblock Are we ready for autonomous driving? the kitti vision benchmark
+  suite.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 3354--3361.
+  IEEE, 2012.
+
+\bibitem{packnet}
+Vitor Guizilini, Rares Ambrus, Sudeep Pillai, Allan Raventos, and Adrien
+  Gaidon.
+\newblock 3d packing for self-supervised monocular depth estimation.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, 2020.
+
+\bibitem{guo2018learning}
+Xiaoyang Guo, Hongsheng Li, Shuai Yi, Jimmy Ren, and Xiaogang Wang.
+\newblock Learning monocular depth by distilling cross-domain stereo networks.
+\newblock In {\em Proc. Eur. Conf. Comp. Vis.}, pages 484--500, 2018.
+
+\bibitem{hartley2003multiple}
+Richard Hartley and Andrew Zisserman.
+\newblock {\em Multiple view geometry in computer vision}.
+\newblock Cambridge university press, 2003.
+
+\bibitem{hold2018perceptual}
+Yannick Hold-Geoffroy, Kalyan Sunkavalli, Jonathan Eisenmann, Matthew Fisher,
+  Emiliano Gambaretto, Sunil Hadap, and Jean-Fran{\c{c}}ois Lalonde.
+\newblock A perceptual measure for deep single image camera calibration.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 2354--2363,
+  2018.
+
+\bibitem{im2019dpsnet}
+Sunghoon Im, Hae-Gon Jeon, Stephen Lin, and In-So Kweon.
+\newblock Dpsnet: End-to-end deep plane sweep stereo.
+\newblock In {\em Proc. Int. Conf. Learn. Representations}, 2019.
+
+\bibitem{lyftl5preception}
+R. Kesten, M. Usman, J. Houston, T. Pandya, K. Nadhamuni, A. Ferreira, M. Yuan,
+  B. Low, A. Jain, P. Ondruska, S. Omari, S. Shah, A. Kulkarni, A. Kazakova, C.
+  Tao, L. Platinsky, W. Jiang, and V. Shet.
+\newblock Level 5 perception dataset 2020.
+\newblock \url{https://level-5.global/level5/data/}, 2019.
+
+\bibitem{knapitsch2017tanks}
+Arno Knapitsch, Jaesik Park, Qian-Yi Zhou, and Vladlen Koltun.
+\newblock Tanks and temples: Benchmarking large-scale scene reconstruction.
+\newblock {\em {ACM} Trans. Graph.}, 36(4):1--13, 2017.
+
+\bibitem{koch2018evaluation}
+Tobias Koch, Lukas Liebel, Friedrich Fraundorfer, and Marco Korner.
+\newblock Evaluation of cnn-based single-image depth estimation methods.
+\newblock In {\em Eur. Conf. Comput. Vis. Worksh.}, pages 0--0, 2018.
+
+\bibitem{kopf2021rcvd}
+Johannes Kopf, Xuejian Rong, and Jia-Bin Huang.
+\newblock Robust consistent video depth estimation.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, 2021.
+
+\bibitem{laina2016deeper}
+Iro Laina, Christian Rupprecht, Vasileios Belagiannis, Federico Tombari, and
+  Nassir Navab.
+\newblock Deeper depth prediction with fully convolutional residual networks.
+\newblock In {\em 2016 Fourth international conference on 3D vision (3DV)},
+  pages 239--248. IEEE, 2016.
+
+\bibitem{lambert2020mseg}
+John Lambert, Zhuang Liu, Ozan Sener, James Hays, and Vladlen Koltun.
+\newblock Mseg: A composite dataset for multi-domain semantic segmentation.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 2879--2888,
+  2020.
+
+\bibitem{li2017two}
+Jun Li, Reinhard Klein, and Angela Yao.
+\newblock A two-streamed network for estimating fine-scaled depth maps from
+  single rgb images.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 3372--3380,
+  2017.
+
+\bibitem{li2021generalizing}
+Shunkai Li, Xin Wu, Yingdian Cao, and Hongbin Zha.
+\newblock Generalizing to the open world: Deep visual odometry with online
+  adaptation.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages
+  13184--13193, 2021.
+
+\bibitem{lipson2021raft}
+Lahav Lipson, Zachary Teed, and Jia Deng.
+\newblock Raft-stereo: Multilevel recurrent field transforms for stereo
+  matching.
+\newblock In {\em Int. Conf. 3D. Vis.}, 2021.
+
+\bibitem{liu2022convnet}
+Zhuang Liu, Hanzi Mao, Chao-Yuan Wu, Christoph Feichtenhofer, Trevor Darrell,
+  and Saining Xie.
+\newblock A convnet for the 2020s.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages
+  11976--11986, 2022.
+
+\bibitem{MapillaryPSD}
+Manuel Lopez{-}Antequera, Pau Gargallo, Markus Hofinger, Samuel~Rota
+  Bul{\`{o}}, Yubin Kuang, and Peter Kontschieder.
+\newblock Mapillary planet-scale depth dataset.
+\newblock In {\em Proc. Eur. Conf. Comp. Vis.}, volume 12347, pages 589--604,
+  2020.
+
+\bibitem{mur2017orb}
+Raul Mur-Artal and Juan~D Tard{\'o}s.
+\newblock Orb-slam2: An open-source slam system for monocular, stereo, and
+  rgb-d cameras.
+\newblock {\em IEEE transactions on robotics}, 33(5):1255--1262, 2017.
+
+\bibitem{murORB2}
+Ra\'ul Mur-Artal and Juan~D. Tard\'os.
+\newblock {ORB-SLAM2}: an open-source {SLAM} system for monocular, stereo and
+  {RGB-D} cameras.
+\newblock {\em {IEEE} Trans. Robot.}, 33(5):1255--1262, 2017.
+
+\bibitem{peng2022animatable}
+Sida Peng, Shangzhan Zhang, Zhen Xu, Chen Geng, Boyi Jiang, Hujun Bao, and
+  Xiaowei Zhou.
+\newblock Animatable neural implicit surfaces for creating avatars from videos.
+\newblock {\em arXiv: Comp. Res. Repository}, page 2203.08133, 2022.
+
+\bibitem{radford2021learning}
+Alec Radford, Jong~Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh,
+  Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark,
+  et~al.
+\newblock Learning transferable visual models from natural language
+  supervision.
+\newblock In {\em Proc. Int. Conf. Mach. Learn.}, pages 8748--8763. PMLR, 2021.
+
+\bibitem{ranftl2021vision}
+Ren{\'e} Ranftl, Alexey Bochkovskiy, and Vladlen Koltun.
+\newblock Vision transformers for dense prediction.
+\newblock In {\em Proc. IEEE Int. Conf. Comp. Vis.}, pages 12179--12188, 2021.
+
+\bibitem{Ranftl2020}
+Ren\'{e} Ranftl, Katrin Lasinger, David Hafner, Konrad Schindler, and Vladlen
+  Koltun.
+\newblock Towards robust monocular depth estimation: Mixing datasets for
+  zero-shot cross-dataset transfer.
+\newblock {\em {IEEE} Trans. Pattern Anal. Mach. Intell.}, 2020.
+
+\bibitem{saito2019pifu}
+Shunsuke Saito, Zeng Huang, Ryota Natsume, Shigeo Morishima, Angjoo Kanazawa,
+  and Hao Li.
+\newblock Pifu: Pixel-aligned implicit function for high-resolution clothed
+  human digitization.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 2304--2314,
+  2019.
+
+\bibitem{saito2020pifuhd}
+Shunsuke Saito, Tomas Simon, Jason Saragih, and Hanbyul Joo.
+\newblock Pifuhd: Multi-level pixel-aligned implicit function for
+  high-resolution 3d human digitization.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 84--93,
+  2020.
+
+\bibitem{saxena2008make3d}
+Ashutosh Saxena, Min Sun, and Andrew~Y Ng.
+\newblock Make3d: Learning 3d scene structure from a single still image.
+\newblock {\em {IEEE} Trans. Pattern Anal. Mach. Intell.}, 31(5):824--840,
+  2008.
+
+\bibitem{schoenberger2016mvs}
+Johannes~Lutz Sch\"{o}nberger, Enliang Zheng, Marc Pollefeys, and Jan-Michael
+  Frahm.
+\newblock Pixelwise view selection for unstructured multi-view stereo.
+\newblock In {\em Proc. Eur. Conf. Comp. Vis.}, 2016.
+
+\bibitem{schops2017multi}
+Thomas Schops, Johannes~L Schonberger, Silvano Galliani, Torsten Sattler,
+  Konrad Schindler, Marc Pollefeys, and Andreas Geiger.
+\newblock A multi-view stereo benchmark with high-resolution images and
+  multi-camera videos.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 3260--3269,
+  2017.
+
+\bibitem{shotton2013scene}
+Jamie Shotton, Ben Glocker, Christopher Zach, Shahram Izadi, Antonio Criminisi,
+  and Andrew Fitzgibbon.
+\newblock Scene coordinate regression forests for camera relocalization in
+  rgb-d images.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 2930--2937,
+  2013.
+
+\bibitem{silberman2012indoor}
+Nathan Silberman, Derek Hoiem, Pushmeet Kohli, and Rob Fergus.
+\newblock Indoor segmentation and support inference from rgbd images.
+\newblock In {\em Proc. Eur. Conf. Comp. Vis.}, pages 746--760. Springer, 2012.
+
+\bibitem{singh2019investigating}
+Dalwinder Singh and Birmohan Singh.
+\newblock Investigating the impact of data normalization on classification
+  performance.
+\newblock {\em Applied Soft Computing}, 2019.
+
+\bibitem{song2015high}
+Shiyu Song, Manmohan Chandraker, and Clark~C Guest.
+\newblock High accuracy monocular sfm and scale correction for autonomous
+  driving.
+\newblock {\em {IEEE} Trans. Pattern Anal. Mach. Intell.}, 38(4):730--743,
+  2015.
+
+\bibitem{Spencer_2023_CVPR}
+Jaime Spencer, C.~Stella Qian, Michaela Trescakova, Chris Russell, Simon
+  Hadfield, Erich~W. Graf, Wendy~J. Adams, Andrew~J. Schofield, James Elder,
+  Richard Bowden, Ali Anwar, Hao Chen, Xiaozhi Chen, Kai Cheng, Yuchao Dai,
+  Huynh~Thai Hoa, Sadat Hossain, Jianmian Huang, Mohan Jing, Bo Li, Chao Li,
+  Baojun Li, Zhiwen Liu, Stefano Mattoccia, Siegfried Mercelis, Myungwoo Nam,
+  Matteo Poggi, Xiaohua Qi, Jiahui Ren, Yang Tang, Fabio Tosi, Linh Trinh,
+  S.~M.~Nadim Uddin, Khan~Muhammad Umair, Kaixuan Wang, Yufei Wang, Yixing
+  Wang, Mochu Xiang, Guangkai Xu, Wei Yin, Jun Yu, Qi Zhang, and Chaoqiang
+  Zhao.
+\newblock The second monocular depth estimation challenge.
+\newblock In {\em IEEE Conf. Comput. Vis. Pattern Recog. Worksh.}, pages
+  3063--3075, June 2023.
+
+\bibitem{sun_2022_TRO}
+Libo Sun, Wei Yin, Enze Xie, Zhengrong Li, Changming Sun, and Chunhua Shen.
+\newblock Improving monocular visual odometry using learned depth.
+\newblock {\em IEEE Transactions on Robotics}, 38(5):3173--3186, 2022.
+
+\bibitem{teed2021droid}
+Zachary Teed and Jia Deng.
+\newblock Droid-slam: Deep visual slam for monocular, stereo, and rgb-d
+  cameras.
+\newblock volume~34, pages 16558--16569, 2021.
+
+\bibitem{vasiljevic2019diode}
+Igor Vasiljevic, Nick Kolkin, Shanyi Zhang, Ruotian Luo, Haochen Wang, Falcon~Z
+  Dai, Andrea~F Daniele, Mohammadreza Mostajabi, Steven Basart, Matthew~R
+  Walter, et~al.
+\newblock Diode: A dense indoor and outdoor depth dataset.
+\newblock {\em arXiv: Comp. Res. Repository}, page 1908.00463, 2019.
+
+\bibitem{wang2018pixel2mesh}
+Nanyang Wang, Yinda Zhang, Zhuwen Li, Yanwei Fu, Wei Liu, and Yu-Gang Jiang.
+\newblock Pixel2mesh: Generating 3d mesh models from single {RGB} images.
+\newblock In {\em Proc. Eur. Conf. Comp. Vis.}, pages 52--67, 2018.
+
+\bibitem{Argoverse2}
+Benjamin Wilson, William Qi, Tanmay Agarwal, John Lambert, Jagjeet Singh,
+  Siddhesh Khandelwal, Bowen Pan, Ratnesh Kumar, Andrew Hartnett,
+  Jhony~Kaesemodel Pontes, Deva Ramanan, Peter Carr, and James Hays.
+\newblock Argoverse 2: Next generation datasets for self-driving perception and
+  forecasting.
+\newblock In {\em Proc. Advances in Neural Inf. Process. Syst.}, 2021.
+
+\bibitem{wu2018learning}
+Jiajun Wu, Chengkai Zhang, Xiuming Zhang, Zhoutong Zhang, William Freeman, and
+  Joshua Tenenbaum.
+\newblock Learning shape priors for single-view 3d completion and
+  reconstruction.
+\newblock In {\em Proc. Eur. Conf. Comp. Vis.}, pages 646--662, 2018.
+
+\bibitem{xian2018monocular}
+Ke Xian, Chunhua Shen, Zhiguo Cao, Hao Lu, Yang Xiao, Ruibo Li, and Zhenbo Luo.
+\newblock Monocular relative depth perception with web stereo data supervision.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 311--320,
+  2018.
+
+\bibitem{xian2020structure}
+Ke Xian, Jianming Zhang, Oliver Wang, Long Mai, Zhe Lin, and Zhiguo Cao.
+\newblock Structure-guided ranking loss for single image depth prediction.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 611--620,
+  2020.
+
+\bibitem{itsc21pandaset}
+Pengchuan Xiao, Zhenlei Shao, Steven Hao, Zishuo Zhang, Xiaolin Chai, Judy
+  Jiao, Zesong Li, Jian Wu, Kai Sun, Kun Jiang, Yunlong Wang, and Diange Yang.
+\newblock Pandaset: Advanced sensor suite dataset for autonomous driving.
+\newblock In {\em {IEEE} Int. Intelligent Transportation Systems Conf.}, 2021.
+
+\bibitem{xie2017aggregated}
+Saining Xie, Ross Girshick, Piotr Doll{\'a}r, Zhuowen Tu, and Kaiming He.
+\newblock Aggregated residual transformations for deep neural networks.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, pages 1492--1500,
+  2017.
+
+\bibitem{Xu_2023_ICCV}
+Guangkai Xu, Wei Yin, Hao Chen, Chunhua Shen, Kai Cheng, and Feng Zhao.
+\newblock Pose-free 3d scene reconstruction with frozen depth models.
+\newblock In {\em Proc. IEEE Int. Conf. Comp. Vis.}, 2023.
+
+\bibitem{yang2019drivingstereo}
+Guorun Yang, Xiao Song, Chaoqin Huang, Zhidong Deng, Jianping Shi, and Bolei
+  Zhou.
+\newblock Drivingstereo: A large-scale dataset for stereo matching in
+  autonomous driving scenarios.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, 2019.
+
+\bibitem{yang2021transformers}
+Guanglei Yang, Hao Tang, Mingli Ding, Nicu Sebe, and Elisa Ricci.
+\newblock Transformer-based attention networks for continuous pixel-wise
+  prediction.
+\newblock In {\em Proc. IEEE Int. Conf. Comp. Vis.}, 2021.
+
+\bibitem{yin2021virtual}
+Wei Yin, Yifan Liu, and Chunhua Shen.
+\newblock Virtual normal: Enforcing geometric constraints for accurate and
+  robust depth prediction.
+\newblock {\em {IEEE} Trans. Pattern Anal. Mach. Intell.}, 2021.
+
+\bibitem{yin2022devil}
+Wei Yin, Yifan Liu, Chunhua Shen, Anton van~den Hengel, and Baichuan Sun.
+\newblock The devil is in the labels: Semantic segmentation from sentences.
+\newblock {\em arXiv: Comp. Res. Repository}, page 2202.02002, 2022.
+
+\bibitem{Yin2019enforcing}
+Wei Yin, Yifan Liu, Chunhua Shen, and Youliang Yan.
+\newblock Enforcing geometric constraints of virtual normal for depth
+  prediction.
+\newblock In {\em Proc. IEEE Int. Conf. Comp. Vis.}, 2019.
+
+\bibitem{yin2020diversedepth_old}
+Wei Yin, Xinlong Wang, Chunhua Shen, Yifan Liu, Zhi Tian, Songcen Xu, Changming
+  Sun, and Dou Renyin.
+\newblock Diversedepth: Affine-invariant depth prediction using diverse data.
+\newblock {\em arXiv: Comp. Res. Repository}, page 2002.00569, 2020.
+
+\bibitem{yin2022towards}
+Wei Yin, Jianming Zhang, Oliver Wang, Simon Niklaus, Simon Chen, Yifan Liu, and
+  Chunhua Shen.
+\newblock Towards accurate reconstruction of 3d scene shape from a single
+  monocular image.
+\newblock {\em {IEEE} Trans. Pattern Anal. Mach. Intell.}, 2022.
+
+\bibitem{leres}
+Wei Yin, Jianming Zhang, Oliver Wang, Simon Niklaus, Long Mai, Simon Chen, and
+  Chunhua Shen.
+\newblock Learning to recover 3d scene shape from a single image.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, 2021.
+
+\bibitem{yin2018geonet}
+Zhichao Yin and Jianping Shi.
+\newblock Geonet: Unsupervised learning of dense depth, optical flow and camera
+  pose.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 1983--1992, 2018.
+
+\bibitem{yuan2022new}
+Weihao Yuan, Xiaodong Gu, Zuozhuo Dai, Siyu Zhu, and Ping Tan.
+\newblock New {CRFs}: Neural window fully-connected {CRFs} for monocular depth
+  estimation.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.}, 2022.
+
+\bibitem{zamir2018taskonomy}
+Amir Zamir, Alexander Sax, , William Shen, Leonidas Guibas, Jitendra Malik, and
+  Silvio Savarese.
+\newblock Taskonomy: Disentangling task transfer learning.
+\newblock In {\em Proc. IEEE Conf. Comp. Vis. Patt. Recogn.} IEEE, 2018.
+
+\bibitem{zhang2022hierarchical}
+Chi Zhang, Wei Yin, Zhibin Wang, Gang Yu, Bin Fu, and Chunhua Shen.
+\newblock Hierarchical normalization for robust monocular depth estimation.
+\newblock {\em Proc. Advances in Neural Inf. Process. Syst.}, 2022.
+
+\bibitem{Zhang_2023_ICCV}
+Chi Zhang, Wei Yin, Gang Yu, Zhibin Wang, Tao Chen, Bin Fu, Joey~Tianyi Zhou,
+  and Chunhua Shen.
+\newblock Robust geometry-preserving depth estimation using differentiable
+  rendering.
+\newblock In {\em Proc. IEEE Int. Conf. Comp. Vis.}, 2023.
+
+\bibitem{zhu2020single}
+Rui Zhu, Xingyi Yang, Yannick Hold-Geoffroy, Federico Perazzi, Jonathan
+  Eisenmann, Kalyan Sunkavalli, and Manmohan Chandraker.
+\newblock Single view metrology in the wild.
+\newblock In {\em Proc. Eur. Conf. Comp. Vis.}, pages 316--333. Springer, 2020.
+
+\end{thebibliography}

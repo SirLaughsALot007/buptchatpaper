@@ -1,0 +1,19 @@
+%  !TEX root = ../main.tex
+\vspace{-5pt}
+\section{Discussion and Future Work}\label{sec:discuss}
+
+\hspace{0.3em}\textbf{Potential Countermeasure:}
+We have demonstrated that \alias are robust to audio pre-processing and inaudible attack detection methods. We envisage that defense approaches tracking ultrasound nature~\cite{zhang2021eararray,he2019canceling} may be effective, although these methods are based on two hardware-dependent prototypes that can not adapt to off-the-shelf compact smart devices. For the remaining feature forensics-based~\cite{zhang2017dolphinattack,roy2018inaudible} or ML-based defenses~\cite{li2021robust,li2023learning}, we believe that the adaptive adversary shall adopt these defense strategies along with the ultrasonic transformation model during optimization and physically bypass them. But this would result in a less universal attack due to additional constraints.
+
+\textbf{Prevent Airborne Self-demodulation Leakage.}
+Although our attack distance has significantly exceeded previous works, please note that \alias cannot extend the range infinitely. As uncovered in \cite{iijima2018audio}, the self-demodulation occurs and then the modulated baseband becomes audible once a certain power is reached. To increase the attack range while ensuring inaudibility, we adopt the following strategies: 1) utilizing 25 kHz carrier frequency rather than higher frequencies, such as 40kHz, for less attenuation; 2) employing customized ultrasound transducers, signal generator, and amplifiers capable of suppressing nonlinear distortion at the speaker side; and 3) setting maximum power not to exceed 3.2W and implementing USB-AM to increase the attack efficiency with portable device and off-the-shelf loudspeakers. % In future work, we will investigate the laser-based mechanism that launch attack at 100m~\cite{sugawara2020light} and address its challenges, e.g., more severe channel distortion and strict aiming requirement.(因为已经在前面揭示了为什么light攻击不可行)
+
+\textbf{Limitations:}
+1) \alias achieves highly universal manipulation of user speech using DeepSpeech2's gradient information. However, its universality under black-box settings is limited in critical user-present scenarios due to variable user factors. 
+Notably, targeted universal AE attacks in black-box scenarios remain an unsolved problem currently, despite several untargeted literature~\cite{vadillo2019universal,neekhara2019universal}.
+2) Although we have verified that our ultrasonic transformation model is effective on different recording devices, it is currently device-specific due to the microphone's frequency selectivity to ultrasound. We will investigate a device-generic transformation model in future work. 
+3) Our careful design enables the \textit{man-in-the-middle} attack strategy and our user testing in Appendix \textsection\ref{append:user_test} demonstrate its high stealthiness. However, the testing results imply that replaying excessively long user commands may cause discomfort and might alert the user. We envision that understanding user intent and then replaying synthetic short commands can mitigate this issue.
+
+
+\textbf{Attack on Speaker Recognition:} 
+We envision that the idea of \alias can be generalized to attack speaker recognition models deployed on access control systems, e.g., authentication of voice assistants and applications. We have conducted a preliminary experiment attacking the state-of-the-art ECAPA-TDNN~\cite{2020ecapatdnn}, a popular speaker recognition model. We maintain the almost identical design as used in attacking the ASR model and only reconfigure the optimization goal $y_t$ as the target speaker label and the loss function $\mathcal{L}(f(\cdot),y_t)$ as the cosine similarity scoring module. Results demonstrate that, in a 10-person set, \alias is universal to alter the voiceprint of any user's speech samples into the targeted speaker's. We plan to delve into such an ability of \alias in future work.

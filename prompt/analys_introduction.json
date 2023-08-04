@@ -1,0 +1,8 @@
+{
+    "_type": "prompt",
+    "input_variables": [
+        "introduction",
+        "language"
+    ],
+    "template" : "test"
+}

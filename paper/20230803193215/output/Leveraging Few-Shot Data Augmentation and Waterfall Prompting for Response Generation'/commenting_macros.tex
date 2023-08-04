@@ -1,0 +1,47 @@
+%% commenting macros
+
+% use this to hide larger blocks of material:
+% \renewcommand{\hide}[1]{}
+
+\usepackage{xcolor}
+\usepackage{amssymb}
+
+%for fancier colors use the following options when defining your document class
+%\documentclass[usenames,dvipsnames]{article}
+%then you can define colors as follows:
+%\colorlet{macolor}{WildStrawberry!100}
+
+\definecolor{leacolor}{rgb}{0.40,0.60,1.00}
+\definecolor{selcolor}{rgb}{0.53,0.30,1.00}
+\definecolor{mmcolor}{rgb}{0.1,0.2,0.4}
+\definecolor{urjacolor}{rgb}{0.039, 0.478, 0.741}
+
+\definecolor{todocolor}{rgb}{1.00,0.75,0.00}
+\definecolor{changedcolor}{rgb}{0.42,0.27,0.57}
+\definecolor{removedcolor}{rgb}{0.867,0.176,0.361}
+
+
+
+\newcommand{\nbc}[3]{
+		{\colorbox{#3}{\bfseries\sffamily\scriptsize\textcolor{white}{#1}}}
+		{\textcolor{#3}{\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}}
+}
+
+\newcommand{\lea}[1]{\nbc{L}{#1}{leacolor}}
+\newcommand{\sel}[1]{\nbc{S}{#1}{selcolor}}
+\newcommand{\mm}[1]{\nbc{MM}{#1}{mmcolor}}
+\newcommand{\urja}[1]{\nbc{UK}{#1}{urjacolor}}
+
+\newcommand{\todo}[1]{\nbc{TODO}{#1}{todocolor}}
+\newcommand{\changed}[1]{\nbc{CHANGED}{#1}{changedcolor}}
+\newcommand{\removed}[1]{\nbc{REMOVED}{#1}{removedcolor}}
+
+% Use this to temporarily hide reviewing comments, todos, etc.:
+% \renewcommand{\mm}[1]{}
+% \renewcommand{\todo}[1]{}
+% \renewcommand{\removed}[1]{}
+
+% Use this to make "changed" items appear normal:
+% \renewcommand{\changed}[1]{#1}
+
+%% end commenting macros

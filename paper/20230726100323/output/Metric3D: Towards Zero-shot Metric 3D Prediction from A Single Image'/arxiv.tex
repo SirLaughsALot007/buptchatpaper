@@ -1,0 +1,150 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage{./ICCV2023/iccv}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+
+\usepackage{threeparttable}
+\usepackage[vlined, ruled, linesnumbered]{algorithm2e}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{bbm}
+\usepackage{pifont}
+\usepackage{enumitem}
+
+\usepackage{eucal,nicefrac}
+\usepackage{subcaption}
+\usepackage{gensymb}
+
+
+
+
+\usepackage[margin=4pt,font=footnotesize,labelfont=bf,labelsep=endash,tableposition=top]{caption}
+
+
+\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks,bookmarks=false]{hyperref}
+
+
+
+\usepackage[capitalize]{cleveref}
+\crefname{section}{Sec.}{Secs.}
+\Crefname{section}{Section}{Sections}
+\Crefname{table}{Table}{Tables}
+\crefname{table}{Table}{Tables}
+
+\iccvfinalcopy %
+
+\def\iccvPaperID{5522} %
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+\ificcvfinal\pagestyle{empty}\fi
+
+\begin{document}
+
+\title{Metric3D: Towards Zero-shot Metric 3D Prediction from A Single Image}
+
+
+\def\SP{~~}
+
+\author{
+Wei Yin$^{1 \ast}$,
+\SP
+Chi Zhang$^2$\thanks{Equal contributions.}, 
+\SP 
+Hao Chen$^3$\thanks{Corresponding author.},
+\SP
+Zhipeng Cai$^4$,
+\SP 
+Gang Yu$^2$,
+\SP 
+Kaixuan Wang$^1$, \\
+\SP 
+Xiaozhi Chen$^1$,
+\SP 
+Chunhua Shen$^3$
+\\[0.1325cm]
+$ ^1$ DJI Technology
+\SP ~~~
+$ ^2 $ Tencent
+\SP ~~~
+$ ^3$ Zhejiang University
+\SP ~~~
+$ ^4$ Intel Labs
+\\
+{e-mail: $\tt\small ^1 \{yvan.yin, halfbullet.wang, xiaozhi.chen\}@dji.com;$ }\\
+$ \tt\small^2\{johnczhang, skicyyu\}@tencent.com;$ \\
+$ \tt\small ^3 haochen.cad@zju.edu.cn, chunhua@me.com;$ 
+$\tt\small ^4 zhipeng.cai@intel.com$ 
+}
+
+
+
+
+\makeatletter
+\let\@oldmaketitle\@maketitle%
+\renewcommand{\@maketitle}{\@oldmaketitle%
+ \centering
+    \includegraphics[width=0.95\textwidth]{./files/front_img.pdf}
+     \captionof{figure}{\textbf{
+     Illustration 
+     and applications of our metric 3D reconstruction
+     method}.
+     Top (metrology):  we use two phones (iPhone 12 and an Android phone) to capture the scene and measure the size of tables. With the photos' metadata, we perform 3D metric reconstruction and then measure tables' sizes (marked in red), which are very close to the ground truth (marked in blue). In contrast, the recent method LeReS~\cite{leres} performs much worse and is unable to predict metric 3D by design.
+     Bottom  (dense SLAM mapping): existing SOTA mono-SLAM methods usually face scale drift problems (see the red arrows) in large-scale scenes and are unable to achieve the metric scale, while, naively inputting our metric depth, Droid-SLAM~\cite{teed2021droid} can recover much more accurate trajectory and perform the \textit{metric} dense mapping (see the red measurements). 
+     Note that all testing data are unseen to our model.
+}
+    \label{Fig: first page fig.}
+    \bigskip}                   %
+\makeatother
+
+\maketitle
+
+
+\def\PWN{{\rm PWN}}
+\def\VNL{{\rm VNL}}
+\def\RPNL{{\rm RPNL}}
+
+
+\begin{abstract}
+
+Reconstructing accurate 3D scenes from images is a long-standing vision task. Due to the ill-posedness of the single-image reconstruction problem, most well-established methods are built upon multi-view geometry. State-of-the-art (SOTA) monocular metric depth estimation methods can only handle a single camera model and are unable to perform mixed-data training due to the metric ambiguity. Meanwhile, SOTA monocular methods trained on large mixed datasets achieve zero-shot generalization by learning affine-invariant depths, which cannot recover real-world metrics. In this work, we show that the key to a zero-shot single-view metric depth model lies in the combination of large-scale data training and resolving the metric ambiguity from various camera models. We propose a canonical camera space transformation module, which explicitly addresses the ambiguity problems and can be effortlessly plugged into existing monocular models. Equipped with our module, monocular models can be stably trained over $8$ million of images with thousands of camera models, resulting in zero-shot generalization to in-the-wild images with unseen camera settings. 
+
+\textbf{ Experiments demonstrate SOTA performance of our method on $7$ zero-shot benchmarks.
+Notably, our method won the championship in the }\href{https://jspenmar.github.io/MDEC/}{2nd Monocular Depth Estimation Challenge}.
+Our method enables the accurate recovery of metric 3D structures on randomly collected internet images, paving the way for plausible single-image metrology. The potential benefits extend to downstream tasks, which can be significantly improved by simply plugging in our model. 
+For example, 
+our model relieves the scale drift issues of monocular-SLAM (Fig.~\ref{Fig: first page fig.}), leading to high-quality metric scale dense mapping.  The code is available at \url{https://github.com/YvanYin/Metric3D}.
+\end{abstract}
+
+\section{Introduction}
+\input{introduction}
+
+\section{Related Work}
+\input{related_works}
+
+\section{Method}
+\input{method}
+
+\section{Experiments}
+\input{exps}
+
+\section{Appendix}
+\input{appendix}
+
+
+
+
+{\small
+\bibliographystyle{./ICCV2023/ieee_fullname}
+\bibliography{./ICCV2023/egbib}
+}
+
+\end{document}

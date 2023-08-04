@@ -1,0 +1,32 @@
+\begin{thebibliography}{1}
+
+\bibitem{agrawal2016stability}
+Ankit Agrawal, Abha Tenguria, and Geeta Modi.
+\newblock Stability analysis of an sir epidemic model with specific nonliner
+  incidence rate.
+\newblock {\em Math. Theory Model}, 6(1):45--51, 2016.
+
+\bibitem{chauhan2014stability}
+Sudipa Chauhan, Om~Prakash Misra, and Joydip Dhar.
+\newblock Stability analysis of sir model with vaccination.
+\newblock {\em American journal of computational and applied mathematics},
+  4(1):17--23, 2014.
+
+\bibitem{kuniya2018stability}
+Toshikazu Kuniya.
+\newblock Stability analysis of an age-structured sir epidemic model with a
+  reduction method to odes.
+\newblock {\em Mathematics}, 6(9):147, 2018.
+
+\bibitem{ullah2013stability}
+Roman Ullah, Gul Zaman, and Saeed Islam.
+\newblock Stability analysis of a general sir epidemic model.
+\newblock {\em VFAST Transactions on Mathematics}, 1(1), 2013.
+
+\bibitem{zaman2007stability}
+Gul Zaman and Il~Hyo Jung.
+\newblock Stability techniques in sir epidemic models.
+\newblock In {\em PAMM: Proceedings in Applied Mathematics and Mechanics},
+  volume~7, pages 2030063--2030064. Wiley Online Library, 2007.
+
+\end{thebibliography}

@@ -1,0 +1,4 @@
+Conclusion:
+
+* (1): The significance of this piece of work is that it proposes a novel zero-shot voice conversion (VC) model called SLMGAN, which eliminates the need for text labels and achieves state-of-the-art performance in naturalness and similarity.
+* (2): Innovation point: The SLM-based discriminators and speech consistency loss are novel contributions that improve the performance of the VC model. Performance: The proposed model outperforms two baseline models and two publicly available models for zero-shot VC that rely on text labels. Workload: The model is trained with multiple objectives, which may increase the training workload.

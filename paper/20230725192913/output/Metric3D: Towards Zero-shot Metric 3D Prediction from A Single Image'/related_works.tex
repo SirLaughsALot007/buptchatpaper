@@ -1,0 +1,38 @@
+\noindent\textbf{3D reconstruction from a single image.} 
+Reconstructing various objects from a single image has been well studied~\cite{barron2014shape, wang2018pixel2mesh, wu2018learning}. They can produce high-quality 3D models of cars, planes, tables, and human body~\cite{saito2019pifu, saito2020pifuhd}. The main challenge is how to best recover objects' details, how to represent them with limited memory, and how to generalize to more diverse objects. However, all these methods rely on learning priors specific to a certain object class or instance, typically from 3D supervision, and can therefore not work for full scene reconstruction. Apart from these reconstructing objects works, several works focus on scene reconstruction~\cite{Xu_2023_ICCV} from a single image. Saxena~\etal~\cite{saxena2008make3d} construct the scene based on the assumption that the whole scene can be segmented into several small planes. With planes' orientation and location, the 3D structure can be represented. Recently, LeReS~\cite{leres} propose to use a strong monocular depth estimation model to do scene reconstruction. However, they can only recover the shape up to a scale. 
+Zhang~\etal~\cite{Zhang_2023_ICCV} recently  propose a zero-shot geometry-preserving depth estimation model that is capable of making depth predictions up to an unknown scale, without requiring  scale-invariant depth annotations for training. 
+In contrast to these works, our method can recover the metric 3D structure.
+
+
+
+\noindent\textbf{Supervised monocular depth estimation.}
+After several benchmarks~\cite{silberman2012indoor, Geiger2013IJRR} are established, neural network based
+methods~\cite{yuan2022new, Yin2019enforcing, bhat2021adabins} have dominated since then. Several approaches regress the continuous depth from the aggregation of information in an image~\cite{eigen2014depth}. As depth distribution corresponding to different RGBs can vary to a large extent, some methods~\cite{Yin2019enforcing, 
+bhat2021adabins}
+discretize the depth and formulate this problem to a classification~\cite{yin2021virtual},  
+which often achieves better performance. %
+The generalization issue of deep models for 3D metric recovery   
+is related to two problems. 
+The first one is to generalize to diverse scenes, while 
+the other 
+one is how to predict accurate metric information under various camera settings. The first problem has been well addressed by recent methods. Some works~\cite{
+xian2020structure, xian2018monocular, yin2021virtual} propose to construct a large-scale relative depth dataset, such as DIW~\cite{chen2016single} and OASIS~\cite{chen2020oasis}, and then they target learning the relative relations. However, the relative depth loses geometric structure information.
+To improve the recovered geometry quality, 
+learning affine-invariant depth methods, such as MiDaS~\cite{Ranftl2020}, LeReS~\cite{leres}, and HDN~\cite{ 
+zhang2022hierarchical} are proposed. 
+By mixing large-scale data, 
+state-of-the-art performance and the generalization over scenes are improved continuously. 
+Note that by design, these methods are unable to recover 
+the metric information.
+How to achieve both strong generalization and accurate metric information over diverse scenes is the key problem that
+we attempt to tackle. 
+
+\noindent\textbf{Large-scale data training.}
+Recently, various natural language problems and computer vision problems~\cite{
+yin2022devil, radford2021learning, lambert2020mseg} have achieved impressive progress with large-scale data training. CLIP~\cite{radford2021learning} is a promising classification model, which is trained on billions of paired image and language descriptions data. It achieved state-of-the-art performance over several classification benchmarks by zero-shot testing. 
+For depth prediction, large-scale data training has been widely applied. Ranft~\etal~\cite{Ranftl2020} mixed over 2 million data in training, LeReS~\cite{yin2022towards} collected over $300$ thousands data, Eftekhar~\etal~\cite{eftekhar2021omnidata} also merged millions of data to build a strong depth prediction model. %
+
+
+
+
+

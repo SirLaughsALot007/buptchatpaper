@@ -1,0 +1,91 @@
+\begin{thebibliography}{10}
+
+\bibitem{bak}
+A.~Bak.
+\newblock {\em The stable structure of quadratic modules}.
+\newblock Thesis Columbia Univ., 1969.
+
+\bibitem{preusser-odd}
+A.~Bak and R.~Preusser.
+\newblock The {$\mathrm E$}-normal structure of odd dimensional unitary groups.
+\newblock {\em J. Pure Appl. Algebra}, 222(9):2823--2880, 2018.
+
+\bibitem{magic-square}
+C.~H. Barton and A.~Sudbery.
+\newblock Magic squares and matrix models of lie algebras.
+\newblock {\em Advances in Mathematics}, 180(2):596--647, 2003.
+\newblock In russian.
+
+\bibitem{calmes-fasel}
+B.~Calm\`es and J.~Fasel.
+\newblock Groupes classiques.
+\newblock In {\em Autour des sch\'emas en groupes}, volume~II, pages 1--133.
+  Soc. Math. France, 2015.
+
+\bibitem{root-group-datum}
+P.-E. Caprace and B.~R{\'e}my.
+\newblock Groups with a root group datum.
+\newblock {\em Innovations in Incidence Geometry}, 9:5--77, 2009.
+
+\bibitem{knus}
+M.-A. Knus.
+\newblock {\em Quadratic and hermitian forms over rings}.
+\newblock Springer-Verlag, 1991.
+
+\bibitem{inv-book}
+M.-A. Knus, A.~Merkurjev, M.~Rost, and J.-P. Tingol.
+\newblock {\em The book of involutions}.
+\newblock AMS Col. Publ., 1998.
+
+\bibitem{st-jordan}
+O.~Loos and E.~Neher.
+\newblock {\em Steinberg groups for {J}ordan pairs}.
+\newblock Birkh{\"a}user, New York, 2019.
+
+\bibitem{odd-def-petrov}
+V.~Petrov.
+\newblock Odd unitary groups.
+\newblock {\em J. Math. Sci.}, 130(3):4752--4766, 2005.
+
+\bibitem{graded-groups}
+Zh. Shi.
+\newblock Groups graded by finite root systems.
+\newblock {\em Tohoku Math. J.}, 45:89--108, 1993.
+
+\bibitem{abs-root-subgr}
+F.~G. Timmesfeld.
+\newblock {\em Abstract root subgroups and simple groups of {L}ie-type}.
+\newblock Birkh{\"a}user Basel, 2001.
+
+\bibitem{def-tits}
+J.~Tits.
+\newblock Formes quadratiques, groupes orthogonaux et alg\'ebres de {C}lifford.
+\newblock {\em Inventiones Math.}, 5:19--41, 1968.
+
+\bibitem{central-ku2}
+E.~Voronetsky.
+\newblock Centrality of odd unitary $\mathrm{K}_2$-functor, 2020.
+\newblock Preprint, arXiv:2005.02926.
+
+\bibitem{thesis}
+E.~Voronetsky.
+\newblock {\em Lower $\mathrm{K}$-theory of odd unitary groups}.
+\newblock PhD thesis, St Petersburg University, Saint Petersburg, Russia, 2022.
+
+\bibitem{classic-ofa}
+E.~Voronetsky.
+\newblock Twisted forms of classical groups.
+\newblock {\em Algebra i Analiz}, 34(2):56--94, 2022.
+
+\bibitem{a-com-rel}
+E.~Voronetsky.
+\newblock Groups with $\mathsf{A}_\ell$-commutator relations.
+\newblock {\em Algebra i Analiz}, 35(3):1--16, 2023.
+\newblock In russian.
+
+\bibitem{def-weil}
+A.~Weil.
+\newblock Algebras with involutions and the classical groups.
+\newblock {\em J. Indian Math. Soc.}, 24(3):589--623, 1960.
+
+\end{thebibliography}
