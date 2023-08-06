@@ -18,3 +18,8 @@ class OutputParser:
             tmp = input.split('\n')
             output = {item.split(":")[0]:item.split(":")[1].strip() for item in tmp if item != ""}
             return output
+        elif self.type == "get_review_table_from_abstract":
+            tmp = input.split('\n')
+            output = {item.remove("*").split(":")[0]:item.split(":")[1] for item in tmp if item != ""}
+            return output
+

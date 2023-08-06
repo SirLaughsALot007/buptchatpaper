@@ -1,10 +1,10 @@
 ## FastChat Vicuna-13b API:
 1.  conda activate FastChat
 2.  cd /home/sjx/FastChat
-3.  launch the controller: python3 -m fastchat.serve.controller
-4.  python3 -m fastchat.serve.model_worker --model-names "gpt-3.5-turbo,text-davinci-003,text-embedding-ada-002" --model-path /home/public/song/vicuna-13b-v1.3 --num-gpus 4
+3.  launch the controller: CUDA_VISIBLE_DEVICES='1,2' python3 -m fastchat.serve.controller
+4.  CUDA_VISIBLE_DEVICES='1,2' python3 -m fastchat.serve.model_worker --model-names "gpt-3.5-turbo,text-davinci-003,text-embedding-ada-002" --model-path /home/public/song/vicuna-13b-v1.3 --num-gpus 2
 
-5.  launch the RESTful API server: python3 -m fastchat.serve.openai_api_server --host localhost --port 8000
+5.  launch the RESTful API server: CUDA_VISIBLE_DEVICES='1,2' python3 -m fastchat.serve.openai_api_server --host localhost --port 8000
 
 ## Test API
 curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{"model": "gpt-3.5-turbo", "messages": [{"role": "system", "content": "You are goot at math"},{"role":"assistant", "content":"I need your help to calculate the sum of 1 and 2"}, {"role":"assistant", "content":"please tell me the answer"}]}'

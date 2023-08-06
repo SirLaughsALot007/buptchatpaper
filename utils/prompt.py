@@ -1,4 +1,6 @@
 from typing import List, Dict, Any, Optional, Mapping, Union
+from load_config import load_config
+config = load_config()
 def construct_query_for_introduction(prompt: str, language: str) -> Dict:
     # {"model": "gpt-3.5-turbo", "messages": [{"role": "system", "content": "你好！"}]}
     query = {
@@ -117,7 +119,7 @@ def construct_query_for_generate_abstract(prompt):
     }
     return query
 
-def construct_query_for_generate_introduction_part1(prompt):
+def construct_query_for_generate_introduction_part1(prompt) -> Dict:
     # prompt为综述主题
     # 研究背景：介绍综述的主题是什么，为什么这个主题是重要的，以及该领域的研究现状和进展。引出该主题的背景信息有助于读者理解该综述的意义和价值
     query = {
@@ -138,3 +140,92 @@ def construct_query_for_generate_introduction_part1(prompt):
         ]
     }
     return query
+def construct_query_for_generate_introduction_part2(prompt) -> Dict:
+    # prompt为综述主题
+    # 研究主题的明确定义：在Definition部分，应该明确定义综述涉及的研究主题或领域。清晰地界定综述的范围有助于读者了解综述的重点和目标。
+    # 研究问题阐述：定义研究的问题或目标是什么，综述的目的是为了解决什么问题，或者概括什么方面的研究进展。
+    # 研究方法和策略：对于一些系统性综述，可能需要简要介绍用于收集、筛选和整合文献的方法和策略，以保证综述的可信度和完整性。
+    query = {
+        "model": 'gpt-3.5-turbo',
+        "messages": [
+            {
+                "role": "system", 
+                "content": """
+                You are an expert in {} field and now you are required to give a general overview of {} field. This introduction needs to include the importance of {}, the current status and progress of research in {}.
+                """.format(prompt, prompt, prompt, prompt)
+            },
+            {
+                "role": "user",
+                "content": """
+                Please note that you should use a formal tone and need to elicit {} background information to help the reader understand the significance and value of the review Your introduction should be about two paragraphs.
+                """.format(prompt)
+            }
+        ]
+    }
+    return query
+def review_from_abstract(keyword: str, prompt: str) -> Dict:
+    # 从论文摘要中提取出：
+    # 1. 本篇文章的方法名称（最好是一个词或者一句简短的话）
+    # 2. 优缺点
+    # 3. 创新点
+    query = {
+        "model": 'gpt-3.5-turbo',
+        "messages": [
+            {
+                "role": "system", 
+                "content": """
+                You are a research expert in {} field, please help me to summarize the paper in {} field.
+                """.format(keyword, keyword)
+            },
+            {
+                "role": "assistant",
+                "content": """
+                Below is the abstract section of an English paper {}. Please help me summarize from it to answer the following three questions:\n
+                *1. What is the method name of this paper?\n
+                *2. What are the strengths and weaknesses of this paper?\n
+                *3. What is the innovation point of this paper?\n
+                """.format(prompt)
+            },
+            {
+                "role": "user",
+                "content": """
+                Please note that you should use a formal tone. Please organize your answers in the following format:\n
+                *1. Method Name: XXX\n
+                *2. Strengths and weaknesses: XXX\n
+                *3. Innovation point: XXX\n
+                You need to replace XXX with the appropriate content. Please note the length of each paragraph, where Method Name should be a word or a very short phrase, Strengths and weaknesses should be a short sentence, and Innovation point should be a short sentence.
+                """
+            }
+        ]
+    }
+    return query
+
+def review_from_method(keyword: str, prompt: str) -> Dict:
+    # 将研究方法概括成一句话
+    query = {
+        "model": 'gpt-3.5-turbo',
+        "messages": [
+            {
+                "role": "system",
+                "content": """
+                You are a research expert in {} field, please help me to summarize the paper in {} field.
+                """.format(keyword, keyword)
+            },
+            {
+                "role": "assistant",
+                "content": """
+                Here is the method section of an English essay {}. Please help me summarize it into a sentence. Please help me summarize it into a short sentence that needs to have a general description of the methodology.
+                """.format(prompt)
+            },
+            {
+                "role": "user",
+                "content": """
+                Please note that you need to use a formal tone and the content should be as brief as possible.
+                """
+            }
+        ]
+    }
+    return query
+
+def review_from_conclusion(keyword: str, prompt: str):
+    return 

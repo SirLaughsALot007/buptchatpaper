@@ -29,9 +29,14 @@ from tqdm import tqdm
 from text_filter import TextFilter
 import argparse
 import openai
+from docx import Document
+from docx.enum.table import WD_ALIGN_VERTICAL
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.table import WD_TABLE_ALIGNMENT
+from output_parser import OutputParser
 from langchain.prompts import PromptTemplate
 from utils.util import chat_with_llm_api
-from utils.prompt import construct_query_for_generate_abstract
+from utils.prompt import construct_query_for_generate_abstract, review_from_abstract, review_from_method, review_from_conclusion, construct_query_for_generate_introduction_part1, construct_query_for_generate_introduction_part2, construct_query_for_generate_introduction_part3
 logging.basicConfig(level=logging.INFO)
 warnings.filterwarnings("ignore")
 logger = MyLogger().get_logger()
@@ -70,7 +75,7 @@ def llm_chat_with_one_paper(llm, title: str, timestamp = '20230722102536') -> No
     logger.info(f"Summarizing the document: {title} takes {end_time - start_time} seconds.")
         
     # 将模型输出的introduction保存到本地
-    output_introduction(res, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'introduction'), title)
+    output_information(res, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'introduction'), title)
     return introduction, res
 
 # Testing Finished!
@@ -199,7 +204,7 @@ def analysis_method(llm, method: str) -> str:
     end_time = time.time()
     logger.info(f"Summarizing the document takes {end_time - start_time} seconds.")
     # 将模型输出的introduction保存到本地
-    output_introduction(res, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'introduction'), 'test')
+    output_information(res, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'introduction'), 'test')
     return res
 
 def analysis_conclusion(llm, conclusion: str) -> str:
@@ -227,7 +232,7 @@ def analysis_conclusion(llm, conclusion: str) -> str:
     end_time = time.time()
     logger.info(f"Summarizing the document takes {end_time - start_time} seconds.")
     # 将模型输出的introduction保存到本地
-    output_introduction(res, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'introduction'), 'test')
+    output_information(res, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'introduction'), 'test')
     return res
 
 def get_one_paper_introduction_abstract(title: str, timestamp: str):
@@ -350,13 +355,64 @@ def get_review_abstract(key_words_information: str) -> str:
 def get_introduction_part1(keywords_information:str) -> str:
     # 输入为配置文件中的关键词信息
     query = construct_query_for_generate_introduction_part1(keywords_information)
+    return 
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(3))
+def review_table_from_abstract(abstract: str) -> str:
+    '''
+    从论文的摘要中生成综述的表格内容
+    '''
+    parser = OutputParser("get_review_table_from_abstract")
+    query = review_from_abstract(abstract)
+    try:
+        information = chat_with_llm_api(query)
+        return parser(information) # 返回一个字典
+    except Exception as e:
+        raise e
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(3))
+def review_table_from_method(method: str) -> str:
+    '''
+    从论文的方法中生成综述的表格内容
+    '''
+    parser = OutputParser("get_review_table_from_method")
+    query = review_from_method(method)
+    try:
+        information = chat_with_llm_api(query)
+        return parser(information) # 返回一个字典
+    except Exception as e:
+        raise e
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(3))
+def review_table_from_conclusion(conclusion: str) -> str:
+    '''
+    从论文的结论中生成综述的表格内容
+    '''
+    parser = OutputParser("get_review_table_from_conclusion")
+    query = review_from_conclusion(conclusion)
+    try:
+        information = chat_with_llm_api(query)
+        return parser(information) # 返回一个字典
+    except Exception as e:
+        raise e
+def insert_table_to_word(paperInfo_list: list, doc_path: str) -> None:
+    headers = ['Name', 'Author', 'Year', 'Method', 'Main Result', 'Advantages and Disadvantages', 'Innovation']
+    doc = Document(doc_path)
+    table = doc.add_table(rows=len(paperInfo_list)+1, cols=7)
+    table.style = 'Table Grid'
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    for cell in table.columns[0].cells:
+        cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+    for i, header in enumerate(headers):
+        table.cell(0, i).text = header
+
+    for i, row in enumerate(paperInfo_list):
+        data = [row.column_1, row.author, row.published, row.review_table_information_from_method, row.review_table_information_from_conclusion, row.column_2, row.column_3]
+        for j, cell_value in enumerate(data):
+            table.cell(i+1, j).text = str(cell_value)
+    doc.add_paragraph("Table" + "caption").bold = True
+    doc.save(doc_path)
 
 if __name__ == '__main__':
-    abstract = get_review_abstract("Computer Vision")
-    print(abstract)
-    exit()
     config = load_config()
-
+    
     # Todo: 
     llm = ChatVicuna()
     timestamp = get_timestamp()
@@ -368,18 +424,23 @@ if __name__ == '__main__':
     print('Check the proxy if meet the error: AttributeError: object has no attribute \'status\'')
     downloadtools = DownloadTools(paper_results, timestamp)
     downloadtools.download_latex_file(url=list(map(lambda x: x.entry_id, paper_results)), save_path=list(map(lambda x: x.title, paper_results)))
-    exit()
     title_list = list(map(lambda x: x.title[0], paper_results))
     paperInfoList = []
     # 解析每篇论文
     with tqdm(total=int(config['ARXIV']['search_nums']), desc="Analysis Each Paper", unit="item") as pbar:
-        for arvix_paper in paper_results:
-            title = arvix_paper.title[0]
-            authors = [author.__str__() for author in arvix_paper.author[0]]
-            url = arvix_paper.entry_id
-            original_abstract = arvix_paper.summary
+        for arxiv_paper in paper_results:
+            title = arxiv_paper.title[0]
+            authors = [author.__str__() for author in arxiv_paper.author[0]]
+            url = arxiv_paper.entry_id
+            published = arxiv_paper.published
+            original_abstract = arxiv_paper.summary
             summary_sentence = summary_with_llm(llm, original_abstract, '7')
             try:
+                review_table_information_from_abstract = review_table_from_abstract(config['ARXIV']['keyword_information'], original_abstract)
+                column_1 = review_table_information_from_abstract['1. Method Name'] 
+                column_2 = review_table_information_from_abstract['2. Strengths and weaknesses']
+                column_3 = review_table_information_from_abstract['3. Innovation point']
+
                 introduction = get_introduction(title, timestamp)
                 method = get_method(title, timestamp)
                 conclusion = get_conclusion(title, timestamp)
@@ -388,11 +449,13 @@ if __name__ == '__main__':
 
                 input_method = "1" + "<summary>" + introduction_summary + "\n\n<Methods>:\n\n" + method
                 method_summary = analysis_method(llm, input_method)
+                review_table_information_from_method = review_table_from_method(method_summary)
 
                 input_conclusion = "2" + "<summary>" + introduction_summary + "\n <Method summary>:\n" + method_summary + "\n\n<Conclusion>:\n\n" + conclusion
                 conclusion_summary = analysis_conclusion(llm, input_conclusion)
-
-                paper = paperInfo(title, authors, url, original_abstract, introduction_summary, method_summary, conclusion_summary)
+                # review_table_information_from_conclusion = review_table_from_conclusion(conclusion_summary)
+                review_table_information_from_conclusion = 'conclusion'
+                paper = paperInfo(title, authors, url, original_abstract, introduction_summary, method_summary, conclusion_summary, column_1, column_2, column_3, published, review_table_information_from_method, review_table_information_from_conclusion)
                 paperInfoList.append(paper) 
                 # introduciton, extracted_abstract = llm_chat_with_one_paper(llm, title, timestamp)
                 #paper_info = paperInfo(title, authors, url, original_abstract, introduction_summary)
@@ -408,8 +471,15 @@ if __name__ == '__main__':
     total_summary += abstract_summary + '\n\n'
 
     introduction_summary = summary_introduction(paperInfoList)
-    # ToDo: 总结每篇论文的优缺点，并生成表格
-    # 论文名称|作者|概述|创新点
+    # 综述 1. abstract
+    review_abstract = get_review_abstract(config['ARXIV']['keyword_information'])
+    review_keywords = 'Keywords: ' + config['ARXIV']['search_keywords'] 
+    # 综述 2. introduction
+
+    # 2.1 Definition of the Voice Conversation
+
+    # 2.2 Importance of the Voice Conversation
+    
 
 
 
