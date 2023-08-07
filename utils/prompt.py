@@ -151,8 +151,8 @@ def construct_query_for_generate_introduction_part2(prompt) -> Dict:
             {
                 "role": "system", 
                 "content": """
-                You are an expert in {} field and now you are required to give a general overview of {} field. This introduction needs to include the importance of {}, the current status and progress of research in {}.
-                """.format(prompt, prompt, prompt, prompt)
+                You are an expert in the field of {} and I need you to help me write the introduction section of a synthesis on {}.First, this introduction needs to include a clear definition of {} that helps the reader understand the focus and objectives of the review. Second, there needs to be an elaboration of the possible research questions that defines the research problem or objective.
+                """.format(prompt, prompt, prompt)
             },
             {
                 "role": "user",

@@ -355,7 +355,20 @@ def get_review_abstract(key_words_information: str) -> str:
 def get_introduction_part1(keywords_information:str) -> str:
     # 输入为配置文件中的关键词信息
     query = construct_query_for_generate_introduction_part1(keywords_information)
-    return 
+    try:
+        part_1 = chat_with_llm_api(query)
+        return part_1
+    except Exception as e:
+        raise e
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(3))
+def get_introduction_part2(keywords_information:str) -> str:
+    # 输入为配置文件中的关键词信息
+    query = construct_query_for_generate_introduction_part2(keywords_information)
+    try:
+        part_2 = chat_with_llm_api(query)
+        return part_2
+    except Exception as e:
+        raise e
 @retry(stop=stop_after_attempt(3), wait=wait_fixed(3))
 def review_table_from_abstract(abstract: str) -> str:
     '''
@@ -475,8 +488,9 @@ if __name__ == '__main__':
     review_abstract = get_review_abstract(config['ARXIV']['keyword_information'])
     review_keywords = 'Keywords: ' + config['ARXIV']['search_keywords'] 
     # 综述 2. introduction
-
+    review_introduction_part_1 = get_introduction_part1(config['ARXIV']['keyword_information'])
     # 2.1 Definition of the Voice Conversation
+    review_introduction_part_2 = get_introduction_part2(config['ARXIV']['keyword_information'])
 
     # 2.2 Importance of the Voice Conversation
     

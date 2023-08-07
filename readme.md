@@ -1,10 +1,10 @@
 ## FastChat Vicuna-13b API:
 1.  conda activate FastChat
 2.  cd /home/sjx/FastChat
-3.  launch the controller: CUDA_VISIBLE_DEVICES='1,2' python3 -m fastchat.serve.controller
-4.  CUDA_VISIBLE_DEVICES='1,2' python3 -m fastchat.serve.model_worker --model-names "gpt-3.5-turbo,text-davinci-003,text-embedding-ada-002" --model-path /home/public/song/vicuna-13b-v1.3 --num-gpus 2
+3.  launch the controller: CUDA_VISIBLE_DEVICES='0,1' python3 -m fastchat.serve.controller
+4.  CUDA_VISIBLE_DEVICES='0,1' python3 -m fastchat.serve.model_worker --model-names "gpt-3.5-turbo,text-davinci-003,text-embedding-ada-002" --model-path /home/public/song/vicuna-13b-v1.3 --num-gpus 2
 
-5.  launch the RESTful API server: CUDA_VISIBLE_DEVICES='1,2' python3 -m fastchat.serve.openai_api_server --host localhost --port 8000
+5.  launch the RESTful API server: CUDA_VISIBLE_DEVICES='0,1' python3 -m fastchat.serve.openai_api_server --host localhost --port 8000
 
 ## Test API
 curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{"model": "gpt-3.5-turbo", "messages": [{"role": "system", "content": "You are goot at math"},{"role":"assistant", "content":"I need your help to calculate the sum of 1 and 2"}, {"role":"assistant", "content":"please tell me the answer"}]}'
@@ -32,3 +32,9 @@ python3 -m fastchat.serve.cli --model-path /home/public/song/vicuna-13b-v1.3 --n
 将每篇论文的总结进行合并，得到对该领域的总体总结
 
 curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{"model": "gpt-3.5-turbo", "messages": [{"role": "system", "content": "You are a research in the field of computer science. who is good at summarizing papers using concise statements."}, {"role": "assistant", "content": "This is the introduction of a English document. I need your help to read and summarize the following questions:"}, {"role": "user", "content": "Summarize"}]}'
+
+# 每篇论文信息
+1. Abstract
+2. Introduction
+3. Method
+4. 
